@@ -49,7 +49,7 @@
   [
     #set text(font: fonts.楷体, size: 字号.小四)
     #set par(leading: leading, justify: true)
-    #show par: set block(spacing: spacing)
+
 
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
@@ -59,7 +59,7 @@
 
       #v(1em)
 
-      #double-underline[#fakebold[南京大学本科生毕业论文（设计、作品）中文摘要]]
+      #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）中文摘要]]
     ]
 
     #fakebold[题目：]#info-value("title", (("",)+ info.title).sum())
