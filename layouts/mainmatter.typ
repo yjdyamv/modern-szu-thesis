@@ -36,7 +36,7 @@
   separator: "  ",
   // caption 样式
   caption-style: strong,
-  caption-size: 字号.五号,
+  caption-size: 字号.小五,
   // figure 计数
   show-figure: i-figured.show-figure,
   // equation 计数
