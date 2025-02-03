@@ -19,8 +19,8 @@
   text-args: auto,
   // 标题字体与字号
   heading-font: auto,
-  heading-size: (字号.四号,),
-  heading-weight: ("regular",),
+  heading-size: (字号.三号,字号.小三,字号.四号,字号.小四),
+  heading-weight: ("bold","bold","bold","bold"),
   heading-above: (2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em),
   heading-below: (2 * 15.6pt - 0.7em, 1.5 * 15.6pt - 0.7em),
   heading-pagebreak: (true, false),
