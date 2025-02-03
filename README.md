@@ -19,3 +19,7 @@ typst
 
 # 致谢
 感谢 [OrangeX4](https://github.com/OrangeX4) 制作的modern-nju-thesis模板，此模板可使用性很强
+
+# 待完成
+- 正文字号
+- 表格caption字号

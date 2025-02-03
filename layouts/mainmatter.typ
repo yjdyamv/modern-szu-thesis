@@ -50,7 +50,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   if (text-args == auto) {
-    text-args = (font: fonts.宋体, size: 字号.小四)
+    text-args = (font: fonts.宋体, size: 字号.五号)
   }
   // 1.1 字体与字号
   if (heading-font == auto) {
@@ -70,11 +70,12 @@
   // 3.1 文本和段落样式
   set text(..text-args)
   set par(
+    spacing: spacing,
     leading: leading,
     justify: justify,
     first-line-indent: first-line-indent
   )
-  set par (spacing: spacing)
+  //set par (spacing: spacing)
   show raw: set text(font: fonts.等宽)
   // 3.2 脚注样式
   show footnote.entry: set text(font: fonts.宋体, size: 字号.五号)
