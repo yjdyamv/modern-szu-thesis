@@ -27,7 +27,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "南京大学学位论文"),
+    title: ("基于 Typst 的", "深圳大学学位论文"),
     grade: "20XX",
     student-id: "1234567890",
     author: "张三",
@@ -50,18 +50,37 @@
   }
 
   // 3.  内置辅助函数
-  let info-key(body) = {
-    rect(
-      width: 100%,
-      inset: info-inset,
-      stroke: none,
-      text(
-        font: fonts.at(info-key-font, default: "黑体"),
-        size: 字号.三号,
-        body
-      ),
-    )
-  }
+  let info-key(body, stroke:none) = {
+    if stroke == none {
+      set align(left)
+      rect(
+        width: 100%,
+        inset: info-inset,
+        stroke: none,
+        text(
+          font: fonts.at(info-key-font, default: "黑体"),
+          size: 字号.三号,
+          body
+        ),
+      )
+    }
+    else {
+      set align(left)
+      //让stroke和右侧的value连接上，
+      v(1.80pt)
+      rect(
+        width: 100%,
+        inset: info-inset,
+        stroke: (bottom: stoke-width + black),
+        text(
+          font: fonts.at(info-key-font, default: "黑体"),
+          size: 字号.三号,
+          body
+        ),
+      )
+    }
+
+    }
 
   let info-value(key, body) = {
     set align(center)
@@ -126,7 +145,7 @@
     v(22pt)
     // 调整一下左边的间距
     pad(image("../assets/vi/szu.jpg", width: 200pt), left: 0.4cm)
-    v(2pt)
+    v(-5pt)
   }
 
   // 将中文之间的空格间隙从 0.25 em 调整到 0.5 em
@@ -143,7 +162,7 @@
     column-gutter: column-gutter,
     row-gutter: row-gutter,
     info-key("题目："),
-    ..info.title.map((s) => info-long-value("title", s)).intersperse(info-key("　")),
+    ..info.title.map((s) => info-long-value("title", s)).intersperse(info-key("  ",stroke:true)),
     info-key("姓名："),
     info-long-value("author", info.author),
     info-key("专业："),
