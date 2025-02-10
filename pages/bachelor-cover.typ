@@ -10,13 +10,13 @@
   fonts: (:),
   info: (:),
   // 其他参数
-  stoke-width: 0.5pt,
+  stoke-width: 1pt,
   min-title-lines: 2,
   info-inset: (x: 0pt, bottom: 1pt),
   info-key-width: 72pt,
   info-key-font: "黑体",
   info-value-font: "楷体",
-  column-gutter: -3pt,
+  column-gutter: 0pt,
   row-gutter: 11.5pt,
   anonymous-info-keys: ("grade", "student-id", "author", "supervisor", "supervisor-ii"),
   bold-info-keys: ("title","author", "major", "department", "student-id","supervisor" ),
@@ -50,11 +50,12 @@
   }
 
   // 3.  内置辅助函数
-  let info-key(body, stroke:none) = {
+  let info-key(body,width:100%, stroke:none) = {
     if stroke == none {
       set align(left)
+      grid.cell(
       rect(
-        width: 100%,
+        width: width,
         inset: info-inset,
         stroke: none,
         text(
@@ -63,13 +64,14 @@
           body
         ),
       )
+      )
     }
     else {
       set align(left)
       //让stroke和右侧的value连接上，
-      v(1.80pt)
+      v(1pt)
       rect(
-        width: 100%,
+        width: width,
         inset: info-inset,
         stroke: (bottom: stoke-width + black),
         text(
@@ -82,12 +84,12 @@
 
     }
 
-  let info-value(key, body) = {
+  let info-value(key, body, width:100%) = {
     set align(center)
     rect(
-      width: 100%,
+      width: width,
       inset: info-inset,
-      stroke: (bottom: stoke-width + black),
+      stroke: (bottom: stoke-width + black,),
       text(
         font: fonts.at(info-value-font, default: "宋体"),
         size: 字号.三号,
@@ -98,8 +100,8 @@
     )
   }
 
-  let info-long-value(key, body) = {
-    grid.cell(colspan: 3,
+  let info-long-value(key, body,width:100%,colspan:1) = {
+    grid.cell(colspan: colspan,
       info-value(
         key,
         if anonymous and (key in anonymous-info-keys) {
@@ -111,7 +113,7 @@
             else {
               body
             }
-        }
+        },width:width,
       )
     )
   }
@@ -158,23 +160,24 @@
   }
 
   block(width: 318pt, grid(
-    columns: (info-key-width, 1fr, info-key-width, 1fr),
+    columns: (info-key-width, 1fr),
     column-gutter: column-gutter,
     row-gutter: row-gutter,
     info-key("题目："),
-    ..info.title.map((s) => info-long-value("title", s)).intersperse(info-key("  ",stroke:true)),
+    info-long-value("title", info.title.at(0), width: 112%),
+    info-long-value("title",info.title.at(1),colspan: 2,width: 105%),
     info-key("姓名："),
-    info-long-value("author", info.author),
+    info-long-value("author", info.author, width: 112%),
     info-key("专业："),
-    info-long-value("major", info.major),
+    info-long-value("major", info.major, width: 112%),
     info-key("学院："),
-    info-long-value("department", info.department),
+    info-long-value("department", info.department, width: 112%),
     info-key("学号："),
-    info-long-value("student-id", info.student-id),
+    info-long-value("student-id", info.student-id, width: 112%),
     info-key("指导教师："),
     info-long-value("supervisor", info.supervisor.at(0)),
     info-key("职称："),
-    info-long-value("supervisor", info.supervisor.at(1)),
+    info-long-value("supervisor", info.supervisor.at(1), width: 110%),
     // ..(if info.supervisor-ii != () {(
     //   info-key("第二导师"),
     //   info-short-value("supervisor-ii", info.supervisor-ii.at(0)),
