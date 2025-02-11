@@ -28,11 +28,11 @@ typst
 
 配置相当简单。
 
-+ 在 VS Code 中安装 Tinymist Typst 和 Typst Preview 插件。前者负责语法高亮和错误检查等功能，后者负责预览。
-        - 也推荐下载 Typst Companion 插件，其提供了例如 Ctrl + B 进行加粗等便捷的快捷键。
-        - 你还可以下载[OrangeX4](https://github.com/OrangeX4)开发的 Typst Sync 和 Typst Sympy Calculator 插件，前者提供了本地包的云同步功能，后者提供了基于 Typst 语法的科学计算器功能。
-+ 按下 Ctrl + Shift + P 打开命令界面，输入 Typst: Show available Typst templates (gallery) for picking up a template 打开 Tinymist 提供的 Template Gallery，然后从里面找到 modern-szu-thesis，点击 ❤ 按钮进行收藏，以及点击 + 号，就可以创建对应的论文模板了。
-+ 最后用 VS Code 打开生成的目录，打开 thesis.typ 文件，并按下 Ctrl + K V 进行实时编辑和预览。
+1. 在 VS Code 中安装 Tinymist Typst 和 Typst Preview 插件。前者负责语法高亮和错误检查等功能，后者负责预览。
+- 也推荐下载 Typst Companion 插件，其提供了例如 Ctrl + B 进行加粗等便捷的快捷键。
+- 你还可以下载[OrangeX4](https://github.com/OrangeX4)开发的 Typst Sync 和 Typst Sympy Calculator 插件，前者提供了本地包的云同步功能，后者提供了基于 Typst 语法的科学计算器功能。
+2. 按下 Ctrl + Shift + P 打开命令界面，输入 Typst: Show available Typst templates (gallery) for picking up a template 打开 Tinymist 提供的 Template Gallery，然后从里面找到 modern-szu-thesis，点击 ❤ 按钮进行收藏，以及点击 + 号，注意需为空文件夹，就可以创建对应的论文模板了。
+3. 最后用 VS Code 打开生成的目录，打开 thesis.typ 文件，并按下 Ctrl + K V 进行实时编辑和预览。
 
 (这就好了？不错，你甚至不需要下载typst)
 
