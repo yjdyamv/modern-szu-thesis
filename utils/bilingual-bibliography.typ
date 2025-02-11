@@ -140,7 +140,7 @@
   }
   set par(first-line-indent: 0pt)
   fakebold(font: 字体.楷体, size: 字号.五号)[参考文献]
-  set par(spacing: 0.5em, leading:1em)
+  set par(spacing: 1em, leading:1em)
   set text(lang: "zh" , font: 字体.楷体, size: 字号.小五)
   bibliography(
     title: none,
