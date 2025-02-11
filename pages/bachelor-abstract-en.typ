@@ -17,7 +17,7 @@
   outlined: false,
   anonymous-info-keys: ("author-en", "supervisor-en", "supervisor-ii-en"),
   leading: 1em,
-  spacing: 0.5em,
+  spacing: 1em,
   body,
 ) = {
   // 1.  默认参数

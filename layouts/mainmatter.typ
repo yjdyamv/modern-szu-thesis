@@ -10,16 +10,16 @@
   twoside: false,
   fonts: (:),
   // 其他参数
-  leading: 1.5 * 15.6pt - 0.7em,
-  spacing: 1.5 * 15.6pt - 0.7em,
+  leading: 1em,
+  spacing: 1em,
   justify: true,
   first-line-indent: 2em,
-  numbering: custom-numbering.with(first-level: "1. ", depth: 4, "1.1 "),
+  numbering: custom-numbering.with(first-level: "第一章 ",second-level: "第一节", depth: 6,),
   // 正文字体与字号参数
   text-args: auto,
   // 标题字体与字号
-  heading-font: auto,
-  heading-size: (字号.三号,字号.小三,字号.四号,字号.小四),
+  heading-font: (字体.黑体,字体.黑体,字体.黑体,字体.黑体,字体.黑体,字体.黑体,字体.黑体,),
+  heading-size: (字号.三号,字号.小三,字号.四号,字号.小四,字号.五号,字号.五号),
   heading-weight: ("bold","bold","bold","bold"),
   heading-above: (2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em),
   heading-below: (2 * 15.6pt - 0.7em, 1.5 * 15.6pt - 0.7em),

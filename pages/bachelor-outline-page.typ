@@ -44,7 +44,7 @@
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 默认显示的字体
-  set text(font: reference-font, size: reference-size)
+  set text(font: reference-font, size: reference-size,weight: "bold")
 
   {
     set align(center)
@@ -63,6 +63,7 @@
       set text(
         font: font.at(calc.min(level, font.len()) - 1),
         size: size.at(calc.min(level, size.len()) - 1),
+        weight: "bold",
       )
       // 计算缩进
       let indent-list = indent + range(level - indent.len()).map((it) => indent.last())
