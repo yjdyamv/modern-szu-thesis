@@ -52,9 +52,9 @@
 
   block[
     #set text(font: fonts.宋体, size: 字号.四号)
-    #set par(justify: true, first-line-indent: 2em, leading: 1.5em)
+    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.5em)
 
-    #indent 本人郑重承诺：所呈交的毕业论文（设计），题目《 #info.title.sum()》是本人在指导教师的指导下，独立进行研究工作所取得的成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式注明。除此之外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。本人完全意识到本声明的法律结果。
+    本人郑重承诺：所呈交的毕业论文（设计），题目《 #info.title.sum()》是本人在指导教师的指导下，独立进行研究工作所取得的成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式注明。除此之外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。本人完全意识到本声明的法律结果。
 
   ]
 

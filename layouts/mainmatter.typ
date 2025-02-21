@@ -13,7 +13,7 @@
   leading: 1em,
   spacing: 1em,
   justify: true,
-  first-line-indent: 2em,
+  first-line-indent: (amount: 2em, all: true),
   numbering: custom-numbering.with(first-level: "第一章 ",second-level: "第一节", depth: 6,),
   // 正文字体与字号参数
   text-args: auto,
@@ -112,7 +112,6 @@
       below: array-at(heading-below, it.level),
     )
     it
-    fake-par
   }
   // 4.3 标题居中与自动换页
   show heading: it => {
