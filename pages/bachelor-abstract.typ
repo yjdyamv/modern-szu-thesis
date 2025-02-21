@@ -1,6 +1,5 @@
 #import "../utils/custom-cuti.typ": fakebold
 #import "../utils/style.typ": 字号, 字体
-#import "../utils/indent.typ": fake-par
 #import "../utils/double-underline.typ": double-underline
 #import "../utils/invisible-heading.typ": invisible-heading
 
@@ -48,7 +47,7 @@
 
   [
     #set text(font: fonts.楷体, size: 字号.小四)
-    #set par(leading: leading, justify: true)
+    #set par(leading: leading, justify: true, first-line-indent: (amount: 2em,all:true))
 
 
     // 标记一个不可见的标题用于目录生成
