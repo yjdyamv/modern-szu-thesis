@@ -76,9 +76,7 @@
     #text(size : 字号.小四, weight: "black")[【Abstract】:] 
     
     #[
-      #set par(first-line-indent: 2em)
-
-      #fake-par
+      #set par(first-line-indent: (amount:2em, all:true))
       
       #body
     ]
