@@ -47,7 +47,7 @@
 
   [
     #set text(font: fonts.楷体, size: 字号.小四)
-    #set par(leading: leading, justify: true, first-line-indent: (amount: 2em,all:true))
+    #set par(leading: leading, justify: true)
 
 
     // 标记一个不可见的标题用于目录生成
@@ -74,9 +74,7 @@
     #fakebold[摘要：]
 
     #[
-      #set par(first-line-indent: 2em)
-
-      #fake-par
+      #set par(first-line-indent: (amount:2em, all:true))
       
       #body
     ]
