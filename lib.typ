@@ -8,17 +8,18 @@
 
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
-#import "layouts/mainmatter.typ": mainmatter
+#import "layouts/master-mainmatter.typ": master-mainmatter
+#import "layouts/bachelor-mainmatter.typ": bachelor-mainmatter
 #import "layouts/appendix.typ": appendix
 #import "pages/fonts-display-page.typ": fonts-display-page
 #import "pages/bachelor-cover.typ": bachelor-cover
-
+#import "pages/master-cover.typ": master-cover
 #import "pages/bachelor-decl-page.typ": bachelor-decl-page
-
+#import "pages/master-decl-page.typ": master-decl-page
 #import "pages/bachelor-abstract.typ": bachelor-abstract
-
+#import "pages/master-abstract.typ": master-abstract
 #import "pages/bachelor-abstract-en.typ": bachelor-abstract-en
-
+#import "pages/master-abstract-en.typ" : master-abstract-en
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
 #import "pages/list-of-figures.typ": list-of-figures
 #import "pages/list-of-tables.typ": list-of-tables
@@ -56,6 +57,7 @@
     department: "某学院",
     department-en: "XX Department",
     major: "某专业",
+    major-categories:"工学",
     major-en: "XX Major",
     field: "某方向",
     field-en: "XX Field",
@@ -99,19 +101,21 @@
     preface: (..args) => {
       preface(
         twoside: twoside,
+        doctype: doctype,
+        info: info,
         ..args,
       )
     },
     mainmatter: (..args) => {
       if doctype == "master" or doctype == "doctor" {
-        mainmatter(
+        master-mainmatter(
           twoside: twoside,
           display-header: true,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
         )
       } else {
-        mainmatter(
+        bachelor-mainmatter(
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
@@ -268,10 +272,20 @@
 
     // 参考文献页
     bilingual-bibliography: (..args) => {
+      if doctype == "bachelor"{
       bilingual-bibliography(
         bibliography: bibliography,
+        doctype: "bachelor",
         ..args,
       )
+      } else {
+        bilingual-bibliography(
+        bibliography: bibliography,
+        doctype: "master",
+        ..args,
+        )
+      }
+      
     },
 
     // 致谢页

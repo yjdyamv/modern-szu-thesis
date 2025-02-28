@@ -3,13 +3,13 @@
 
 // 后记，重置 heading 计数器
 #let appendix(
-  numbering: custom-numbering.with(first-level: "", depth: 6,),
+  numbering: custom-numbering.with(first-level: "附录A", depth: 4,),
   // figure 计数
-  show-figure: i-figured.show-figure.with(numbering: "1.1"),
+  show-figure: i-figured.show-figure.with(numbering: "A-1"),
   // equation 计数
-  show-equation: i-figured.show-equation.with(numbering: "(1.1)"),
+  show-equation: i-figured.show-equation.with(numbering: "(A-1)"),
   // 重置计数
-  reset-counter: false,
+  reset-counter: true,
   it,
 ) = {
   set heading(numbering: numbering)

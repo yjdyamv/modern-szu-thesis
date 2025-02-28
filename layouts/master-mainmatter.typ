@@ -1,10 +1,11 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/style.typ": 字号, 字体
-#import "../utils/custom-numbering.typ": custom-numbering
+#import "../utils/custom-numbering.typ": custom-numbering,
 #import "../utils/custom-heading.typ": heading-display, active-heading, current-heading
 #import "../utils/unpairs.typ": unpairs
+#import "@preview/numbly:0.1.0": numbly
 
-#let mainmatter(
+#let master-mainmatter(
   // documentclass 传入参数
   twoside: false,
   fonts: (:),
@@ -13,12 +14,12 @@
   spacing: 1em,
   justify: true,
   first-line-indent: (amount: 2em, all: true),
-  numbering: custom-numbering.with(first-level: "第一章 ",second-level: "第一节", depth: 6,),
+  numbering: custom-numbering.with(first-level: "第一章 ",second-level: "第一节 ", depth: 4,),
   // 正文字体与字号参数
   text-args: auto,
   // 标题字体与字号
-  heading-font: (字体.黑体,字体.黑体,字体.黑体,字体.黑体,字体.黑体,字体.黑体,字体.黑体,),
-  heading-size: (字号.三号,字号.小三,字号.四号,字号.小四,字号.五号,字号.五号),
+  heading-font: (字体.黑体, 字体.黑体, 字体.宋体, 字体.宋体, 字体.宋体, 字体.宋体, 字体.宋体,),
+  heading-size: (字号.三号, 字号.小三, 字号.四号, 字号.小四, 字号.小四, 字号.小四, 字号.小四),
   heading-weight: ("bold","bold","bold","bold"),
   heading-above: (2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em),
   heading-below: (2 * 15.6pt - 0.7em, 1.5 * 15.6pt - 0.7em),
@@ -48,8 +49,8 @@
 
   // 1.  默认参数
   fonts = 字体 + fonts
-  if (text-args == auto) {
-    text-args = (font: fonts.宋体, size: 字号.五号)
+  if text-args == auto{
+    text-args = (font: fonts.宋体, size: 字号.小四)
   }
   // 1.1 字体与字号
   if (heading-font == auto) {
@@ -67,20 +68,21 @@
 
   // 3.  设置基本样式
   // 3.1 文本和段落样式
+  
+  set par(first-line-indent: first-line-indent)
+    set par(
+      spacing: 23pt,
+      leading: 23pt,
+      justify: justify,
+    )
   set text(..text-args)
-  set par(
-    spacing: spacing,
-    leading: leading,
-    justify: justify,
-    first-line-indent: first-line-indent
-  )
-  //set par (spacing: spacing)
   show raw: set text(font: fonts.等宽)
   // 3.2 脚注样式
   show footnote.entry: set text(font: fonts.宋体, size: 字号.五号)
   // 3.3 设置 figure 的编号
   show heading: i-figured.reset-counters
-  show figure: show-figure
+  show figure: i-figured.show-figure.with(numbering: "1-1")
+  show figure: set block(above: 18pt,below:6pt)
   // 3.4 设置 equation 的编号和假段落首行缩进
   show math.equation.where(block: true): show-equation
   // 3.5 表格表头置顶 + 不用冒号用空格分割 + 样式
@@ -93,7 +95,15 @@
   // 3.6 优化列表显示
   //     术语列表 terms 不应该缩进
   show terms: set par(first-line-indent: 0pt)
-
+  //3.7 有序列表样式
+  import "@preview/numbly:0.1.0":numbly
+  set enum(full: true, numbering: numbly(
+  "{1:1.}",
+  "{2:(1)}",
+  "{3:①}",
+  ))
+  //3.8 代码块处理
+  show figure: set par(spacing:12pt,leading: 12pt)
   // 4.  处理标题
   // 4.1 设置标题的 Numbering
   set heading(numbering: numbering)
@@ -128,47 +138,17 @@
     }
   }
 
-  // 5.  处理页眉
-  set page(..(if display-header {
-    (
-      header: context {
-        // 重置 footnote 计数器
-        if reset-footnote {
-          counter(footnote).update(0)
-        }
-        let loc = here()
-        // 5.1 获取当前页面的一级标题
-        let cur-heading = current-heading(level: 1)
-        // 5.2 如果当前页面没有一级标题，则渲染页眉
-        if not skip-on-first-level or cur-heading == none {
-          if header-render == auto {
-            // 一级标题和二级标题
-            let first-level-heading = if not twoside or calc.rem(loc.page(), 2) == 0 { heading-display(active-heading(level: 1, loc)) } else { "" }
-            let second-level-heading = if not twoside or calc.rem(loc.page(), 2) == 2 { heading-display(active-heading(level: 2, prev: false, loc)) } else { "" }
-            set text(font: fonts.楷体, size: 字号.五号)
-            stack(
-              first-level-heading + h(1fr) + second-level-heading,
-              v(0.25em),
-              if first-level-heading != "" or second-level-heading != "" { line(length: 100%, stroke: stroke-width + black) },
-            )
-          } else {
-            header-render(loc)
-          }
-          v(header-vspace)
-        }
-      }
-    )
-  } else {
-    (
-      header: {
-        // 重置 footnote 计数器
-        if reset-footnote {
-          counter(footnote).update(0)
-        }
-      }
-    )
-  }))
-
+  // 5.  处理正文页眉
+  import "@preview/hydra:0.6.0": hydra
+  set page(paper: "a4",numbering: "1", header: context {
+    set par(leading:0pt,spacing:0pt)
+    align(center, emph(hydra(1,skip-starting: false)))
+    v(2pt)
+    line(length: 100%, stroke:2pt)
+    v(3pt)
+    line(length: 100%, stroke: 1pt)
+  },
+)
   counter(page).update(1)
 
   it
