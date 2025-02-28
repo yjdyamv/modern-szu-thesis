@@ -5,7 +5,7 @@
   // 其他参数
   fallback: true,  // 字体缺失时使用 fallback，不显示豆腐块
   lang: "zh",
-  margin: (x: 89pt),
+  margin: (x: 89pt,y:2.54cm),
   it,
 ) = {
   // 1.  默认参数

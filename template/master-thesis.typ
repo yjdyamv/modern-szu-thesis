@@ -1,19 +1,19 @@
-#import "../lib.typ": documentclass, indent ,字体, 字号
-
+#import "../lib.typ": documentclass, indent ,字体, 字号, 
+// 此模板仅用于研究生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。
 // 你首先应该安装 https://github.com/nju-lug/modern-nju-thesis/tree/main/fonts/FangZheng 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
 #let (
   // 布局函数
-  twoside, doc, preface, mainmatter, appendix,
+  twoside, doc, preface, mainmatter, appendix, doctype,
   // 页面函数
   fonts-display-page, cover, decl-page, abstract, abstract-en, bilingual-bibliography,
   outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
 ) = documentclass(
-  // doctype: "bachelor",  // "bachelor" | "master" | "doctor" | "postdoc", 文档类型，默认为本科生 bachelor
-  // degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
+  doctype: "master",  // "bachelor" | "master" | "doctor" | "postdoc", 文档类型，默认为本科生 bachelor
+  degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
   // anonymous: true,  // 盲审模式
-  twoside: true,  // 双面模式，会加入空白页，便于打印
+  twoside: false,  // 双面模式，会加入空白页，便于打印
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: ("Times New Roman", "FZKai-Z03S")),
   info: (
@@ -32,6 +32,16 @@
     // supervisor-ii: ("王五", "副教授"),
     // supervisor-ii-en: "Professor My Supervisor",
     submit-date: datetime.today(),
+    
+    //下为研究生项
+    //UDC
+    udc: "",
+    //分类号
+    clc: "",
+    //学校代码
+    school-code: "",
+    //密级
+    secret-level: "",
   ),
   // 参考文献源
   bibliography: bibliography.with("ref.bib"),
@@ -54,10 +64,6 @@
 // 前言
 #show: preface
 
-// 目录
-#outline-page()
-
-
 // 中文摘要
 #abstract(
   keywords: ("我", "就是", "测试用", "关键词")
@@ -65,8 +71,15 @@
   中文摘要
 ]
 
+// 英文摘要
+#abstract-en(
+  keywords: ("Dummy", "Keywords", "Here", "It Is")
+)[
+  English abstract
+]
 
-
+// 目录
+#outline-page()
 
 
 
@@ -79,8 +92,18 @@
 // 正文
 #show: mainmatter
 
-// 符号表
-
+// 符号表,若无可删去
+#notation[
+  / DFT:	密度泛函理论 (Density Functional Theory)
+  / HPLC:	高效液相色谱 (High Performance Liquid Chromatography)
+  / LC-MS:	液相色谱-质谱联用 (Liquid chromatography-Mass Spectrum)
+  / SCRF:  	自洽反应场 (Self-Consistent Reaction Field)
+  / TIC:	总离子浓度 (Total Ion Content)
+  / ZPE:	零点振动能 (Zero Vibration Energy)
+  / Ea:	化学反应的活化能 (Activation Energy)
+  / $Delta G^!=$:	活化自由能 (Activation Free Energy)
+  / $nu_i$:	虚频 (Imaginary Frequency)
+]
 
 = 导　论
 
@@ -99,7 +122,8 @@
 + 有序列表项二
   + 有序子列表项一
   + 有序子列表项二
-
+    + 有序子子列表项一
+    + 有序子子列表项一
 === 术语列表
 
 / 术语一: 术语解释
@@ -126,11 +150,11 @@
     table(
       columns: 4,
       stroke: none,
-      table.hline(),
+      table.hline(stroke:1.5pt),
       [t], [1], [2], [3],
-      table.hline(stroke: .5pt),
+      table.hline(stroke: 1pt),
       [y], [0.3s], [0.4s], [0.8s],
-      table.hline(),
+      table.hline(stroke:1.5pt),
     ),
     caption: [三线表],
   ) <timing-tlt>
@@ -141,13 +165,10 @@
   caption: [图片测试],
 ) <nju-logo>
 
-
 == 数学公式
 
 可以像 Markdown 一样写行内公式 $x + y$，以及带编号的行间公式：
-
 $ phi.alt := (1 + sqrt(5)) / 2 $ <ratio>
-
 引用数学公式需要加上 `eqt:` 前缀，则由@eqt:ratio，我们有：
 
 $ F_n = floor(1 / sqrt(5) phi.alt^n) $
@@ -166,7 +187,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 == 代码块
 
-代码块支持语法高亮。引用时需要加上 `lst:` @lst:code
+代码块支持语法高亮。引用时需要加上 `lst:` @code
 
 #figure(
   ```py
@@ -182,6 +203,8 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 == 正文子标题
 
 === 正文子子标题
+
+==== 正文子子子标题
 
 正文内容
 
@@ -205,18 +228,19 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   pagebreak() + " "
 }
 
-// 英文摘要
-#abstract-en(
+// 本科生英文摘要
+#if doctype == "bachelor" {
+abstract-en(
   keywords: ("Dummy", "Keywords", "Here", "It Is")
 )[
   English abstract
 ]
-
+} else {none}
 
 // 附录
 #show: appendix
 
-= 附录
+= 关于XXX的自查表
 
 == 附录子标题
 

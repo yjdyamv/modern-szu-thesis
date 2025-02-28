@@ -1,6 +1,6 @@
 #let notation(
   twoside: false,
-  title: "符号表",
+  title: "符号和缩略语说明",
   outlined: true,
   width: 350pt,
   columns: (60pt, 1fr),

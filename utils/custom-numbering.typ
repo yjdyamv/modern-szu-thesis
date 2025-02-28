@@ -1,4 +1,4 @@
-#let custom-numbering(base: 1, depth: 6, first-level: "第一章", second-level: "第一节", third-level: "一、", fourth-level: "（一）", fifth-level: "1.", sixth-level:"（1）", ..args) = {
+#let custom-numbering(base: 1, depth: 4, first-level: "第一章 ", second-level: "第一节 ", third-level: "一、", fourth-level: "（一）", ..args) = {
   if (args.pos().len() > depth) {
     return
   }
@@ -32,18 +32,5 @@
       numbering(fourth-level, current_num)
     }
     return
-  }
-  
-  if (level == 5) {
-    if (fifth-level != "") {
-      numbering(fifth-level, current_num)
-    }
-    return
-  }
-
-  if (level == 6) {
-    if(sixth-level != "") {
-        numbering(sixth-level,current_num)
-    }
   }
 }

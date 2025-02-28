@@ -1,7 +1,10 @@
+#import "@preview/hydra:0.6.0": hydra
 // 前言，重置页面计数器
 #let preface(
   // documentclass 传入的参数
   twoside: false,
+  doctype: "bachelor",
+  info: (:),
   ..args,
   it,
 ) = {
