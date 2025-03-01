@@ -10,8 +10,8 @@
   twoside: false,
   fonts: (:),
   // 其他参数
-  leading: 1em,
-  spacing: 1em,
+  leading: 23pt,
+  spacing: 0em,
   justify: true,
   first-line-indent: (amount: 2em, all: true),
   numbering: custom-numbering.with(first-level: "第一章 ",second-level: "第一节 ", depth: 4,),
@@ -71,7 +71,7 @@
   
   set par(first-line-indent: first-line-indent)
   set par(
-      spacing: 14pt,
+      spacing: 1em,
       leading: 1em,
       justify: justify,
   )

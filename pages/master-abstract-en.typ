@@ -26,8 +26,8 @@
   column-gutter: 2pt,
   row-gutter: 10pt,
   anonymous-info-keys: ("author-en", "supervisor-en", "supervisor-ii-en"),
-  leading: 1em,
-  spacing: 字号.小四,
+  leading: 23pt,
+  spacing: 23pt,
   body,
 ) = {
   // 1.  默认参数
@@ -98,13 +98,13 @@
     #v(-5pt)
 
     #set text(font: fonts.宋体, size: 字号.小四)
-    #set par(leading: leading, justify: true)
+    #set par(leading: leading,spacing: spacing, justify: true)
     #show par: set block(spacing: spacing)
     #linebreak()
 
     #[
       #set par(first-line-indent: (amount: 2em, all: true))
-      #set text(top-edge: 0.7em,bottom-edge: -0.3em)
+      
       #body 
       
     ]
