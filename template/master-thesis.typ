@@ -68,14 +68,14 @@
 #abstract(
   keywords: ("我", "就是", "测试用", "关键词")
 )[
-  中文摘要#lorem(200)
+  中文摘要
 ]
 
 // 英文摘要
 #abstract-en(
   keywords: ("Dummy", "Keywords", "Here", "It Is")
 )[
-  English abstract#lorem(200)
+  English abstract
 ]
 
 // 目录

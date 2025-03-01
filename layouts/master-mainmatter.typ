@@ -50,7 +50,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   if text-args == auto{
-    text-args = (font: fonts.宋体, size: 字号.小四, top-edge:0.7em,bottom-edge:-0.3em)
+    text-args = (font: fonts.宋体, size: 字号.小四, top-edge:0.7em,bottom-edge:-0.5em)
   }
   // 1.1 字体与字号
   if (heading-font == auto) {

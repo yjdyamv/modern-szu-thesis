@@ -6,6 +6,7 @@
   // documentclass 传入参数
   twoside: false,
   fonts: (:),
+  doctype: "bachelor",
   // 其他参数
   depth: 4,
   title: "目　　录",
