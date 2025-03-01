@@ -1,11 +1,11 @@
-#import "../lib.typ": documentclass, indent ,字体, 字号, 
+#import "../lib.typ": documentclass, indent ,字体, 字号,
 // 此模板仅用于研究生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。
 // 你首先应该安装 https://github.com/nju-lug/modern-nju-thesis/tree/main/fonts/FangZheng 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
 #let (
   // 布局函数
-  twoside, doc, preface, mainmatter, appendix, doctype,
+  twoside, doc, preface, mainmatter, appendix, doctype,achievement,
   // 页面函数
   fonts-display-page, cover, decl-page, abstract, abstract-en, bilingual-bibliography,
   outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
@@ -218,16 +218,6 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 // 默认使用 gb-7714-2015-numeric 样式
 #bilingual-bibliography(full: true)
 
-// 致谢
-#acknowledgement[
-  感谢 NJU-LUG，感谢 NJUThesis LaTeX ，感谢modern-nju-thsis模板。
-]
-
-// 手动分页
-#if twoside {
-  pagebreak() + " "
-}
-
 // 附录
 #show: appendix
 
@@ -244,8 +234,47 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   caption: [图片测试],
 ) <appendix-img>
 
+// 致谢
+#acknowledgement[
+  感谢 NJU-LUG，感谢 NJUThesis LaTeX ，感谢modern-nju-thsis模板。
+]
 
-// 正文结束标志，不可缺少
-// yjdyamv:不过现在已经不需要了，所以注释了起来
-// 这里放在附录后面，使得页码能正确计数
-//#mainmatter-end()
+// 手动分页
+#if twoside {
+  pagebreak() + " "
+}
+
+#show: achievement
+//均以参考文献的方式列出
+= 攻读硕士学位期间的科研成果
+
+#heading(level: 2,outlined: false)[学术论文]
+
+[1] PEI S, HUANG L L, LI G, et al. Magnetic Raman Continuum in Single-Crystalline H3LiIr2O6 [J].Physical Review B,2020,101(20):201101(R).（SCI收录,IDS号为LJ4UN,IF=3.575,对应学位论文2.2节和第5章） 
+
+[2] XXX,XX.……（已被XX期刊录用）
+
+#heading(level: 2,outlined: false)[专著/译著（无专著或译著时此项不必列出）]
+
+[3] XXX,XX.……
+
+[4] XXX,XX.……（XXX出版社，预计出版时间为……）
+
+#heading(level: 2,outlined: false)[已获得及申请的专利（无专利时此项不必列出）]
+
+[5] XXX,XX.……
+
+[6] XXX,XX.……
+
+#heading(level: 2,outlined: false)[研究报告（无研究报告时此项不必列出）]
+
+[7] XXX,XX.……
+
+#heading(level: 2,outlined: false)[其他研究成果（无其他研究成果时此项不必列出）]
+
+[8] XXX,XX.……
+
+[9] XXX,XX.……
+
+
+
