@@ -21,6 +21,7 @@
 #import "pages/bachelor-abstract-en.typ": bachelor-abstract-en
 #import "pages/master-abstract-en.typ" : master-abstract-en
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
+#import "pages/master-outline-page.typ": master-outline-page
 #import "pages/list-of-figures.typ": list-of-figures
 #import "pages/list-of-tables.typ": list-of-tables
 #import "pages/notation.typ": notation
@@ -237,11 +238,19 @@
 
     // 目录页
     outline-page: (..args) => {
+      if doctype == "bachelor"{
       bachelor-outline-page(
         twoside: twoside,
         ..args,
         fonts: fonts + args.named().at("fonts", default: (:)),
-      )
+      )}
+      else{
+        master-outline-page(
+          twoside: twoside,
+          ..args,
+          fonts: fonts + args.named().at("fonts", default: (:)),
+        )
+      }
     },
 
     // 插图目录页
