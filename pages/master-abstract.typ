@@ -26,8 +26,8 @@
   column-gutter: 0pt,
   row-gutter: 10pt,
   anonymous-info-keys: ("author", "grade", "supervisor", "supervisor-ii"),
-  leading: 1em,
-  spacing: 0em,
+  leading: 23pt,
+  spacing: 23pt,
   body,
 ) = {
   // 1.  默认参数
@@ -88,7 +88,6 @@
     })
     #set text(font: fonts.宋体, size: 字号.小四)
     #set par(leading: leading, justify: true)
-    #show par: set block(spacing: spacing)
 
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
@@ -104,8 +103,8 @@
     #linebreak()
 
     #[
-      #set par(first-line-indent: (amount: 2em, all: true))
-      #set text(top-edge: 0.7em,bottom-edge: -0.3em)
+      #set par(first-line-indent: (amount: 2em, all: true),spacing: spacing,leading: leading)
+
       #body
     ]
     #linebreak()
