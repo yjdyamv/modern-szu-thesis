@@ -26,7 +26,7 @@
   column-gutter: 0pt,
   row-gutter: 10pt,
   anonymous-info-keys: ("author", "grade", "supervisor", "supervisor-ii"),
-  leading: 23pt,
+  leading: 1em,
   spacing: 0em,
   body,
 ) = {
@@ -81,7 +81,7 @@
     #set page(header: context{
       set par(leading:0pt,spacing:0pt)
       align(center,info.title.sum())
-      v(2pt)
+      v(4pt)
       line(length: 100%, stroke:2pt)
       v(3pt)
       line(length: 100%)
@@ -93,21 +93,22 @@
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
+    #linebreak()
+
     #align(center, text(font: fonts.黑体, size: 字号.三号, weight: "bold", "摘　　要"))
 
     #v(-5pt)
 
     #set text(font: fonts.宋体, size: 字号.小四)
 
+    #linebreak()
+
     #[
       #set par(first-line-indent: (amount: 2em, all: true))
-
+      #set text(top-edge: 0.7em,bottom-edge: -0.3em)
       #body
-
     ]
-
-    #v(10pt)
-
+    #linebreak()
     #text(font:字体.黑体,weight: "bold")[*关键词*：]
     #(("",)+ keywords.intersperse("；")).sum()
   ]

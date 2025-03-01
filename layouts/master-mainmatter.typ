@@ -50,7 +50,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   if text-args == auto{
-    text-args = (font: fonts.宋体, size: 字号.小四)
+    text-args = (font: fonts.宋体, size: 字号.小四, top-edge:0.7em,bottom-edge:-0.3em)
   }
   // 1.1 字体与字号
   if (heading-font == auto) {
@@ -70,11 +70,11 @@
   // 3.1 文本和段落样式
   
   set par(first-line-indent: first-line-indent)
-    set par(
-      spacing: 23pt,
-      leading: 23pt,
+  set par(
+      spacing: 14pt,
+      leading: 1em,
       justify: justify,
-    )
+  )
   set text(..text-args)
   show raw: set text(font: fonts.等宽)
   // 3.2 脚注样式
@@ -143,7 +143,7 @@
   set page(paper: "a4",numbering: "1", header: context {
     set par(leading:0pt,spacing:0pt)
     align(center, emph(hydra(1,skip-starting: false)))
-    v(2pt)
+    v(0pt)
     line(length: 100%, stroke:2pt)
     v(3pt)
     line(length: 100%, stroke: 1pt)

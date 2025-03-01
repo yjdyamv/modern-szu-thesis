@@ -68,14 +68,14 @@
 #abstract(
   keywords: ("我", "就是", "测试用", "关键词")
 )[
-  中文摘要
+  中文摘要#lorem(200)
 ]
 
 // 英文摘要
 #abstract-en(
   keywords: ("Dummy", "Keywords", "Here", "It Is")
 )[
-  English abstract
+  English abstract#lorem(200)
 ]
 
 // 目录
@@ -227,15 +227,6 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 #if twoside {
   pagebreak() + " "
 }
-
-// 本科生英文摘要
-#if doctype == "bachelor" {
-abstract-en(
-  keywords: ("Dummy", "Keywords", "Here", "It Is")
-)[
-  English abstract
-]
-} else {none}
 
 // 附录
 #show: appendix

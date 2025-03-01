@@ -26,8 +26,8 @@
   column-gutter: 2pt,
   row-gutter: 10pt,
   anonymous-info-keys: ("author-en", "supervisor-en", "supervisor-ii-en"),
-  leading: 23pt,
-  spacing: 0em,
+  leading: 1em,
+  spacing: 字号.小四,
   body,
 ) = {
   // 1.  默认参数
@@ -81,32 +81,35 @@
     #set page(header: context{
       set par(leading:0pt,spacing:0pt)
       align(center,info.title-en.sum())
-      v(2pt)
+      v(4pt)
       line(length: 100%, stroke:2pt)
       v(3pt)
       line(length: 100%)
     })
-    #set text(font: fonts.宋体, size: 字号.小四)
-    #set par(leading: leading, justify: true)
-    #show par: set block(spacing: spacing)
+    
 
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
+
+    #linebreak()
 
     #align(center, text(font: fonts.黑体, size: 字号.三号, weight: "bold", "ABSTRACT"))
 
     #v(-5pt)
 
     #set text(font: fonts.宋体, size: 字号.小四)
+    #set par(leading: leading, justify: true)
+    #show par: set block(spacing: spacing)
+    #linebreak()
 
     #[
       #set par(first-line-indent: (amount: 2em, all: true))
-
+      #set text(top-edge: 0.7em,bottom-edge: -0.3em)
       #body 
       
     ]
 
-    #v(10pt)
+    #linebreak()
 
     #text(font:字体.楷体,weight: "bold")[*Key words*：]
     #(("",)+ keywords.intersperse("；")).sum()
