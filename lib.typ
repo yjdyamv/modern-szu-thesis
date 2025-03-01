@@ -11,6 +11,7 @@
 #import "layouts/master-mainmatter.typ": master-mainmatter
 #import "layouts/bachelor-mainmatter.typ": bachelor-mainmatter
 #import "layouts/appendix.typ": appendix
+#import "layouts/achievement.typ": achievement
 #import "pages/fonts-display-page.typ": fonts-display-page
 #import "pages/bachelor-cover.typ": bachelor-cover
 #import "pages/master-cover.typ": master-cover
@@ -128,7 +129,11 @@
         ..args,
       )
     },
-
+    achievement: (..args) =>{
+      achievement(
+        ..args
+      )
+    },
     // 字体展示页
     fonts-display-page: (..args) => {
       fonts-display-page(
