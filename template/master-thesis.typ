@@ -10,7 +10,7 @@
   fonts-display-page, cover, decl-page, abstract, abstract-en, bilingual-bibliography,
   outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
 ) = documentclass(
-  doctype: "master",  // "bachelor" | "master" | "doctor" | "postdoc", 文档类型，默认为本科生 bachelor
+  doctype: "master",  //  "master" | "doctor", 文档类型，默认为硕士生 master
   degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
   // anonymous: true,  // 盲审模式
   twoside: false,  // 双面模式，会加入空白页，便于打印
@@ -244,37 +244,19 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   pagebreak() + " "
 }
 
-#show: achievement
-//均以参考文献的方式列出
-= 攻读硕士学位期间的科研成果
-
-#heading(level: 2,outlined: false)[学术论文]
-
-[1] PEI S, HUANG L L, LI G, et al. Magnetic Raman Continuum in Single-Crystalline H3LiIr2O6 [J].Physical Review B,2020,101(20):201101(R).（SCI收录,IDS号为LJ4UN,IF=3.575,对应学位论文2.2节和第5章） 
-
-[2] XXX,XX.……（已被XX期刊录用）
-
-#heading(level: 2,outlined: false)[专著/译著（无专著或译著时此项不必列出）]
-
-[3] XXX,XX.……
-
-[4] XXX,XX.……（XXX出版社，预计出版时间为……）
-
-#heading(level: 2,outlined: false)[已获得及申请的专利（无专利时此项不必列出）]
-
-[5] XXX,XX.……
-
-[6] XXX,XX.……
-
-#heading(level: 2,outlined: false)[研究报告（无研究报告时此项不必列出）]
-
-[7] XXX,XX.……
-
-#heading(level: 2,outlined: false)[其他研究成果（无其他研究成果时此项不必列出）]
-
-[8] XXX,XX.……
-
-[9] XXX,XX.……
-
-
+#achievement(
+  //学术论文
+  papers: (
+    "Chen H, Chan C T. Acoustic cloaking in three dimensions using acoustic metamaterials[J]. Applied Physics Letters, 2007, 91:183518.",
+    "Chen H, Wu B I, Zhang B, et al. Electromagnetic Wave Interactions with a Metamaterial Cloak[J]. Physical Review Letters, 2007, 99(6):63903.",
+  ),
+  //专利
+  patents: ("第一发明人, 永动机[P], 专利申请号202510149890.0.",),
+  //专著/专译
+  monographs: ("",),
+  //研究报告
+  research-reports: ("",),
+  //其他研究成果
+  other-achievements: ("",)
+)
 
