@@ -13,6 +13,9 @@
   it,
 ) = {
   set heading(numbering: numbering)
+  //仅显示一级标题在目录中
+  set heading(outlined: false)
+  show heading.where(level: 1): set heading(outlined: true)
   if reset-counter {
     counter(heading).update(0)
   }

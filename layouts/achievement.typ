@@ -11,6 +11,9 @@
   ..args,
 ) = {
   set heading(numbering: none)
+  //仅显示一级标题在目录中
+  set heading(outlined: false)
+  show heading.where(level: 1): set heading(outlined: true)
   set par(first-line-indent: (amount:0em,all: true), spacing: 1em ,leading:1em)
   let bibitem(body) = figure(kind: "bibitem", supplement: none, body,)
   show figure.where(kind: "bibitem"): it => {
