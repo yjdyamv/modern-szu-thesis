@@ -1,5 +1,5 @@
 #import "../lib.typ": documentclass, indent ,字体, 字号, 
-// 此模板仅用于本科生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。
+// 此模板仅用于本科生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。你可以删除另一个用于研究生论文的文件
 // 你首先应该安装 https://github.com/nju-lug/modern-nju-thesis/tree/main/fonts/FangZheng 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
@@ -18,7 +18,7 @@
   // 你可以自定义字体消除警告，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: (name: "Times New Roman", covers: "latin-in-cjk"), "FZKai-Z03S")),
   info: (
-    title: ("基于 Typst 的", "南京大学学位论文"),
+    title: ("基于 Typst 的", "深圳大学学位论文"),
     title-en: "My Title in English",
     grade: "20XX",
     student-id: "1234567890",

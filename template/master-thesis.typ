@@ -1,5 +1,5 @@
 #import "../lib.typ": documentclass, indent ,字体, 字号,
-// 此模板仅用于研究生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。
+// 此模板仅用于研究生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。你可以删除另一个用于本科生论文的文件
 // 你首先应该安装 https://github.com/nju-lug/modern-nju-thesis/tree/main/fonts/FangZheng 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
