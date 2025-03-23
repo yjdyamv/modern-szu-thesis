@@ -7,6 +7,7 @@
 
 #let master-mainmatter(
   // documentclass 传入参数
+  majortype: "science",
   twoside: false,
   fonts: (:),
   // 其他参数
@@ -107,6 +108,12 @@
   show figure: set par(spacing:12pt,leading: 12pt)
   // 4.  处理标题
   // 4.1 设置标题的 Numbering
+  if majortype == "art" {
+    numbering = custom-numbering.with(first-level: "第一章 ",second-level: "第一节 ", depth: 4,)
+  }
+  else{
+    numbering = numbly("{1:第一章}","{1:1}.{2:1}","{1}.{2:1}.{3:1}","{1}.{2:1}.{3:1}.{4:1}")
+  }
   set heading(numbering: numbering)
   // 4.2 设置字体字号并加入假段落模拟首行缩进
   show heading: it => {

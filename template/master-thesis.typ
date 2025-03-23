@@ -13,6 +13,7 @@
   doctype: "master",  //  "master" | "doctor", 文档类型，默认为硕士生 master
   degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
   // anonymous: true,  // 盲审模式
+  majortype: "science", //"science" | "art", 学科类别，默认为理工，可选为社科
   twoside: false,  // 双面模式，会加入空白页，便于打印
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: ("Times New Roman", "FZKai-Z03S")),
@@ -81,17 +82,6 @@
 // 目录
 #outline-page()
 
-
-
-// 插图目录
-//#list-of-figures()
-
-// 表格目录
-//#list-of-tables()
-
-// 正文
-#show: mainmatter
-
 // 符号表,若无可删去
 #notation[
   / DFT:	密度泛函理论 (Density Functional Theory)
@@ -104,6 +94,16 @@
   / $Delta G^!=$:	活化自由能 (Activation Free Energy)
   / $nu_i$:	虚频 (Imaginary Frequency)
 ]
+
+// 插图目录
+//#list-of-figures()
+
+// 表格目录
+//#list-of-tables()
+
+// 正文
+#show: mainmatter
+
 
 = 导　论
 
