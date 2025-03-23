@@ -40,6 +40,7 @@
 #let documentclass(
   doctype: "bachelor",  // "bachelor" | "master" | "doctor" | "postdoc"，文档类型，默认为本科生 bachelor
   degree: "academic",  // "academic" | "professional"，学位类型，默认为学术型 academic
+  majortype: "science", //"science" | "art", 学科类别，默认为理工，可选为社科
   nl-cover: false,  // TODO: 是否使用国家图书馆封面，默认关闭
   twoside: false,  // 双面模式，会加入空白页，便于打印
   anonymous: false,  // 盲审模式
@@ -113,6 +114,7 @@
         master-mainmatter(
           twoside: twoside,
           display-header: true,
+          majortype: majortype,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
         )

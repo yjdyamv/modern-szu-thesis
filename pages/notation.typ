@@ -1,3 +1,5 @@
+#import "../utils/style.typ":*
+
 #let notation(
   twoside: false,
   title: "符号和缩略语说明",
@@ -8,12 +10,17 @@
   ..args,
   body,
 ) = {
-  heading(
+  pagebreak()
+
+  set text(font:字体.宋体, size: 字号.小四)
+
+  align(center)[#text(font:字体.黑体,heading(
     level: 1,
     numbering: none,
     outlined: outlined,
     title
-  )
+  )),
+  ]
 
   align(center, block(width: width,
     align(start, grid(
