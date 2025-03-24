@@ -8,8 +8,7 @@
 
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
-#import "layouts/master-mainmatter.typ": master-mainmatter
-#import "layouts/bachelor-mainmatter.typ": bachelor-mainmatter
+#import "layouts/mainmatter.typ": mainmatter
 #import "layouts/appendix.typ": appendix
 #import "layouts/achievement.typ": achievement-page
 #import "pages/fonts-display-page.typ": fonts-display-page
@@ -78,9 +77,9 @@
     clc: "O643.12",
     udc: "544.4",
     secret-level: "公开",
-    supervisor-contact: "南京大学 江苏省南京市栖霞区仙林大道163号",
-    email: "xyz@smail.nju.edu.cn",
-    school-code: "10284",
+    supervisor-contact: "深圳大学 广东省深圳市南山区南海大道3688号",
+    email: "xyz@mails.nju.edu.cn",
+    school-code: "10590",
     degree: auto,
     degree-en: auto,
   ) + info
@@ -110,21 +109,13 @@
       )
     },
     mainmatter: (..args) => {
-      if doctype == "master" or doctype == "doctor" {
-        master-mainmatter(
-          twoside: twoside,
-          display-header: true,
+        mainmatter(
           majortype: majortype,
-          ..args,
-          fonts: fonts + args.named().at("fonts", default: (:)),
-        )
-      } else {
-        bachelor-mainmatter(
+          doctype: doctype,
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
         )
-      }
     },
     appendix: (..args) => {
       appendix(
@@ -284,6 +275,7 @@
     notation: (..args) => {
       notation(
         twoside: twoside,
+        doctype: doctype,
         ..args,
       )
     },
