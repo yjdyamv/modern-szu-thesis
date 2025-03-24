@@ -39,10 +39,10 @@
     udc: "",
     //分类号
     clc: "",
-    //学校代码
-    school-code: "",
-    //密级
-    secret-level: "",
+    //学校代码 默认深圳大学
+    //school-code: "",
+    //密级 默认公开
+    //secret-level: "",
   ),
   // 参考文献源
   bibliography: bibliography.with("ref.bib"),
@@ -218,7 +218,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 // 默认使用 gb-7714-2015-numeric 样式
 #bilingual-bibliography(full: true)
 
-// 附录
+// 附录，若无需此部分，可删去
 #show: appendix
 
 = 关于XXX的自查表
