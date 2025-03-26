@@ -41,9 +41,9 @@
   caption-style: strong,
   caption-size: 字号.小五,
   // figure 计数
-  show-figure: i-figured.show-figure,
+  show-figure: i-figured.show-figure.with(numbering: "1-1"),
   // equation 计数
-  show-equation: i-figured.show-equation,
+  show-equation: i-figured.show-equation.with(numbering: "(1-1)"),
   ..args,
   it,
 ) = {
@@ -111,7 +111,7 @@
   ): set figure.caption(position: top)
   set figure.caption(separator: separator)
   show figure.caption: caption-style
-  show figure.caption: set text(font: fonts.宋体, size: 字号.五号)
+  show figure.caption: set text(font: fonts.宋体, size: 字号.五号, weight: "bold")
   // 3.6 优化列表显示
   //     术语列表 terms 不应该缩进
   show terms: set par(first-line-indent: 0pt)
