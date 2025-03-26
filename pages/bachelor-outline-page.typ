@@ -19,6 +19,7 @@
   // 字体与字号
   font: auto,
   size: (字号.小四, 字号.小四, 字号.小四),
+  weight: ("bold", "regular", "regular"),
   // 垂直间距
   above: (1em, 1em,1em),
   below: (1em, 1em, 1em),
@@ -46,8 +47,8 @@
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 默认显示的字体
-  set text(font: reference-font, size: reference-size,weight: "bold")
-
+  set text(font: reference-font, size: reference-size,weight: "regular")
+  
   {
     set align(center)
     text(..title-text-args, title)
@@ -77,6 +78,7 @@
           text(
             font: font.at(entry.level - 1, default: font.last()),
             size: size.at(entry.level - 1, default: size.last()),
+            weight: weight.at(entry.level - 1, default: weight.last()),
             {
               if entry.prefix() not in (none, []) {
                 entry.prefix()
