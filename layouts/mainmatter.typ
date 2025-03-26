@@ -101,6 +101,9 @@
   // 3.2 脚注样式
   show footnote.entry: set text(font: fonts.宋体, size: 字号.五号)
   // 3.3 设置 figure 的编号
+  if doctype == "bachelor" {
+    show-figure = show-figure.with(level: 0, numbering: "1")
+  }
   show heading: i-figured.reset-counters
   show figure: show-figure
   // 3.4 设置 equation 的编号和假段落首行缩进
