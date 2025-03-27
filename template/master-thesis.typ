@@ -253,10 +253,10 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   //专利
   patents: ("第一发明人, 永动机[P], 专利申请号202510149890.0.",),
   //专著/专译
-  monographs: ("",),
+  //monographs: ("",),
   //研究报告
-  research-reports: ("",),
+  //research-reports: ("",),
   //其他研究成果
-  other-achievements: ("",)
+  //other-achievements: ("",)
 )
 
