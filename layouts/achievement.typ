@@ -38,14 +38,19 @@
   }else{
     heading(level: 1)[攻读博士学位期间的科研成果]
   }
+
+  if (papers.len() == 0 or papers.at(0) == "") and (monographs.len() == 0 or monographs.at(0) == "") and (patents.len() == 0 or patents.at(0) == "") and (research-reports.len() == 0 or research-reports.at(0) == "") and (other-achievements.len() == 0 or other-achievements.at(0) == "") {
+    [无]
+  }
+
   if papers.len() != 0 and papers.at(0) != "" {
     list[学术论文]
     for paper in papers {
       bibitem(paper)
     }
   }else{
-    list[学术论文]
-    "无"
+    // list[学术论文]
+    // "无"
   }
 
   if monographs.len() != 0 and monographs.at(0) != "" {
@@ -54,8 +59,8 @@
       bibitem(monograph)
     }
   }else{
-    list[专著/译注]
-    "无"
+    // list[专著/译注]
+    // "无"
   }
   
   if patents.len() != 0 and patents.at(0) != "" {
@@ -64,8 +69,8 @@
       bibitem(patent)
     }
   }else{
-    list[专利]
-    "无"
+    // list[专利]
+    // "无"
   }
 
 
@@ -75,8 +80,8 @@
       bibitem(research-report)
     }
   }else{
-    list[研究报告]
-    "无"
+    // list[研究报告]
+    // "无"
   }
 
   if other-achievements.len() != 0 and other-achievements.at(0) != "" {
@@ -85,8 +90,8 @@
       bibitem(other-achievement)
     }
   }else{
-    list[其他研究成果]
-    "无"
+    // list[其他研究成果]
+    // "无"
   }
 
   pagebreak(
