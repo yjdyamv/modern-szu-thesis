@@ -157,8 +157,8 @@
   show heading.where(level:1):set block(above:24pt, below:18pt)
   heading(level: 1, outlined: true, "参　考　文　献",numbering: none)
   set par(first-line-indent: 0pt)
-  set par(spacing: 1em, leading:1em)
-  set text(lang: "zh" , font: 字体.宋体, size: 字号.五号,top-edge: 0.7em,bottom-edge: -0.3em)
+  set par(spacing: 0.625em, leading:0.625em)
+  set text(lang: "zh" , font: 字体.宋体, size: 字号.五号)
   bibliography(
     title: none,
     full: full,
