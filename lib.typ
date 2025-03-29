@@ -2,15 +2,15 @@
 // Author: https://github.com/OrangeX4
 // Repo: https://github.com/nju-lug/modern-nju-thesis
 // 深圳大学学位论文模板 modern-szu-thesis
-// Author: https://gitee.com/yjdyamv or https://github.com/yjdyamv
-// Repo: https://gitee.com/yjdyamv/modern-szu-thesis
+// Author: https://github.com/yjdyamv
+// Repo: https://github.com/yjdyamv/modern-szu-thesis
 // 在线模板可能不会更新得很及时，如果需要最新版本，请关注 Repo
 
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
 #import "layouts/mainmatter.typ": mainmatter
 #import "layouts/appendix.typ": appendix
-#import "layouts/achievement.typ": achievement-page
+#import "pages/achievement.typ": achievement-page
 #import "pages/fonts-display-page.typ": fonts-display-page
 #import "pages/bachelor-cover.typ": bachelor-cover
 #import "pages/master-cover.typ": master-cover
@@ -19,7 +19,7 @@
 #import "pages/bachelor-abstract.typ": bachelor-abstract
 #import "pages/master-abstract.typ": master-abstract
 #import "pages/bachelor-abstract-en.typ": bachelor-abstract-en
-#import "pages/master-abstract-en.typ" : master-abstract-en
+#import "pages/master-abstract-en.typ": master-abstract-en
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
 #import "pages/master-outline-page.typ": master-outline-page
 #import "pages/list-of-figures.typ": list-of-figures
@@ -28,61 +28,69 @@
 #import "pages/acknowledgement.typ": acknowledgement
 #import "utils/custom-cuti.typ": *
 #import "utils/bilingual-bibliography.typ": bilingual-bibliography
-#import "utils/custom-numbering.typ": custom-numbering
-#import "utils/custom-heading.typ": heading-display, active-heading, current-heading
-#import "@preview/i-figured:0.2.4": show-figure, show-equation
+#import "utils/custom-numbering.typ": (
+  bachelor-art-numbering, bachelor-sci-numbering, custom-numbering,
+  master-art-numbering, master-sci-numbering,
+)
+#import "utils/custom-heading.typ": (
+  active-heading, current-heading, heading-display,
+)
+#import "@preview/i-figured:0.2.4": show-equation, show-figure
 #import "utils/style.typ": 字体, 字号
 
 #let indent = h(2em)
 
 // 使用函数闭包特性，通过 `documentclass` 函数类进行全局信息配置，然后暴露出拥有了全局配置的、具体的 `layouts` 和 `templates` 内部函数。
 #let documentclass(
-  doctype: "bachelor",  // "bachelor" | "master" | "doctor" | "postdoc"，文档类型，默认为本科生 bachelor
-  degree: "academic",  // "academic" | "professional"，学位类型，默认为学术型 academic
+  doctype: "bachelor", // "bachelor" | "master" | "doctor" | "postdoc"，文档类型，默认为本科生 bachelor
+  degree: "academic", // "academic" | "professional"，学位类型，默认为学术型 academic
   majortype: "science", //"science" | "art", 学科类别，默认为理工，可选为社科
-  nl-cover: false,  // TODO: 是否使用国家图书馆封面，默认关闭
-  twoside: false,  // 双面模式，会加入空白页，便于打印
-  anonymous: false,  // 盲审模式
-  bibliography: none,  // 原来的参考文献函数
-  fonts: (:),  // 字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
+  nl-cover: false, // TODO: 是否使用国家图书馆封面，默认关闭
+  twoside: false, // 双面模式，会加入空白页，便于打印
+  anonymous: false, // 盲审模式
+  bibliography: none, // 原来的参考文献函数
+  fonts: (:), // 字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   info: (:),
 ) = {
   // 默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "南京大学学位论文"),
-    title-en: "NJU Thesis Template for Typst",
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    author-en: "Zhang San",
-    department: "某学院",
-    department-en: "XX Department",
-    major: "某专业",
-    major-categories:"工学",
-    major-en: "XX Major",
-    field: "某方向",
-    field-en: "XX Field",
-    supervisor: ("李四", "教授"),
-    supervisor-en: "Professor Li Si",
-    supervisor-ii: (),
-    supervisor-ii-en: "",
-    submit-date: datetime.today(),
-    // 以下为研究生项
-    defend-date: datetime.today(),
-    confer-date: datetime.today(),
-    bottom-date: datetime.today(),
-    chairman: "某某某 教授",
-    reviewer: ("某某某 教授", "某某某 教授"),
-    clc: "O643.12",
-    udc: "544.4",
-    secret-level: "公开",
-    supervisor-contact: "深圳大学 广东省深圳市南山区南海大道3688号",
-    email: "xyz@mails.nju.edu.cn",
-    school-code: "10590",
-    degree: auto,
-    degree-en: auto,
-  ) + info
+    (
+      title: ("基于 Typst 的", "深圳大学学位论文"),
+      title-en: "SZU Thesis Template for Typst",
+      grade: "20XX",
+      student-id: "1234567890",
+      author: "张三",
+      author-en: "Zhang San",
+      department: "某学院",
+      department-en: "XX Department",
+      major: "某专业",
+      major-categories: "工学",
+      major-en: "XX Major",
+      field: "某方向",
+      field-en: "XX Field",
+      supervisor: ("李四", "教授"),
+      supervisor-en: "Professor Li Si",
+      supervisor-ii: (),
+      supervisor-ii-en: "",
+      submit-date: datetime.today(),
+      // 以下为研究生项
+      defend-date: datetime.today(),
+      confer-date: datetime.today(),
+      bottom-date: datetime.today(),
+      chairman: "某某某 教授",
+      reviewer: ("某某某 教授", "某某某 教授"),
+      clc: "O643.12",
+      udc: "544.4",
+      secret-level: "公开",
+      supervisor-contact: "深圳大学 广东省深圳市南山区南海大道3688号",
+      email: "xyz@mails.szu.edu.cn",
+      school-code: "10590",
+      degree: auto,
+      degree-en: auto,
+    )
+      + info
+  )
 
   (
     // 将传入参数再导出
@@ -95,39 +103,26 @@
     info: info,
     // 页面布局
     doc: (..args) => {
-      doc(
-        ..args,
-        info: info + args.named().at("info", default: (:)),
-      )
+      doc(..args, info: info + args.named().at("info", default: (:)))
     },
     preface: (..args) => {
-      preface(
-        twoside: twoside,
-        doctype: doctype,
-        info: info,
-        ..args,
-      )
+      preface(twoside: twoside, doctype: doctype, info: info, ..args)
     },
     mainmatter: (..args) => {
-        mainmatter(
-          majortype: majortype,
-          doctype: doctype,
-          twoside: twoside,
-          ..args,
-          fonts: fonts + args.named().at("fonts", default: (:)),
-        )
+      mainmatter(
+        majortype: majortype,
+        doctype: doctype,
+        twoside: twoside,
+        info: info,
+        ..args,
+        fonts: fonts + args.named().at("fonts", default: (:)),
+      )
     },
     appendix: (..args) => {
-      appendix(
-        ..args,
-      )
+      appendix(majortype: majortype, ..args)
     },
-    achievement: (..args) =>{
-      achievement-page(
-        monographs: "",
-        doctype:doctype,
-        ..args
-      )
+    achievement: (..args) => {
+      achievement-page(monographs: "", doctype: doctype, ..args)
     },
     // 字体展示页
     fonts-display-page: (..args) => {
@@ -137,7 +132,6 @@
         fonts: fonts + args.named().at("fonts", default: (:)),
       )
     },
-
     // 封面页，通过 type 分发到不同函数
     cover: (..args) => {
       if doctype == "master" or doctype == "doctor" {
@@ -163,7 +157,6 @@
         )
       }
     },
-
     // 声明页，通过 type 分发到不同函数
     decl-page: (..args) => {
       if doctype == "master" or doctype == "doctor" {
@@ -185,7 +178,6 @@
         )
       }
     },
-
     // 中文摘要页，通过 type 分发到不同函数
     abstract: (..args) => {
       if doctype == "master" or doctype == "doctor" {
@@ -210,7 +202,6 @@
         )
       }
     },
-
     // 英文摘要页，通过 type 分发到不同函数
     abstract-en: (..args) => {
       if doctype == "master" or doctype == "doctor" {
@@ -235,16 +226,15 @@
         )
       }
     },
-
     // 目录页
     outline-page: (..args) => {
-      if doctype == "bachelor"{
-      bachelor-outline-page(
-        twoside: twoside,
-        ..args,
-        fonts: fonts + args.named().at("fonts", default: (:)),
-      )}
-      else{
+      if doctype == "bachelor" {
+        bachelor-outline-page(
+          twoside: twoside,
+          ..args,
+          fonts: fonts + args.named().at("fonts", default: (:)),
+        )
+      } else {
         master-outline-page(
           twoside: twoside,
           ..args,
@@ -252,7 +242,6 @@
         )
       }
     },
-
     // 插图目录页
     list-of-figures: (..args) => {
       list-of-figures(
@@ -261,7 +250,6 @@
         fonts: fonts + args.named().at("fonts", default: (:)),
       )
     },
-
     // 表格目录页
     list-of-tables: (..args) => {
       list-of-tables(
@@ -270,41 +258,29 @@
         fonts: fonts + args.named().at("fonts", default: (:)),
       )
     },
-
     // 符号表页
     notation: (..args) => {
-      notation(
-        twoside: twoside,
-        doctype: doctype,
-        ..args,
-      )
+      notation(twoside: twoside, doctype: doctype, ..args)
     },
-
     // 参考文献页
     bilingual-bibliography: (..args) => {
-      if doctype == "bachelor"{
-      bilingual-bibliography(
-        bibliography: bibliography,
-        doctype: "bachelor",
-        ..args,
-      )
+      if doctype == "bachelor" {
+        bilingual-bibliography(
+          bibliography: bibliography,
+          doctype: "bachelor",
+          ..args,
+        )
       } else {
         bilingual-bibliography(
-        bibliography: bibliography,
-        doctype: "master",
-        ..args,
+          bibliography: bibliography,
+          doctype: "master",
+          ..args,
         )
       }
-      
     },
-
     // 致谢页
     acknowledgement: (..args) => {
-      acknowledgement(
-        anonymous: anonymous,
-        twoside: twoside,
-        ..args,
-      )
+      acknowledgement(anonymous: anonymous, twoside: twoside, ..args)
     },
   )
 }

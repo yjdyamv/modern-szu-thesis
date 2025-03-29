@@ -1,6 +1,6 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/invisible-heading.typ": invisible-heading
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 
 // 表格目录生成
 #let list-of-tables(
@@ -49,10 +49,7 @@
 
   v(title-vspace)
 
-  show outline.entry: set block(
-    above: above,
-    below: below,
-  )
+  show outline.entry: set block(above: above, below: below)
 
   // 显示目录
   i-figured.outline(target-kind: table, title: none)

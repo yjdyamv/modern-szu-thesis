@@ -1,6 +1,6 @@
 #import "../utils/datetime-display.typ": datetime-display
-#import "../utils/style.typ": 字号, 字体
-#import "../utils/custom-cuti.typ": show-cn-fakebold
+#import "../utils/style.typ": 字体, 字号
+#import "../utils/custom-cuti.typ": *
 
 // 本科生封面
 #let bachelor-cover(
@@ -18,24 +18,47 @@
   info-value-font: "楷体",
   column-gutter: 0pt,
   row-gutter: 11.5pt,
-  anonymous-info-keys: ("grade", "student-id", "author", "supervisor", "supervisor-ii"),
-  bold-info-keys: ("title","author", "major", "department", "student-id","supervisor" ),
-  bold-info-value: ("title","author", "major", "department", "student-id","supervisor" ),
+  anonymous-info-keys: (
+    "grade",
+    "student-id",
+    "author",
+    "supervisor",
+    "supervisor-ii",
+  ),
+  bold-info-keys: (
+    "title",
+    "author",
+    "major",
+    "department",
+    "student-id",
+    "supervisor",
+  ),
+  bold-info-value: (
+    "title",
+    "author",
+    "major",
+    "department",
+    "student-id",
+    "supervisor",
+  ),
   bold-level: "bold",
   datetime-display: datetime-display,
 ) = {
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "深圳大学学位论文"),
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    department: "某学院",
-    major: "某专业",
-    supervisor: ("李四", "教授"),
-    submit-date: datetime.today(),
-  ) + info
+    (
+      title: ("基于 Typst 的", "深圳大学学位论文"),
+      grade: "20XX",
+      student-id: "1234567890",
+      author: "张三",
+      department: "某学院",
+      major: "某专业",
+      supervisor: ("李四", "教授"),
+      submit-date: datetime.today(),
+    )
+      + info
+  )
 
   // 2.  对参数进行处理
   // 2.1 如果是字符串，则使用换行符将标题分隔为列表
@@ -43,30 +66,24 @@
     info.title = info.title.split("\n")
   }
   // 2.2 根据 min-title-lines 填充标题
-  info.title = info.title + range(min-title-lines - info.title.len()).map((it) => "　")
+  info.title = (
+    info.title + range(min-title-lines - info.title.len()).map(it => "　")
+  )
   // 2.3 处理提交日期
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
 
   // 3.  内置辅助函数
-  let info-key(body,width:100%, stroke:none) = {
+  let info-key(body, width: 100%, stroke: none) = {
     if stroke == none {
       set align(left)
-      grid.cell(
-      rect(
-        width: width,
-        inset: info-inset,
-        stroke: none,
-        text(
-          font: fonts.at(info-key-font, default: "黑体"),
-          size: 字号.三号,
-          body
-        ),
-      )
-      )
-    }
-    else {
+      grid.cell(rect(width: width, inset: info-inset, stroke: none, text(
+        font: fonts.at(info-key-font, default: "黑体"),
+        size: 字号.三号,
+        body,
+      )))
+    } else {
       set align(left)
       //让stroke和右侧的value连接上，
       v(1pt)
@@ -77,19 +94,18 @@
         text(
           font: fonts.at(info-key-font, default: "黑体"),
           size: 字号.三号,
-          body
+          body,
         ),
       )
     }
+  }
 
-    }
-
-  let info-value(key, body, width:100%) = {
+  let info-value(key, body, width: 100%) = {
     set align(center)
     rect(
       width: width,
       inset: info-inset,
-      stroke: (bottom: stoke-width + black,),
+      stroke: (bottom: stoke-width + black),
       text(
         font: fonts.at(info-value-font, default: "宋体"),
         size: 字号.三号,
@@ -100,38 +116,33 @@
     )
   }
 
-  let info-long-value(key, body,width:100%,colspan:1) = {
-    grid.cell(colspan: colspan,
-      info-value(
-        key,
-        if anonymous and (key in anonymous-info-keys) {
-          "██████████"
+  let info-long-value(key, body, width: 100%, colspan: 1) = {
+    grid.cell(colspan: colspan, info-value(
+      key,
+      if anonymous and (key in anonymous-info-keys) {
+        "██████████"
+      } else {
+        if (key in bold-info-value) {
+          text(show-cn-fakebold(body))
         } else {
-            if (key in bold-info-value){
-            text(show-cn-fakebold(body))  
-            }
-            else {
-              body
-            }
-        },width:width,
-      )
-    )
+          body
+        }
+      },
+      width: width,
+    ))
   }
 
   let info-short-value(key, body) = {
-    info-value(
-      key,
-      if anonymous and (key in anonymous-info-keys) {
-        "█████"
-      } else {
-        body
-      }
-    )
+    info-value(key, if anonymous and (key in anonymous-info-keys) {
+      "█████"
+    } else {
+      body
+    })
   }
-  
+
 
   // 4.  正式渲染
-  
+
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 居中对齐
@@ -151,8 +162,12 @@
   }
 
   // 将中文之间的空格间隙从 0.25 em 调整到 0.5 em
-  text(size: 字号.小一, font: fonts.黑体, spacing: 200%,)[本 科 毕 业 论 文 (设计) ]
-  
+  text(
+    size: 字号.小一,
+    font: fonts.黑体,
+    spacing: 200%,
+  )[本 科 毕 业 论 文 (设计) ]
+
   if anonymous {
     v(155pt)
   } else {
@@ -163,9 +178,8 @@
     columns: (info-key-width, 1fr),
     column-gutter: column-gutter,
     row-gutter: row-gutter,
-    info-key("题目："),
-    info-long-value("title", info.title.at(0), width: 112%),
-    info-long-value("title",info.title.at(1),colspan: 2,width: 105%),
+    info-key("题目："), info-long-value("title", info.title.at(0), width: 112%),
+    info-long-value("title", info.title.at(1), colspan: 2, width: 105%),
     info-key("姓名："),
     info-long-value("author", info.author, width: 112%),
     info-key("专业："),

@@ -1,7 +1,7 @@
-#import "../lib.typ": documentclass, indent ,字体, 字号, 
+#import "../lib.typ": documentclass, indent 
 // 此模板仅用于本科生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。你可以删除另一个用于研究生论文的文件
-// 你首先应该安装 https://github.com/nju-lug/modern-nju-thesis/tree/main/fonts/FangZheng 里的所有字体，
-// 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
+// 你首先应该安装 https://github.com/yjdyamv/modern-szu-thesis/fonts 里的所有字体，
+// 如果是 Web App 上编辑，你应该手动上传fonts/FangZheng里的字体，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
 #let (
   // 布局函数
@@ -13,6 +13,7 @@
   // doctype: "bachelor",  // "bachelor" | "master" | "doctor" | "postdoc", 文档类型，默认为本科生 bachelor
   // degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
   // anonymous: true,  // 盲审模式
+  // majortype: "sci", //"sci" | "art", 学科类别，默认为理工，可选为社科 
   twoside: false,  // 双面模式，会加入空白页，便于打印
   // 你会发现 Typst 有许多警告，这是因为 modern-nju-thesis 加入了很多不必要的 fallback 字体
   // 你可以自定义字体消除警告，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
@@ -164,7 +165,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 == 参考文献
 
-可以像这样引用参考文献：图书#[@蒋有绪1998]和会议#[@中国力学学会1990]。
+可以像这样引用参考文献：图书#[@蒋有绪1998 @WHO1970]和会议#[@中国力学学会1990]。
 
 == 代码块
 
