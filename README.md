@@ -1,10 +1,12 @@
 # 深圳大学学位论文 modern-szu-thesis
 
-深圳大学毕业论文（设计）的 Typst 模板，能够简洁、快速、持续生成 PDF 格式的毕业论文，这是基于[modern-nju-thesis](https://typst.app/universe/package/modern-nju-thesis)的深大本科生论文模板。
+深圳大学毕业论文（设计）的 Typst 模板，能够简洁、快速、持续生成 PDF 格式的毕业论文，这是基于[modern-nju-thesis](https://typst.app/universe/package/modern-nju-thesis)的深大学位论文模板。
 
 **此模板非官方模板，有不被接受的可能性**
+**本模板发版晚于开发主线**
 
 # 优势
+可以通过OrangeX4的[知乎文章](https://zhuanlan.zhihu.com/p/669097092)来进一步了解typst的优势
 typst
 - 编译快
 - 制作模板能力强
@@ -31,7 +33,7 @@ typst
 
 配置相当简单。
 
-1. 在 VS Code 中安装 Tinymist Typst 和 Typst Preview 插件。前者负责语法高亮和错误检查等功能，后者负责预览。
+1. 在 VS Code 中安装 Tinymist Typst 。此插件负责语法高亮和错误检查等功能。
 - 也推荐下载 Typst Companion 插件，其提供了例如 Ctrl + B 进行加粗等便捷的快捷键。
 - 你还可以下载[OrangeX4](https://github.com/OrangeX4)开发的 Typst Sync 和 Typst Sympy Calculator 插件，前者提供了本地包的云同步功能，后者提供了基于 Typst 语法的科学计算器功能。
 2. 按下 Ctrl + Shift + P 打开命令界面，输入 Typst: Show available Typst templates (gallery) for picking up a template 打开 Tinymist 提供的 Template Gallery，然后从里面找到 modern-szu-thesis，点击 ❤ 按钮进行收藏，以及点击 + 号，注意需为空文件夹，就可以创建对应的论文模板了。
@@ -42,29 +44,46 @@ typst
 (这就好了？不错，你甚至不需要下载typst)
 
 # 计划路线图
-- **本科生毕业论文**
-  - [x]封面复刻
-  - [x]诚信声明
-  - [x]目录
-  - [x]中文摘要
-  - [x]正文
-  - [x]参考文献
-  - [x]致谢
-  - [x]英文摘要
-- **研究生毕业论文**
-  - [x]封面复刻
-  - [x]诚信声明
-  - [x]目录
-  - [x]中文摘要
-  - [x]正文
-  - []参考文献
-  - [x]致谢
-  - [x]英文摘要
 
+- **说明文档**
+  - [ ] 编写更加细致的说明文档，考虑使用[tidy](https://typst.app/universe/package/tidy)编写，
+- **全局配置**
+  - [x] 类似 LaTeX 中的` documentclass `的全局信息配置
+- **本科生毕业论文**
+  - [x] 封面复刻
+  - [x] 诚信声明
+  - [x] 目录
+  - [x] 中文摘要
+  - [x] 正文
+  - [x] 参考文献
+  - [x] 致谢
+  - [x] 英文摘要
+  - **其他**
+    - [x] 毕业申请表
+    - [x] 学位申请表
+    - [x] 延毕申请表
+- **研究生毕业论文**
+  - [x] 封面复刻
+  - [x] 诚信声明
+  - [x] 目录
+  - [x] 中文摘要
+  - [x] 正文
+  - [x] 参考文献
+  - [x] 致谢
+  - [x] 英文摘要
+- **编号**
+  - 前言使用罗马数字编号
+  - 文理专业常用各级标题编号格式 , 通过`majortype`参数填入`sci`和`art`控制
+  - 研究生
+    - 图表使用`1-1`格式
+    - 数学公式使用`（1-1）`格式
+  - 本科生
+    - 图表使用`1`格式
+    - 数学公式使用`（1-1）`格式
 # 模板文件说明
 
 - bachelor-thesis.typ文件是本科生模板
-- master-thesis.typ文件是研究生模板
+- master-thesis.typ文件是研究生模板(通过选择doctype是master还是doctor,来选择硕士和博士模板)
 - ref.bib文件是参考文献放置处
 - images里有示例图片
 ps:你深的本科生和研究生论文在主体顺序上有所不同，故分成两个文件。
@@ -93,3 +112,5 @@ ps:你深的本科生和研究生论文在主体顺序上有所不同，故分�
 
 # 致谢
 感谢 [OrangeX4](https://github.com/OrangeX4) 制作的modern-nju-thesis模板，此模板可使用性很强。本readme文件参照了此模板的readme文件编写。
+
+插播：感谢[NJU THESIS](https://github.com/nju-lug/NJUThesis)详实的文档，这是相比于其他latex模板的极大优势，NJU THESIS是一个优秀的latex模板，可以方便制作latex模板

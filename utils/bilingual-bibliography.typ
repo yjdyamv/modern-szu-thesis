@@ -1,8 +1,8 @@
 // Authors: csimide, OrangeX4
 // Tested only on GB-7714-2015-Numeric
 
-#import "style.typ":字体, 字号; 
-#import "custom-cuti.typ":*;
+#import "style.typ": 字体, 字号;
+#import "custom-cuti.typ": *;
 
 #let bilingual-bibliography(
   bibliography: none,
@@ -16,17 +16,23 @@
   allow-comma-in-name: false,
   // 如果使用的 CSL 中，英文姓名中会出现逗号，请设置为 true
 ) = {
-  assert(bibliography != none, message: "请传入带有 source 的 bibliography 函数。")
+  assert(
+    bibliography != none,
+    message: "请传入带有 source 的 bibliography 函数。",
+  )
 
   // Please fill in the remaining mapping table here
   mapping = (
-    //"等": "et al",
-    "卷": "Vol.",
-    "册": "Bk.",
-    // "译": ", tran",
-    // "等译": "et al. tran",
-    // 注: 请见下方译者数量判断部分。
-  ) + mapping
+    (
+      //"等": "et al",
+      "卷": "Vol.",
+      "册": "Bk.",
+      // "译": ", tran",
+      // "等译": "et al. tran",
+      // 注: 请见下方译者数量判断部分。
+    )
+      + mapping
+  )
 
   let to-string(content) = {
     if content.has("text") {
@@ -46,43 +52,44 @@
     // 后续的操作是对 string 进行的。
     let ittext = to-string(it)
     // 判断是否为中文文献：去除特定词组后，仍有至少两个连续汉字。
-    let pureittext = ittext.replace(regex("[等卷册和版本章期页篇译间者(不详)]"), "")
+    let pureittext = ittext.replace(
+      regex("[等卷册和版本章期页篇译间者(不详)]"),
+      "",
+    )
     if pureittext.find(regex("\p{sc=Hani}{2,}")) != none {
+      // 新增功能：将带有“标准”两个字的一行中的 [Z] 替换为 [S]
+      ittext = ittext.replace(regex("标准.*\[Z\]"), itt => {
+        itt.text.replace(regex("\[Z\]"), "[S]")
+      })
       ittext
     } else {
       // 若不是中文文献，进行替换
       // 第xxx卷、第xxx册的情况：变为 Vol. XXX 或 Bk. XXX。
       let reptext = ittext
-      reptext = reptext.replace(
-        regex("(第\s?)?\d+\s?[卷册]"),
-        itt => {
-          if itt.text.contains("卷") {
-            "Vol. "
-          } else {
-            "Bk. "
-          }
-          itt.text.find(regex("\d+"))
-        },
-      )
+      reptext = reptext.replace(regex("(第\s?)?\d+\s?[卷册]"), itt => {
+        if itt.text.contains("卷") {
+          "Vol. "
+        } else {
+          "Bk. "
+        }
+        itt.text.find(regex("\d+"))
+      })
 
       // 第xxx版/第xxx本的情况：变为 1st ed 格式。
-      reptext = reptext.replace(
-        regex("(第\s?)?\d+\s?[版本]"),
-        itt => {
-          let num = itt.text.find(regex("\d+"))
-          num
-          if num.clusters().len() == 2 and num.clusters().first() == "1" {
-            "th"
-          } else {
-            (
-              "1": "st",
-              "2": "nd",
-              "3": "rd",
-            ).at(num.clusters().last(), default: "th")
-          }
-          " ed"
-        },
-      )
+      reptext = reptext.replace(regex("(第\s?)?\d+\s?[版本]"), itt => {
+        let num = itt.text.find(regex("\d+"))
+        num
+        if num.clusters().len() == 2 and num.clusters().first() == "1" {
+          "th"
+        } else {
+          (
+            "1": "st",
+            "2": "nd",
+            "3": "rd",
+          ).at(num.clusters().last(), default: "th")
+        }
+        " ed"
+      })
 
       // 译者数量判断：单数时需要用 trans，复数时需要用 tran 。
       /*
@@ -96,11 +103,12 @@
         // 我想让上面这一行匹配变成非贪婪的，但加问号后没啥效果？
         let comma-in-itt = itt.text.replace(regex(",?\s?译"), "").matches(",")
         if (
-          type(comma-in-itt) == array and 
-          comma-in-itt.len() >= (
-              if allow-comma-in-name {2} else {1}
-            )
-          ) {
+          type(comma-in-itt) == array
+            and comma-in-itt.len()
+              >= (
+                if allow-comma-in-name { 2 } else { 1 }
+              )
+        ) {
           if extra-comma-before-et-al-trans {
             itt.text.replace(regex(",?\s?译"), ", tran")
           } else {
@@ -112,58 +120,63 @@
       })
 
       // `等` 特殊处理：`等`后方接内容也需要译作 `et al.`，如 `等译` 需要翻译为 `et al. trans`
-      reptext = reptext.replace(
-        regex("等."),
-        itt => {
-          "et al."
-          // 如果原文就是 `等.`，则仅需简单替换，不需要额外处理
-          // 如果原文 `等` 后没有跟随英文标点，则需要补充一个空格
-          if not itt.text.last() in (".", ",", ";", ":", "[", "]", "/", "\\", "<", ">", "?", "(", ")", " ", "\"", "'") {
-            " "
-          }
-          // 原文有英文句号时不需要重复句号，否则需要将匹配到的最后一个字符吐回来
-          if not itt.text.last() == "." {
-            itt.text.last()
-          }
-        },
-      )
+      reptext = reptext.replace(regex("等."), itt => {
+        "et al."
+        // 如果原文就是 `等.`，则仅需简单替换，不需要额外处理
+        // 如果原文 `等` 后没有跟随英文标点，则需要补充一个空格
+        if not (
+          itt.text.last()
+            in (
+              ".",
+              ",",
+              ";",
+              ":",
+              "[",
+              "]",
+              "/",
+              "\\",
+              "<",
+              ">",
+              "?",
+              "(",
+              ")",
+              " ",
+              "\"",
+              "'",
+            )
+        ) {
+          " "
+        }
+        // 原文有英文句号时不需要重复句号，否则需要将匹配到的最后一个字符吐回来
+        if not itt.text.last() == "." {
+          itt.text.last()
+        }
+      })
 
       // 其他情况：直接替换
-      reptext = reptext.replace(
-        regex("\p{sc=Hani}+"),
-        itt => {
-          mapping.at(itt.text, default: itt.text)
-          // 注意：若替换功能工作良好，应该不会出现 `default` 情形
-        },
-      )
+      reptext = reptext.replace(regex("\p{sc=Hani}+"), itt => {
+        mapping.at(itt.text, default: itt.text)
+        // 注意：若替换功能工作良好，应该不会出现 `default` 情形
+      })
       reptext
     }
   }
   pagebreak()
-  if doctype == "bachelor"{
-  hide(heading(level: 1, outlined: true, "参考文献",numbering: none))
-  v(-3em)
-  //创造一标题，并将其隐藏起来，但由于hide是占据空间的，为了和插入标题前一致，我只好将其上移3em。有点生草。
-  set par(first-line-indent: 0pt)
-  fakebold(font: 字体.楷体, size: 字号.五号)[参考文献]
-  set par(spacing: 1em, leading:1em)
-  set text(lang: "zh" , font: 字体.楷体, size: 字号.小五)
-  bibliography(
-    title: none,
-    full: full,
-    style: style,
-  )
+  if doctype == "bachelor" {
+    hide(heading(level: 1, outlined: true, "参考文献", numbering: none))
+    v(-3em)
+    //创造一标题，并将其隐藏起来，但由于hide是占据空间的，为了和插入标题前一致，我只好将其上移3em。有点生草。
+    set par(first-line-indent: 0pt)
+    fakebold(font: 字体.楷体, size: 字号.五号)[参考文献]
+    set par(spacing: 1.5em, leading: 0.79em)
+    set text(lang: "zh", font: 字体.楷体, size: 字号.小五)
+    bibliography(title: none, full: full, style: style)
   } else {
-  show heading.where(level:1):set block(above:24pt, below:18pt)
-  heading(level: 1, outlined: true, "参　考　文　献",numbering: none)
-  set par(first-line-indent: 0pt)
-  set par(spacing: 1em, leading:1em)
-  set text(lang: "zh" , font: 字体.宋体, size: 字号.五号,top-edge: 0.7em,bottom-edge: -0.3em)
-  bibliography(
-    title: none,
-    full: full,
-    style: style,
-  )
+    show heading.where(level: 1): set block(above: 24pt, below: 18pt)
+    heading(level: 1, outlined: true, "参　考　文　献", numbering: none)
+    set par(first-line-indent: 0pt)
+    set par(spacing: 0.625em, leading: 0.625em)
+    set text(lang: "zh", font: 字体.宋体, size: 字号.五号)
+    bibliography(title: none, full: full, style: style)
   }
-
 }

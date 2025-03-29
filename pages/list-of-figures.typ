@@ -1,6 +1,6 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/invisible-heading.typ": invisible-heading
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 
 // 表格目录生成
 #let list-of-figures(
@@ -47,14 +47,11 @@
 
   v(title-vspace)
 
-  show outline.entry: set block(
-    above: 14pt,
-    below: 14pt,
-  )
+  show outline.entry: set block(above: 14pt, below: 14pt)
 
   // 显示目录
   i-figured.outline(target-kind: image, title: none)
-  
+
   // 手动分页
   if (twoside) {
     pagebreak() + " "

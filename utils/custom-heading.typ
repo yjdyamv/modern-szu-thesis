@@ -16,8 +16,9 @@
   // 之前页面的标题
   let prev-headings = query(selector(heading.where(level: level)).before(here()))
   // 当前页面的标题
-  let cur-headings = query(selector(heading.where(level: level)).after(here()))
-    .filter(it => it.location().page() == loc.page())
+  let cur-headings = query(selector(heading.where(level: level)).after(here())).filter(it => (
+    it.location().page() == loc.page()
+  ))
   if prev-headings.len() == 0 and cur-headings.len() == 0 {
     return none
   } else {
@@ -40,8 +41,9 @@
 // 获取当前页面的标题
 #let current-heading(level: 1) = context {
   // 当前页面的标题
-  let cur-headings = query(selector(heading.where(level: level)).after(here()))
-    .filter(it => it.location().page() == here().page())
+  let cur-headings = query(selector(heading.where(level: level)).after(here())).filter(it => (
+    it.location().page() == here().page()
+  ))
   if cur-headings.len() != 0 {
     return cur-headings.first()
   } else {

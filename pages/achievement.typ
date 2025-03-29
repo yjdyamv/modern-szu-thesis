@@ -14,8 +14,12 @@
   //仅显示一级标题在目录中
   set heading(outlined: false)
   show heading.where(level: 1): set heading(outlined: true)
-  set par(first-line-indent: (amount:0em,all: true), spacing: 1em ,leading:1em)
-  let bibitem(body) = figure(kind: "bibitem", supplement: none, body,)
+  set par(
+    first-line-indent: (amount: 0em, all: true),
+    spacing: 1em,
+    leading: 1em,
+  )
+  let bibitem(body) = figure(kind: "bibitem", supplement: none, body)
   show figure.where(kind: "bibitem"): it => {
     set align(left)
     set text(size: 字号.五号)
@@ -30,16 +34,28 @@
     }
     it
   }
-  show list: set text(size:字号.小四,font: 字体.黑体, weight: "bold", top-edge: 0.7em, bottom-edge: -0.3em)
-  show figure: set par(spacing: 1em,leading: 1em)
+  show list: set text(
+    size: 字号.小四,
+    font: 字体.黑体,
+    weight: "bold",
+    top-edge: 0.7em,
+    bottom-edge: -0.3em,
+  )
+  show figure: set par(spacing: 1em, leading: 1em)
   set text(size: 字号.五号)
-  if doctype == "master"{
+  if doctype == "master" {
     heading(level: 1)[攻读硕士学位期间的科研成果]
-  }else{
+  } else {
     heading(level: 1)[攻读博士学位期间的科研成果]
   }
 
-  if (papers.len() == 0 or papers.at(0) == "") and (monographs.len() == 0 or monographs.at(0) == "") and (patents.len() == 0 or patents.at(0) == "") and (research-reports.len() == 0 or research-reports.at(0) == "") and (other-achievements.len() == 0 or other-achievements.at(0) == "") {
+  if (
+    (papers.len() == 0 or papers.at(0) == "")
+      and (monographs.len() == 0 or monographs.at(0) == "")
+      and (patents.len() == 0 or patents.at(0) == "")
+      and (research-reports.len() == 0 or research-reports.at(0) == "")
+      and (other-achievements.len() == 0 or other-achievements.at(0) == "")
+  ) {
     [无]
   }
 
@@ -48,7 +64,7 @@
     for paper in papers {
       bibitem(paper)
     }
-  }else{
+  } else {
     // list[学术论文]
     // "无"
   }
@@ -58,17 +74,17 @@
     for monograph in monographs {
       bibitem(monograph)
     }
-  }else{
+  } else {
     // list[专著/译注]
     // "无"
   }
-  
+
   if patents.len() != 0 and patents.at(0) != "" {
     list[专利]
     for patent in patents {
       bibitem(patent)
     }
-  }else{
+  } else {
     // list[专利]
     // "无"
   }
@@ -79,7 +95,7 @@
     for research-report in research-reports {
       bibitem(research-report)
     }
-  }else{
+  } else {
     // list[研究报告]
     // "无"
   }
@@ -89,15 +105,12 @@
     for other-achievement in other-achievements {
       bibitem(other-achievement)
     }
-  }else{
+  } else {
     // list[其他研究成果]
     // "无"
   }
 
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
+  pagebreak(weak: true, to: if twoside {
+    "odd"
+  })
 }
