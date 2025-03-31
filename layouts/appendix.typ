@@ -19,6 +19,7 @@
   if reset-counter {
     counter(heading).update(0)
   }
+  set par(spacing: 1.25em, leading:1.25em, first-line-indent: (amount: 2em, all:true))
   // 设置 figure 的编号
   show figure: show-figure
   // 设置 equation 的编号

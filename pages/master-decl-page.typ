@@ -59,7 +59,7 @@
 
   block[
     #set text(font: fonts.宋体, size: 字号.小四)
-    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.5em)
+    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.25em, spacing: 1.25em)
 
     本人郑重声明：所呈交的学位论文 #underline(stroke: 1pt, offset: 4pt,info.title.sum())是本人在导师的指导下，独立进行研究工作所取得的成果。除文中已经注明引用的内容外，本论文不含任何其他个人或集体已经发表或撰写的作品或成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本声明的法律后果由本人承担。
   ]
@@ -108,7 +108,7 @@
 
   block()[
     #set text(font: fonts.宋体, size: 字号.小四)
-    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.5em)
+    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.25em, spacing: 1.25em)
 
     本学位论文作者完全了解深圳大学关于收集、保存、使用学位论文的规定，即：研究生在校攻读学位期间论文工作的知识产权单位属深圳大学。学校有权保留学位论文并向国家主管部门或其他机构送交论文的电子版和纸质版，允许论文被查阅和借阅。本人授权深圳大学可以将学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
 

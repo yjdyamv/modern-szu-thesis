@@ -97,4 +97,10 @@
 
   // 显示目录
   outline(title: none, depth: depth)
+  if doctype != "bachelor" {
+  [附：指导教师对研究生学位论文的学术评语]
+  linebreak()
+  h(2em)
+  [答辩委员会决议书]
+  }
 }

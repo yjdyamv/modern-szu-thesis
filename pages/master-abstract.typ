@@ -26,8 +26,8 @@
   column-gutter: 0pt,
   row-gutter: 10pt,
   anonymous-info-keys: ("author", "grade", "supervisor", "supervisor-ii"),
-  leading: 23pt,
-  spacing: 23pt,
+  leading: 1.25em,
+  spacing: 1.25em,
   body,
 ) = {
   // 1.  默认参数

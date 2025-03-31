@@ -56,7 +56,7 @@
     if doctype == "bachelor"{
     text-args = (font: fonts.宋体, size: 字号.五号)
     } else {
-      text-args = (font: fonts.宋体, size: 字号.小四, top-edge:0.7em,bottom-edge:-0.5em)
+      text-args = (font: fonts.宋体, size: 字号.小四,)
     }
   }
   // 1.1 字体与字号
@@ -87,8 +87,8 @@
   // 3.  设置基本样式
   // 3.1 文本和段落样式
   if doctype == "master" or doctype == "doctor"{
-    leading = 1em
-    spacing = 1em
+    leading = 1.25em
+    spacing = 1.25em
   }
   set par(first-line-indent: first-line-indent)
     set par(
@@ -164,7 +164,7 @@
   let header = context {
     set par(leading:0pt,spacing:0pt)
     align(center, emph(hydra(1,skip-starting: false)))
-    v(0pt)
+    v(3pt)
     line(length: 100%, stroke:2pt)
     v(3pt)
     line(length: 100%, stroke: 1pt)
