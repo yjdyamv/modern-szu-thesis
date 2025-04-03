@@ -146,7 +146,7 @@
   //创造一标题，并将其隐藏起来，但由于hide是占据空间的，为了和插入标题前一致，我只好将其上移3em。有点生草。
   set par(first-line-indent: 0pt)
   fakebold(font: 字体.楷体, size: 字号.五号)[参考文献]
-  set par(spacing: 1em, leading:1em)
+  set par(spacing: 1.5em, leading:0.79em)
   set text(lang: "zh" , font: 字体.楷体, size: 字号.小五)
   bibliography(
     title: none,

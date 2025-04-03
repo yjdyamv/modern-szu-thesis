@@ -15,14 +15,14 @@
   outline-title: "中文摘要",
   outlined: false,
   anonymous-info-keys: ("author", "supervisor", "supervisor-ii"),
-  leading: 1em,
-  spacing: 1em,
+  leading: 1.5em,
+  spacing: 0.79em,
   body,
 ) = {
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "南京大学学位论文"),
+    title: ("基于 Typst 的", "深圳大学学位论文"),
     author: "张三",
     department: "某学院",
     major: "某专业",
@@ -47,7 +47,7 @@
 
   [
     #set text(font: fonts.楷体, size: 字号.小四)
-    #set par(leading: leading, justify: true)
+    #set par(leading: leading, spacing: spacing, justify: true)
 
 
     // 标记一个不可见的标题用于目录生成
@@ -55,8 +55,6 @@
 
     #align(center)[
       #set text(size: 字号.小二, weight: "bold")
-
-      #v(1em)
 
       #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）中文摘要]]
     ]

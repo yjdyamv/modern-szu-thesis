@@ -92,8 +92,8 @@
   }
   set par(first-line-indent: first-line-indent)
     set par(
-      spacing: spacing,
-      leading: leading,
+      spacing: 1.5em,
+      leading: 0.79em,
       justify: justify,
     )
   set text(..text-args)
