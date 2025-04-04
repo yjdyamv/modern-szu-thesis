@@ -113,6 +113,7 @@
           majortype: majortype,
           doctype: doctype,
           twoside: twoside,
+          info: info,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
         )

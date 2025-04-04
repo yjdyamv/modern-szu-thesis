@@ -1,10 +1,9 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/style.typ": 字号, 字体
 #import "../utils/custom-numbering.typ": custom-numbering,
-#import "../utils/custom-heading.typ": heading-display, active-heading, current-heading
 #import "../utils/unpairs.typ": unpairs
 #import "@preview/numbly:0.1.0": numbly
-#import "@preview/hydra:0.6.0": hydra
+#import "@preview/hydra:0.6.1": hydra
 
 #let mainmatter(
   // documentclass 传入参数
@@ -12,12 +11,13 @@
   twoside: false,
   majortype: "art",
   fonts: (:),
+  info: (:),
   // 其他参数
   leading: 1em,
   spacing: 1em,
   justify: true,
   first-line-indent: (amount: 2em, all: true),
-  numbering: custom-numbering.with(first-level: "第一章 ",second-level: "第一节 ", depth: 4,),
+  numbering: custom-numbering,
   // 正文字体与字号参数
   text-args: auto,
   // 标题字体与字号
@@ -63,16 +63,21 @@
   if (heading-font == auto) {
     heading-font = (fonts.黑体,)
   }
+  if doctype == "bachelor" {
+    heading-font = (字体.黑体, 字体.黑体, 字体.黑体,字体.黑体)
+  } else {
+    heading-font = (字体.黑体, 字体.黑体, 字体.宋体, 字体.宋体,)
+  }
   // 1.2 处理 heading- 开头的其他参数
   let heading-text-args-lists = args.named().pairs()
     .filter((pair) => pair.at(0).starts-with("heading-"))
     .map((pair) => (pair.at(0).slice("heading-".len()), pair.at(1)))
   // 1.3 章节序号 numbering
   if doctype == "bachelor" {
-    numbering=custom-numbering.with(first-level: "第一章 ",second-level: "第一节 ", depth: 4,)
+    numbering=custom-numbering
   } else {
     if majortype == "art" {
-      numbering = custom-numbering.with(first-level: "第一章 ",second-level: "第一节 ", depth: 4,)
+      numbering = custom-numbering
     }
     //默认为理工的常见序号
     else {
