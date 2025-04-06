@@ -1,6 +1,6 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/style.typ": 字号, 字体
-#import "../utils/custom-numbering.typ": custom-numbering,
+#import "../utils/custom-numbering.typ": custom-numbering,bachelor-art-numbering, bachelor-science-numbering, master-art-numbering, master-science-numbering
 #import "../utils/unpairs.typ": unpairs
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/hydra:0.6.1": hydra
@@ -74,15 +74,23 @@
     .map((pair) => (pair.at(0).slice("heading-".len()), pair.at(1)))
   // 1.3 章节序号 numbering
   if doctype == "bachelor" {
-    numbering=custom-numbering
-  } else {
+    // 如果是文科則选用文科的常用numbering
     if majortype == "art" {
-      numbering = custom-numbering
+      numbering = bachelor-art-numbering
     }
     //默认为理工的常见序号
     else {
-      numbering = numbly("{1:第一章}","{1:1}.{2:1}","{1}.{2:1}.{3:1}","{1}.{2:1}.{3:1}.{4:1}")
-  }
+      numbering = bachelor-science-numbering
+    }
+  } else {
+    // 如果是文科則选用文科的常用numbering
+    if majortype == "art" {
+      numbering = master-art-numbering
+    }
+    //默认为理工的常见序号
+    else {
+      numbering = master-science-numbering
+    }
   }
   // 2.  辅助函数
   let array-at(arr, pos) = {
@@ -92,13 +100,16 @@
   // 3.  设置基本样式
   // 3.1 文本和段落样式
   if doctype == "master" or doctype == "doctor"{
-    leading = 1.25em
     spacing = 1.25em
+    leading = 1.25em
+  }else{
+    spacing = 1.5em
+    leading = 0.79em
   }
   set par(first-line-indent: first-line-indent)
     set par(
-      spacing: 1.5em,
-      leading: 0.79em,
+      spacing: spacing,
+      leading: leading,
       justify: justify,
     )
   set text(..text-args)

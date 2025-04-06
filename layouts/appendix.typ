@@ -1,9 +1,9 @@
 #import "@preview/i-figured:0.2.4"
-#import "../utils/custom-numbering.typ": custom-numbering
+#import "../utils/custom-numbering.typ": appendix-numbering
 
 // 后记，重置 heading 计数器
 #let appendix(
-  numbering: custom-numbering.with(first-level: "附录A", depth: 4,),
+  numbering: appendix-numbering,
   // figure 计数
   show-figure: i-figured.show-figure.with(numbering: "A-1"),
   // equation 计数
