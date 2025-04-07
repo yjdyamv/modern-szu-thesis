@@ -118,7 +118,7 @@
   show footnote.entry: set text(font: fonts.宋体, size: 字号.五号)
   // 3.3 设置 figure 的编号
   if doctype == "bachelor" {
-    show-figure = i-figured.with(level: 0, numbering: "1")
+    show-figure = i-figured.show-figure.with(level: 0, numbering: "1")
   } else {
     show-figure = i-figured.show-figure.with(numbering: "1-1")
   }
