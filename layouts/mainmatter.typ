@@ -118,7 +118,9 @@
   show footnote.entry: set text(font: fonts.宋体, size: 字号.五号)
   // 3.3 设置 figure 的编号
   if doctype == "bachelor" {
-    show-figure = show-figure.with(level: 0, numbering: "1")
+    show-figure = i-figured.with(level: 0, numbering: "1")
+  } else {
+    show-figure = i-figured.show-figure.with(numbering: "1-1")
   }
   show heading: i-figured.reset-counters
   show figure: show-figure
@@ -145,7 +147,7 @@
   // 4.  处理标题
   // 4.1 设置标题的 Numbering
   set heading(numbering: numbering)
-  // 4.2 设置字体字号并加入假段落模拟首行缩进
+  // 4.2 设置字体字号
   show heading: it => {
     set text(
       font: array-at(heading-font, it.level),
