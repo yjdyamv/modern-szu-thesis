@@ -19,7 +19,7 @@
   if doctype == "master" or doctype == "doctor" {
     header = context {
     set par(leading:0pt,spacing:0pt)
-    align(center, emph(hydra(1,skip-starting: false)))
+    align(center, emph(title))
     v(3pt)
     line(length: 100%, stroke:2pt)
     v(3pt)
@@ -34,6 +34,7 @@
     numbering = "I"
   }
   set page(numbering: numbering)
+  linebreak()
   align(center)[#text(font:字体.黑体,heading(
     level: 1,
     numbering: none,

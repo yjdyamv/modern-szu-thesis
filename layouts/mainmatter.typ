@@ -60,9 +60,6 @@
     }
   }
   // 1.1 字体与字号
-  if (heading-font == auto) {
-    heading-font = (fonts.黑体,)
-  }
   if doctype == "bachelor" {
     heading-font = (字体.黑体, 字体.黑体, 字体.黑体,字体.黑体)
   } else {
@@ -148,6 +145,13 @@
   // 4.1 设置标题的 Numbering
   set heading(numbering: numbering)
   // 4.2 设置字体字号
+  if doctype == "bachelor" {
+    heading-above = (2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em)
+    heading-below = (2 * 15.6pt - 0.7em, 1.5 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em)
+  }else{
+    heading-above = (34pt, 32pt, 28pt, 28pt)
+    heading-below = (22pt, 22pt, 22pt, 22pt)
+  }
   show heading: it => {
     set text(
       font: array-at(heading-font, it.level),
