@@ -164,6 +164,10 @@
       above: array-at(heading-above, it.level),
       below: array-at(heading-below, it.level),
     )
+    //神奇修法
+    v(-1em)
+    ""
+    v(-1em)
     it
   }
   // 4.3 标题居中与自动换页
