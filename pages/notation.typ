@@ -34,7 +34,8 @@
     numbering = "I"
   }
   set page(numbering: numbering)
-  linebreak()
+  //linebreak()
+  v(字号.三号)
   align(center)[#text(font:字体.黑体,heading(
     level: 1,
     numbering: none,

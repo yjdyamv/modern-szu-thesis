@@ -1,6 +1,6 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/style.typ": 字号, 字体
-#import "../utils/custom-numbering.typ": custom-numbering,bachelor-art-numbering, bachelor-science-numbering, master-art-numbering, master-science-numbering
+#import "../utils/custom-numbering.typ": custom-numbering,bachelor-art-numbering, bachelor-sci-numbering, master-art-numbering, master-sci-numbering
 #import "../utils/unpairs.typ": unpairs
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/hydra:0.6.1": hydra
@@ -77,7 +77,7 @@
     }
     //默认为理工的常见序号
     else {
-      numbering = bachelor-science-numbering
+      numbering = bachelor-sci-numbering
     }
   } else {
     // 如果是文科則选用文科的常用numbering
@@ -86,7 +86,7 @@
     }
     //默认为理工的常见序号
     else {
-      numbering = master-science-numbering
+      numbering = master-sci-numbering
     }
   }
   // 2.  辅助函数
@@ -185,6 +185,7 @@
       it
     }
   }
+  set heading()
 
   // 5.  处理正文页眉
   let header = context {

@@ -106,6 +106,8 @@
     ),
   )
 
+  v(字号.小四)
+
   block()[
     #set text(font: fonts.宋体, size: 字号.小四)
     #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.25em, spacing: 1.25em)

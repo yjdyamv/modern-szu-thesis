@@ -28,7 +28,7 @@
 #import "pages/acknowledgement.typ": acknowledgement
 #import "utils/custom-cuti.typ": *
 #import "utils/bilingual-bibliography.typ": bilingual-bibliography
-#import "utils/custom-numbering.typ": custom-numbering, bachelor-art-numbering, master-art-numbering, bachelor-science-numbering, master-science-numbering
+#import "utils/custom-numbering.typ": custom-numbering, bachelor-art-numbering, master-art-numbering, bachelor-sci-numbering, master-sci-numbering
 #import "utils/custom-heading.typ": heading-display, active-heading, current-heading
 #import "@preview/i-figured:0.2.4": show-figure, show-equation
 #import "utils/style.typ": 字体, 字号
@@ -120,6 +120,7 @@
     },
     appendix: (..args) => {
       appendix(
+        majortype: majortype,
         ..args,
       )
     },

@@ -92,15 +92,16 @@
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
-    #linebreak()
+    //#linebreak()
+    #v(字号.三号)
 
     #align(center, text(font: fonts.黑体, size: 字号.三号, weight: "bold", "摘　　要"))
 
-    #v(-5pt)
+    //#v(-5pt)
 
     #set text(font: fonts.宋体, size: 字号.小四)
 
-    #linebreak()
+    #v(字号.小四)
 
     #[
       #set par(first-line-indent: (amount: 2em, all: true),spacing: spacing,leading: leading)

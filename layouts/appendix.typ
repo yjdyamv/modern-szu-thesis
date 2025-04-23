@@ -1,9 +1,10 @@
 #import "@preview/i-figured:0.2.4"
-#import "../utils/custom-numbering.typ": appendix-numbering
+#import "../utils/custom-numbering.typ": appendix-art-numbering, appendix-sci-numbering
 
 // 后记，重置 heading 计数器
 #let appendix(
-  numbering: appendix-numbering,
+  majortype: "sci",
+  numbering: appendix-sci-numbering,
   // figure 计数
   show-figure: i-figured.show-figure.with(numbering: "A-1"),
   // equation 计数
@@ -12,6 +13,10 @@
   reset-counter: true,
   it,
 ) = {
+  if majortype == "art" {
+    numbering = appendix-art-numbering
+  }
+  
   set heading(numbering: numbering)
   //仅显示一级标题在目录中
   set heading(outlined: false)
