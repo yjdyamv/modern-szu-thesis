@@ -3,6 +3,7 @@
 深圳大学毕业论文（设计）的 Typst 模板，能够简洁、快速、持续生成 PDF 格式的毕业论文，这是基于[modern-nju-thesis](https://typst.app/universe/package/modern-nju-thesis)的深大学位论文模板。
 
 **此模板非官方模板，有不被接受的可能性**
+**本模板发版晚于开发主线**
 
 # 优势
 可以通过OrangeX4的[知乎文章](https://zhuanlan.zhihu.com/p/669097092)来进一步了解typst的优势
@@ -45,7 +46,7 @@ typst
 # 计划路线图
 
 - **说明文档**
-  - [] 编写更加细致的说明文档，考虑使用[tidy]()编写，
+  - [ ] 编写更加细致的说明文档，考虑使用[tidy]()编写，
 - **全局配置**
   - [x] 类似 LaTeX 中的` documentclass `的全局信息配置
 - **本科生毕业论文**
