@@ -8,7 +8,7 @@ description = "深圳大学学位论文模板由南京大学学位论文模板�
 keywords = ["Shenzhen University", "thesis"]
 categories = ["thesis"]
 exclude = ["imgs"]
-repository = "https://gitee.com/yjdyamv/modern-szu-thesis"
+repository = "https://github.com/yjdyamv/modern-szu-thesis"
 compiler = "0.13.0"
 
 [template]
