@@ -46,7 +46,7 @@ typst
 # 计划路线图
 
 - **说明文档**
-  - [ ] 编写更加细致的说明文档，考虑使用[tidy]()编写，
+  - [ ] 编写更加细致的说明文档，考虑使用[tidy](https://typst.app/universe/package/tidy)编写，
 - **全局配置**
   - [x] 类似 LaTeX 中的` documentclass `的全局信息配置
 - **本科生毕业论文**
