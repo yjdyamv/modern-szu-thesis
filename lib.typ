@@ -50,8 +50,8 @@
   // 默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "南京大学学位论文"),
-    title-en: "NJU Thesis Template for Typst",
+    title: ("基于 Typst 的", "深圳大学学位论文"),
+    title-en: "SZU Thesis Template for Typst",
     grade: "20XX",
     student-id: "1234567890",
     author: "张三",
@@ -78,7 +78,7 @@
     udc: "544.4",
     secret-level: "公开",
     supervisor-contact: "深圳大学 广东省深圳市南山区南海大道3688号",
-    email: "xyz@mails.nju.edu.cn",
+    email: "xyz@mails.szu.edu.cn",
     school-code: "10590",
     degree: auto,
     degree-en: auto,

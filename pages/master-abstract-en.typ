@@ -33,7 +33,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title-en: "NJU Thesis Template for Typst",
+    title-en: "SZU Thesis Template for Typst",
     author-en: "Zhang San",
     department-en: "XX Department",
     major-en: "XX Major",
