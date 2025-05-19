@@ -1,4 +1,5 @@
 #import "../utils/style.typ":*
+#import "@preview/hydra:0.6.1": hydra
 
 #let notation(
   twoside: false,
@@ -14,7 +15,6 @@
 ) = {
   pagebreak()
   set text(font:字体.宋体, size: 字号.小四)
-  import "@preview/hydra:0.6.0": hydra
   let header = ""
   if doctype == "master" or doctype == "doctor" {
     header = context {
