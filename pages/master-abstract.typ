@@ -17,6 +17,8 @@
   keywords: (),
   outline-title: "摘  要",
   outlined: true,
+  title-above-space: 字号.三号,
+  title-down-space: 字号.小四,
   abstract-title-weight: "regular",
   stoke-width: 0.5pt,
   info-value-align: center,
@@ -96,7 +98,7 @@
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
     //#linebreak()
-    #v(字号.三号)
+    #v(title-above-space)
 
     #align(center, text(
       font: fonts.黑体,
@@ -109,7 +111,7 @@
 
     #set text(font: fonts.宋体, size: 字号.小四)
 
-    #v(字号.小四)
+    #v(title-down-space)
 
     #[
       #set par(

@@ -5,6 +5,8 @@
   twoside: false,
   doctype: "bachelor",
   title: "符号和缩略语说明",
+  title-above-space: 字号.三号,
+  title-down-space: 0pt,
   outlined: true,
   numbering: "1",
   width: 350pt,
@@ -33,12 +35,13 @@
   }
   set page(numbering: numbering)
   //linebreak()
-  v(字号.三号)
+  v(title-above-space)
   align(center)[#text(
       font: 字体.黑体,
       heading(level: 1, numbering: none, outlined: outlined, title),
     ),
   ]
+  v(title-down-space)
 
   align(center, block(width: width, align(start, grid(
     columns: columns,

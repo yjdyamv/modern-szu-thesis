@@ -11,7 +11,8 @@
   depth: 4,
   title: "目　　录",
   outlined: false,
-  title-vspace: 16pt,
+  title-above-space: 0pt,
+  title-down-space: 16pt,
   title-text-args: auto,
   // 引用页数的字体，这里用于显示 Times New Roman
   reference-font: auto,
@@ -34,6 +35,11 @@
   if (title-text-args == auto) {
     title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
   }
+  if doctype == "bachelor" {
+    title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
+  } else {
+    title-text-args = (font: fonts.黑体, size: 字号.三号, weight: "bold")
+  }
   // 引用页数的字体，这里用于显示 Times New Roman
   if (reference-font == auto) {
     reference-font = fonts.宋体
@@ -49,6 +55,8 @@
   // 默认显示的字体
   set text(font: reference-font, size: reference-size, weight: "regular")
 
+  v(title-above-space)
+
   {
     set align(center)
     text(..title-text-args, title)
@@ -56,7 +64,7 @@
     invisible-heading(level: 1, outlined: outlined, title)
   }
 
-  v(title-vspace)
+  v(title-down-space)
 
   // 目录样式
 

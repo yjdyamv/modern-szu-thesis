@@ -1,6 +1,6 @@
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/style.typ": 字体, 字号
-#import "../utils/custom-cuti.typ": show-cn-fakebold
+#import "../utils/custom-cuti.typ": *
 
 // 本科生封面
 #let bachelor-cover(
