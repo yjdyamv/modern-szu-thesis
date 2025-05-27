@@ -1,5 +1,5 @@
 #import "../utils/custom-cuti.typ": fakebold
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 #import "../utils/double-underline.typ": double-underline
 #import "../utils/invisible-heading.typ": invisible-heading
 
@@ -22,12 +22,15 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "深圳大学学位论文"),
-    author: "张三",
-    department: "某学院",
-    major: "某专业",
-    supervisor: ("李四", "教授"),
-  ) + info
+    (
+      title: ("基于 Typst 的", "深圳大学学位论文"),
+      author: "张三",
+      department: "某学院",
+      major: "某专业",
+      supervisor: ("李四", "教授"),
+    )
+      + info
+  )
 
   // 2.  对参数进行处理
   // 2.1 如果是字符串，则使用换行符将标题分隔为列表
@@ -59,7 +62,7 @@
       #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）中文摘要]]
     ]
 
-    #fakebold[题目：]#info-value("title", (("",)+ info.title).sum())
+    #fakebold[题目：]#info-value("title", (("",) + info.title).sum())
 
     #fakebold[院系：]#info-value("department", info.department)
 
@@ -67,19 +70,27 @@
 
     #fakebold[本科生姓名：]#info-value("author", info.author)
 
-    #fakebold[指导教师（姓名、职称）：]#info-value("supervisor", info.supervisor.at(0) + info.supervisor.at(1)) #(if info.supervisor-ii != () [#h(1em) #info-value("supervisor-ii", info.supervisor-ii.at(0) + info.supervisor-ii.at(1))])
+    #fakebold[指导教师（姓名、职称）：]#info-value(
+      "supervisor",
+      info.supervisor.at(0) + info.supervisor.at(1),
+    ) #(
+      if info.supervisor-ii != () [#h(1em) #info-value(
+          "supervisor-ii",
+          info.supervisor-ii.at(0) + info.supervisor-ii.at(1),
+        )]
+    )
 
     #fakebold[【摘要：】]
 
     #[
-      #set par(first-line-indent: (amount:2em, all:true))
-      #set text(size:字号.五号)
+      #set par(first-line-indent: (amount: 2em, all: true))
+      #set text(size: 字号.五号)
       #body
     ]
 
     #v(1em)
 
     #fakebold[【关键词：】]
-    #text(size:字号.五号,(("",)+ keywords.intersperse("；")).sum())
+    #text(size: 字号.五号, (("",) + keywords.intersperse("；")).sum())
   ]
 }

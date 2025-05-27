@@ -1,4 +1,4 @@
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 
 // 本科生声明页
 #let bachelor-decl-page(
@@ -15,8 +15,11 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "深圳大学学位论文"),
-  ) + info
+    (
+      title: ("基于 Typst 的", "深圳大学学位论文"),
+    )
+      + info
+  )
 
   // 2.  对参数进行处理
   // 2.1 如果是字符串，则使用换行符将标题分隔为列表
@@ -36,22 +39,23 @@
 
   v(84pt)
 
-  align(
-    center,
-    text(
-      font: fonts.黑体,
-      size: 字号.小二, 
-      weight: "bold",
-      "深圳大学本科毕业论文（设计）诚信声明",
-    ),
-  )
+  align(center, text(
+    font: fonts.黑体,
+    size: 字号.小二,
+    weight: "bold",
+    "深圳大学本科毕业论文（设计）诚信声明",
+  ))
 
   //v(3cm)
   v(56pt)
 
   block[
     #set text(font: fonts.宋体, size: 字号.四号)
-    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.5em)
+    #set par(
+      justify: true,
+      first-line-indent: (amount: 2em, all: true),
+      leading: 1.5em,
+    )
 
     本人郑重承诺：所呈交的毕业论文（设计），题目《 #info.title.sum()》是本人在指导教师的指导下，独立进行研究工作所取得的成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式注明。除此之外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。本人完全意识到本声明的法律结果。
 
@@ -64,10 +68,10 @@
     [],
     align(right)[
       #set text(font: fonts.宋体, size: 字号.四号)
-      
+
       毕业论文（设计）作者签名：#h(2.2cm)
 
-      日期：#h(2cm)年 #h(.6cm)月#h(.5cm)日#h(2.4cm) 
-    ]
+      日期：#h(2cm)年 #h(.6cm)月#h(.5cm)日#h(2.4cm)
+    ],
   )
 }

@@ -1,5 +1,5 @@
 #import "../utils/custom-cuti.typ": fakebold
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 #import "../utils/double-underline.typ": double-underline
 #import "../utils/invisible-heading.typ": invisible-heading
 
@@ -22,12 +22,15 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title-en: "SZU Thesis Template for Typst",
-    author-en: "Zhang San",
-    department-en: "XX Department",
-    major-en: "XX Major",
-    supervisor-en: "Professor Li Si",
-  ) + info
+    (
+      title-en: "SZU Thesis Template for Typst",
+      author-en: "Zhang San",
+      department-en: "XX Department",
+      major-en: "XX Major",
+      supervisor-en: "Professor Li Si",
+    )
+      + info
+  )
 
   // 2.  对参数进行处理
   // 2.1 如果是字符串，则使用换行符将标题分隔为列表
@@ -47,8 +50,13 @@
     #pagebreak(weak: true, to: if twoside { "odd" })
 
     #set text(font: fonts.楷体, size: 字号.小四)
-    #set par(leading: leading, spacing:spacing,  justify: true,first-line-indent: 0em)
-    
+    #set par(
+      leading: leading,
+      spacing: spacing,
+      justify: true,
+      first-line-indent: 0em,
+    )
+
 
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
@@ -58,7 +66,7 @@
       #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）英文摘要]]
     ]
 
-    #fakebold[Thesis:] #info-value("title-en", (("",)+ info.title-en).sum())
+    #fakebold[Thesis:] #info-value("title-en", (("",) + info.title-en).sum())
 
     #fakebold[Department:] #info-value("department-en", info.department-en)
 
@@ -66,20 +74,25 @@
 
     #fakebold[Undergraduate:] #info-value("author-en", info.author-en)
 
-    #fakebold[Mentor:] #info-value("supervisor-en", info.supervisor-en) #(if info.supervisor-ii-en != "" [#h(1em) #info-value("supervisor-ii-en", info.supervisor-ii-en)])
+    #fakebold[Mentor:] #info-value("supervisor-en", info.supervisor-en) #(
+      if info.supervisor-ii-en != "" [#h(1em) #info-value(
+          "supervisor-ii-en",
+          info.supervisor-ii-en,
+        )]
+    )
 
-    #fakebold[【Abstract】:] 
-    
+    #fakebold[【Abstract】:]
+
     #[
-      #set par(first-line-indent: (amount:2em, all:true))
-      #set text(size:字号.五号)
+      #set par(first-line-indent: (amount: 2em, all: true))
+      #set text(size: 字号.五号)
 
       #body
     ]
 
     #v(1em)
 
-    #fakebold[【Keywords】:] 
-    #text(size: 字号.五号,(("",)+ keywords.intersperse("; ")).sum())
+    #fakebold[【Keywords】:]
+    #text(size: 字号.五号, (("",) + keywords.intersperse("; ")).sum())
   ]
 }
