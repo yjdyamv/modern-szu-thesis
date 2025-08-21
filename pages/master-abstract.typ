@@ -2,7 +2,9 @@
 #import "../utils/style.typ": 字体, 字号
 #import "../utils/double-underline.typ": double-underline
 #import "../utils/custom-tablex.typ": colspanx, gridx
+#import "../utils/custom-cuti.typ": *
 #import "../utils/invisible-heading.typ": invisible-heading
+#import "../utils/text-config.typ": *
 
 // 研究生中文摘要页
 #let master-abstract(
@@ -28,8 +30,8 @@
   column-gutter: 0pt,
   row-gutter: 10pt,
   anonymous-info-keys: ("author", "grade", "supervisor", "supervisor-ii"),
-  leading: 1.25em,
-  spacing: 1.25em,
+  leading: master-leading,
+  spacing: master-spacing,
   body,
 ) = {
   // 1.  默认参数
@@ -81,6 +83,8 @@
   }
 
   // 4.  正式渲染
+  show: show-fakebold
+
   pagebreak(weak: true, to: if twoside { "odd" })
   [
     #set page(header: context {

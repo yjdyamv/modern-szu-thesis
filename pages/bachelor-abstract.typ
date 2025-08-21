@@ -2,6 +2,7 @@
 #import "../utils/style.typ": 字体, 字号
 #import "../utils/double-underline.typ": double-underline
 #import "../utils/invisible-heading.typ": invisible-heading
+#import "../utils/text-config.typ": *
 
 // 本科生中文摘要页
 #let bachelor-abstract(
@@ -15,8 +16,8 @@
   outline-title: "中文摘要",
   outlined: false,
   anonymous-info-keys: ("author", "supervisor", "supervisor-ii"),
-  leading: 1.5em,
-  spacing: 0.79em,
+  leading: bachelor-leading,
+  spacing: bachelor-spacing,
   body,
 ) = {
   // 1.  默认参数

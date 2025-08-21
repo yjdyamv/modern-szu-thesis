@@ -3,6 +3,7 @@
 
 #import "style.typ": 字体, 字号;
 #import "custom-cuti.typ": *;
+#import "text-config.typ": *;
 
 #let bilingual-bibliography(
   bibliography: none,
@@ -168,14 +169,14 @@
     //创造一标题，并将其隐藏起来，但由于hide是占据空间的，为了和插入标题前一致，我只好将其上移3em。有点生草。
     set par(first-line-indent: 0pt)
     fakebold(font: 字体.楷体, size: 字号.五号)[参考文献]
-    set par(spacing: 1.5em, leading: 0.79em)
+    set par(spacing: bachelor-spacing, leading: bachelor-leading)
     set text(lang: "zh", font: 字体.楷体, size: 字号.小五)
     bibliography(title: none, full: full, style: style)
   } else {
     show heading.where(level: 1): set block(above: 24pt, below: 18pt)
     heading(level: 1, outlined: true, "参　考　文　献", numbering: none)
     set par(first-line-indent: 0pt)
-    set par(spacing: 0.625em, leading: 0.625em)
+    set par(spacing: master-spacing / 2, leading: master-leading / 2)
     set text(lang: "zh", font: 字体.宋体, size: 字号.五号)
     bibliography(title: none, full: full, style: style)
   }

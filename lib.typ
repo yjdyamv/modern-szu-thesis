@@ -29,12 +29,9 @@
 #import "utils/custom-cuti.typ": *
 #import "utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "utils/custom-numbering.typ": (
-  bachelor-art-numbering, bachelor-sci-numbering, custom-numbering,
-  master-art-numbering, master-sci-numbering,
+  bachelor-art-numbering, bachelor-sci-numbering, custom-numbering, master-art-numbering, master-sci-numbering,
 )
-#import "utils/custom-heading.typ": (
-  active-heading, current-heading, heading-display,
-)
+#import "utils/custom-heading.typ": active-heading, current-heading, heading-display
 #import "@preview/i-figured:0.2.4": show-equation, show-figure
 #import "utils/style.typ": 字体, 字号
 
@@ -119,7 +116,7 @@
       )
     },
     appendix: (..args) => {
-      appendix(majortype: majortype, ..args)
+      appendix(majortype: majortype, doctype: doctype, ..args)
     },
     achievement: (..args) => {
       achievement-page(monographs: "", doctype: doctype, ..args)

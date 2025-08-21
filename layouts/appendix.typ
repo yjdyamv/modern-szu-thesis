@@ -1,10 +1,12 @@
 #import "@preview/i-figured:0.2.4"
-#import "../utils/custom-numbering.typ": (
-  appendix-art-numbering, appendix-sci-numbering,
-)
+#import "../utils/custom-numbering.typ": appendix-art-numbering, appendix-sci-numbering
+#import "../utils/text-config.typ": *
 
 // 后记，重置 heading 计数器
 #let appendix(
+  doctype: "bachelor",
+  spacing: auto,
+  leading: auto,
   majortype: "sci",
   numbering: appendix-sci-numbering,
   // figure 计数
@@ -26,7 +28,14 @@
   if reset-counter {
     counter(heading).update(0)
   }
-  set par(spacing: 1.25em, leading: 1.25em, first-line-indent: (
+  if doctype == "bachelor" {
+    spacing = bachelor-spacing
+    leading = bachelor-leading
+  } else {
+    spacing = master-spacing
+    leading = master-leading
+  }
+  set par(spacing: spacing, leading: leading, first-line-indent: (
     amount: 2em,
     all: true,
   ))

@@ -3,6 +3,7 @@
 #import "../utils/double-underline.typ": double-underline
 #import "../utils/custom-tablex.typ": colspanx, gridx
 #import "../utils/invisible-heading.typ": invisible-heading
+#import "../utils/text-config.typ": *
 
 // 研究生英文摘要页
 #let master-abstract-en(
@@ -28,8 +29,8 @@
   column-gutter: 2pt,
   row-gutter: 10pt,
   anonymous-info-keys: ("author-en", "supervisor-en", "supervisor-ii-en"),
-  leading: 1.25em,
-  spacing: 1.25em,
+  leading: master-leading,
+  spacing: master-spacing,
   body,
 ) = {
   // 1.  默认参数
