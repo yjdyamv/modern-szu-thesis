@@ -2,9 +2,9 @@
 #import "../utils/style.typ": 字体, 字号
 #import "../utils/custom-cuti.typ": *
 #import "../utils/custom-numbering.typ": (
-  bachelor-art-numbering, bachelor-sci-numbering, custom-numbering,
-  master-art-numbering, master-sci-numbering,
+  bachelor-art-numbering, bachelor-sci-numbering, custom-numbering, master-art-numbering, master-sci-numbering,
 )
+#import "../utils/text-config.typ": *
 #import "../utils/unpairs.typ": unpairs
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/hydra:0.6.2": hydra
@@ -57,9 +57,13 @@
   reset-footnote: true,
   // caption 的 separator
   separator: "  ",
+  //footnote 样式
+  bachelor-footnote-size: 字号.小五,
+  master-footnote-size: 字号.五号,
   // caption 样式
   caption-style: strong,
-  caption-size: 字号.小五,
+  bachelor-caption-size: 字号.小五,
+  master-caption-size: 字号.五号,
   // figure 计数
   show-figure: i-figured.show-figure.with(numbering: "1-1"),
   // equation 计数
@@ -72,18 +76,20 @@
 
   // 1.  默认参数
   fonts = 字体 + fonts
-  if text-args == auto {
+  text-args = if text-args == auto {
     if doctype == "bachelor" {
-      text-args = (font: fonts.宋体, size: 字号.五号)
+      (font: 字体.宋体, size: 字号.五号)
     } else {
-      text-args = (font: fonts.宋体, size: 字号.小四)
+      (font: 字体.宋体, size: 字号.小四)
     }
+  } else {
+    text-args
   }
   // 1.1 字体与字号
-  if doctype == "bachelor" {
-    heading-font = (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体)
+  let heading-font = if doctype == "bachelor" {
+    (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体)
   } else {
-    heading-font = (字体.黑体, 字体.黑体, 字体.宋体, 字体.宋体)
+    (字体.黑体, 字体.黑体, 字体.宋体, 字体.宋体)
   }
   // 1.2 处理 heading- 开头的其他参数
   let heading-text-args-lists = args
@@ -92,22 +98,24 @@
     .filter(pair => pair.at(0).starts-with("heading-"))
     .map(pair => (pair.at(0).slice("heading-".len()), pair.at(1)))
   // 1.3 章节序号 numbering
-  if doctype == "bachelor" {
-    // 如果是文科則选用文科的常用numbering
-    if majortype == "art" {
-      numbering = bachelor-art-numbering
-    } //默认为理工的常见序号
-    else {
-      numbering = bachelor-sci-numbering
+  let numbering = if numbering == custom-numbering {
+    if doctype == "bachelor" {
+      // 本科论文
+      if majortype == "art" {
+        bachelor-art-numbering
+      } else {
+        bachelor-sci-numbering
+      }
+    } else {
+      // 硕士/博士论文
+      if majortype == "art" {
+        master-art-numbering
+      } else {
+        master-sci-numbering
+      }
     }
   } else {
-    // 如果是文科則选用文科的常用numbering
-    if majortype == "art" {
-      numbering = master-art-numbering
-    } //默认为理工的常见序号
-    else {
-      numbering = master-sci-numbering
-    }
+    numbering
   }
   // 2.  辅助函数
   let array-at(arr, pos) = {
@@ -117,36 +125,48 @@
   // 3.  设置基本样式
   // 3.1 文本和段落样式
   show: show-fakebold
-  if doctype == "master" or doctype == "doctor" {
-    spacing = 1.25em
-    leading = 1.25em
+  if doctype == "bachelor" {
+    spacing = bachelor-spacing
+    leading = bachelor-leading
   } else {
-    spacing = 1.5em
-    leading = 0.79em
+    spacing = master-spacing
+    leading = master-leading
   }
   set par(first-line-indent: first-line-indent)
   set par(spacing: spacing, leading: leading, justify: justify)
   set text(..text-args)
   show raw: set text(font: fonts.等宽)
   // 3.2 脚注样式
-  show footnote.entry: set text(font: fonts.宋体, size: 字号.五号)
-  // 3.3 设置 figure 的编号
-  if doctype == "bachelor" {
-    show-figure = i-figured.show-figure.with(level: 0, numbering: "1")
+  let footnote-size = if doctype == "bachelor" {
+    bachelor-footnote-size
   } else {
-    show-figure = i-figured.show-figure.with(numbering: "1-1")
+    master-footnote-size
+  }
+  show footnote.entry: set text(font: fonts.宋体, size: footnote-size)
+  // 3.3 设置 figure 的编号
+  let show-figure = if doctype == "bachelor" {
+    i-figured.show-figure.with(level: 0, numbering: "1")
+  } else {
+    i-figured.show-figure.with(numbering: "1-1")
   }
   show heading: i-figured.reset-counters
   show figure: show-figure
   // 3.4 设置 equation 的编号和假段落首行缩进
   show math.equation.where(block: true): show-equation
   // 3.5 表格表头置顶 + 不用冒号用空格分割 + 样式
+  let caption-size = {
+    if doctype == "bachelor" {
+      bachelor-caption-size
+    } else {
+      master-caption-size
+    }
+  }
   show figure.where(kind: table): set figure.caption(position: top)
   set figure.caption(separator: separator)
   show figure.caption: caption-style
   show figure.caption: set text(
     font: fonts.宋体,
-    size: 字号.五号,
+    size: caption-size,
     weight: "bold",
   )
   // 3.6 优化列表显示
@@ -162,16 +182,16 @@
   // 4.2 设置字体字号
   if doctype == "bachelor" {
     heading-above = (
-      2 * 15.6pt - 0.7em,
-      2 * 15.6pt - 0.7em,
-      2 * 15.6pt - 0.7em,
-      2 * 15.6pt - 0.7em,
+      0.5em,
+      0.5em,
+      0.5em,
+      0.5em,
     )
     heading-below = (
-      2 * 15.6pt - 0.7em,
-      1.5 * 15.6pt - 0.7em,
-      2 * 15.6pt - 0.7em,
-      2 * 15.6pt - 0.7em,
+      0.5em,
+      0.5em,
+      0.5em,
+      0.5em,
     )
   } else {
     heading-above = (24pt, 24pt, 12pt, 12pt)
@@ -187,7 +207,7 @@
         array-at(pair.at(1), it.level),
       ))),
     )
-    set par(leading: 1em)
+    set par(leading: 1em, spacing: 1em)
     v(array-at(heading-above, it.level))
     it
     v(array-at(heading-below, it.level))
@@ -218,10 +238,12 @@
     v(3pt)
     line(length: 100%, stroke: 1pt)
   }
-  if doctype == "master" or doctype == "doctor" {
-    header = header
-  } else {
-    header = ""
+  header = {
+    if doctype == "bachelor" {
+      ""
+    } else {
+      header
+    }
   }
   set page(paper: "a4", numbering: "1", header: header)
 
