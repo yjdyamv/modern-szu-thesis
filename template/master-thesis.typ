@@ -5,16 +5,31 @@
 
 #let (
   // 布局函数
-  twoside, doc, preface, mainmatter, appendix, doctype,achievement,
+  twoside,
+  doc,
+  preface,
+  mainmatter,
+  appendix,
+  doctype,
+  achievement,
   // 页面函数
-  fonts-display-page, cover, decl-page, abstract, abstract-en, bilingual-bibliography,
-  outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
+  fonts-display-page,
+  cover,
+  decl-page,
+  abstract,
+  abstract-en,
+  bilingual-bibliography,
+  outline-page,
+  list-of-figures,
+  list-of-tables,
+  notation,
+  acknowledgement,
 ) = documentclass(
-  doctype: "master",  //  "master" | "doctor", 文档类型，默认为硕士生 master
-  degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
+  doctype: "master", //  "master" | "doctor", 文档类型，默认为硕士生 master
+  degree: "academic", // "academic" | "professional", 学位类型，默认为学术型 academic
   // anonymous: true,  // 盲审模式
   majortype: "sci", //"sci" | "art", 学科类别，默认为理工，可选为社科
-  twoside: false,  // 双面模式，会加入空白页，便于打印
+  twoside: false, // 双面模式，会加入空白页，便于打印
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: ("Times New Roman", "FZKai-Z03S")),
   info: (
@@ -33,7 +48,6 @@
     // supervisor-ii: ("王五", "副教授"),
     // supervisor-ii-en: "Professor My Supervisor",
     submit-date: datetime.today(),
-    
     //下为研究生项
     //UDC
     udc: "",
@@ -67,14 +81,14 @@
 
 // 中文摘要
 #abstract(
-  keywords: ("我", "就是", "测试用", "关键词")
+  keywords: ("我", "就是", "测试用", "关键词"),
 )[
   中文摘要
 ]
 
 // 英文摘要
 #abstract-en(
-  keywords: ("Dummy", "Keywords", "Here", "It Is")
+  keywords: ("Dummy", "Keywords", "Here", "It Is"),
 )[
   English abstract
 ]
@@ -84,15 +98,15 @@
 
 // 符号表,若无可删去
 #notation[
-  / DFT:	密度泛函理论 (Density Functional Theory)
-  / HPLC:	高效液相色谱 (High Performance Liquid Chromatography)
-  / LC-MS:	液相色谱-质谱联用 (Liquid chromatography-Mass Spectrum)
-  / SCRF:  	自洽反应场 (Self-Consistent Reaction Field)
-  / TIC:	总离子浓度 (Total Ion Content)
-  / ZPE:	零点振动能 (Zero Vibration Energy)
-  / Ea:	化学反应的活化能 (Activation Energy)
-  / $Delta G^!=$:	活化自由能 (Activation Free Energy)
-  / $nu_i$:	虚频 (Imaginary Frequency)
+  / DFT: 密度泛函理论 (Density Functional Theory)
+  / HPLC: 高效液相色谱 (High Performance Liquid Chromatography)
+  / LC-MS: 液相色谱-质谱联用 (Liquid chromatography-Mass Spectrum)
+  / SCRF: 自洽反应场 (Self-Consistent Reaction Field)
+  / TIC: 总离子浓度 (Total Ion Content)
+  / ZPE: 零点振动能 (Zero Vibration Energy)
+  / Ea: 化学反应的活化能 (Activation Energy)
+  / $Delta G^!=$: 活化自由能 (Activation Free Energy)
+  / $nu_i$: 虚频 (Imaginary Frequency)
 ]
 
 // 插图目录
@@ -133,35 +147,37 @@
 
 引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:nju-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
-#align(center, (stack(dir: ltr)[
-  #figure(
-    table(
-      align: center + horizon,
-      columns: 4,
-      [t], [1], [2], [3],
-      [y], [0.3s], [0.4s], [0.8s],
-    ),
-    caption: [常规表],
-  ) <timing>
-][
-  #h(50pt)
-][
-  #figure(
-    table(
-      columns: 4,
-      stroke: none,
-      table.hline(stroke:1.5pt),
-      [t], [1], [2], [3],
-      table.hline(stroke: 1pt),
-      [y], [0.3s], [0.4s], [0.8s],
-      table.hline(stroke:1.5pt),
-    ),
-    caption: [三线表],
-  ) <timing-tlt>
-]))
+#align(center, (
+  stack(dir: ltr)[
+    #figure(
+      table(
+        align: center + horizon,
+        columns: 4,
+        [t], [1], [2], [3],
+        [y], [0.3s], [0.4s], [0.8s],
+      ),
+      caption: [常规表],
+    ) <timing>
+  ][
+    #h(50pt)
+  ][
+    #figure(
+      table(
+        columns: 4,
+        stroke: none,
+        table.hline(stroke: 1.5pt),
+        [t], [1], [2], [3],
+        table.hline(stroke: 1pt),
+        [y], [0.3s], [0.4s], [0.8s],
+        table.hline(stroke: 1.5pt),
+      ),
+      caption: [三线表],
+    ) <timing-tlt>
+  ]
+))
 
 #figure(
-  image("images/nju-emblem.svg", width: 20%),
+  image("images/szu-logo-black.svg", width: 20%),
   caption: [图片测试],
 ) <nju-logo>
 
@@ -194,7 +210,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   def add(x, y):
     return x + y
   ```,
-  caption:[代码块],
+  caption: [代码块],
 ) <code>
 
 
@@ -230,7 +246,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 附录内容，这里也可以加入图片，例如@fig:appendix-img。
 
 #figure(
-  image("images/nju-emblem.svg", width: 20%),
+  image("images/szu-logo-black.svg", width: 20%),
   caption: [图片测试],
 ) <appendix-img>
 

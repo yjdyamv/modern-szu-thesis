@@ -1,20 +1,33 @@
-#import "../lib.typ": documentclass, indent 
+#import "../lib.typ": documentclass, indent
 // 此模板仅用于本科生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。你可以删除另一个用于研究生论文的文件
 // 你首先应该安装 https://github.com/yjdyamv/modern-szu-thesis/fonts 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传fonts/FangZheng里的字体，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
 #let (
   // 布局函数
-  twoside, doc, preface, mainmatter, appendix,
+  twoside,
+  doc,
+  preface,
+  mainmatter,
+  appendix,
   // 页面函数
-  fonts-display-page, cover, decl-page, abstract, abstract-en, bilingual-bibliography,
-  outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
+  fonts-display-page,
+  cover,
+  decl-page,
+  abstract,
+  abstract-en,
+  bilingual-bibliography,
+  outline-page,
+  list-of-figures,
+  list-of-tables,
+  notation,
+  acknowledgement,
 ) = documentclass(
   // doctype: "bachelor",  // "bachelor" | "master" | "doctor" | "postdoc", 文档类型，默认为本科生 bachelor
   // degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
   // anonymous: true,  // 盲审模式
-  // majortype: "sci", //"sci" | "art", 学科类别，默认为理工，可选为社科 
-  twoside: false,  // 双面模式，会加入空白页，便于打印
+  // majortype: "sci", //"sci" | "art", 学科类别，默认为理工，可选为社科
+  twoside: false, // 双面模式，会加入空白页，便于打印
   // 你会发现 Typst 有许多警告，这是因为 modern-nju-thesis 加入了很多不必要的 fallback 字体
   // 你可以自定义字体消除警告，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: (name: "Times New Roman", covers: "latin-in-cjk"), "FZKai-Z03S")),
@@ -59,7 +72,7 @@
 
 // 中文摘要
 #abstract(
-  keywords: ("我", "就是", "测试用", "关键词")
+  keywords: ("我", "就是", "测试用", "关键词"),
 )[
   中文摘要
 ]
@@ -108,40 +121,42 @@
 
 引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:nju-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
-#align(center, (stack(dir: ltr)[
-  #figure(
-    table(
-      align: center + horizon,
-      columns: 4,
-      [t], [1], [2], [3],
-      [y], [0.3s], [0.4s], [0.8s],
-    ),
-    caption: [常规表],
-  ) <timing>
-][
-  #h(50pt)
-][
-  #figure(
-    table(
-      columns: 4,
-      stroke: none,
-      table.hline(),
-      [t], [1], [2], [3],
-      table.hline(stroke: .5pt),
-      [y], [0.3s], [0.4s], [0.8s],
-      table.hline(),
-    ),
-    caption: [三线表],
-  ) <timing-tlt>
-]))
+#align(center, (
+  stack(dir: ltr)[
+    #figure(
+      table(
+        align: center + horizon,
+        columns: 4,
+        [t], [1], [2], [3],
+        [y], [0.3s], [0.4s], [0.8s],
+      ),
+      caption: [常规表],
+    ) <timing>
+  ][
+    #h(50pt)
+  ][
+    #figure(
+      table(
+        columns: 4,
+        stroke: none,
+        table.hline(),
+        [t], [1], [2], [3],
+        table.hline(stroke: .5pt),
+        [y], [0.3s], [0.4s], [0.8s],
+        table.hline(),
+      ),
+      caption: [三线表],
+    ) <timing-tlt>
+  ]
+))
 
 #figure(
-  image("images/nju-emblem.svg", width: 20%),
+  image("images/szu-logo-black.svg", width: 20%),
   caption: [图片测试],
 ) <nju-logo>
 
 #figure(
-  image("images/nju-emblem.svg", width: 20%),
+  image("images/szu-logo-black.svg", width: 20%),
   caption: [图片测试],
 ) <nju-logo1>
 
@@ -176,7 +191,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   def add(x, y):
     return x + y
   ```,
-  caption:[代码块],
+  caption: [代码块],
 ) <code>
 
 
@@ -210,7 +225,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 // 英文摘要
 #abstract-en(
-  keywords: ("Dummy", "Keywords", "Here", "It Is")
+  keywords: ("Dummy", "Keywords", "Here", "It Is"),
 )[
   English abstract
 ]
@@ -227,6 +242,6 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 附录内容，这里也可以加入图片，例如@fig:appendix-img。
 
 #figure(
-  image("images/nju-emblem.svg", width: 20%),
+  image("images/szu-logo-black.svg", width: 20%),
   caption: [图片测试],
 ) <appendix-img>
