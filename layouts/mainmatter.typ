@@ -17,35 +17,19 @@
   fonts: (:),
   info: (:),
   // 其他参数
-  leading: 1em,
-  spacing: 1em,
+  leading: auto,
+  spacing: auto,
   justify: true,
   first-line-indent: (amount: 2em, all: true),
   numbering: custom-numbering,
   // 正文字体与字号参数
   text-args: auto,
   // 标题字体与字号
-  heading-font: (
-    字体.黑体,
-    字体.黑体,
-    字体.宋体,
-    字体.宋体,
-    字体.宋体,
-    字体.宋体,
-    字体.宋体,
-  ),
-  heading-size: (
-    字号.三号,
-    字号.小三,
-    字号.四号,
-    字号.小四,
-    字号.小四,
-    字号.小四,
-    字号.小四,
-  ),
+  heading-font: auto,
+  heading-size: auto,
   heading-weight: ("bold", "bold", "bold", "bold"),
-  heading-above: (2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em),
-  heading-below: (2 * 15.6pt - 0.7em, 1.5 * 15.6pt - 0.7em),
+  heading-above: auto,
+  heading-below: auto,
   heading-pagebreak: (true, false),
   heading-align: (center, auto),
   // 页眉
@@ -86,10 +70,23 @@
     text-args
   }
   // 1.1 字体与字号
-  let heading-font = if doctype == "bachelor" {
-    (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体)
+  heading-font = if heading-font == auto {
+    if doctype == "bachelor" {
+      (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体)
+    } else {
+      (字体.黑体, 字体.黑体, 字体.宋体, 字体.宋体)
+    }
   } else {
-    (字体.黑体, 字体.黑体, 字体.宋体, 字体.宋体)
+    heading-font
+  }
+  heading-size = if heading-size == auto {
+    if doctype == "bachelor" {
+      (字号.三号, 字号.小三, 字号.四号, 字号.小四)
+    } else {
+      (字号.三号, 字号.小三, 字号.四号, 字号.小四)
+    }
+  } else {
+    heading-size
   }
   // 1.2 处理 heading- 开头的其他参数
   let heading-text-args-lists = args
@@ -125,12 +122,26 @@
   // 3.  设置基本样式
   // 3.1 文本和段落样式
   show: show-fakebold
-  if doctype == "bachelor" {
-    spacing = bachelor-spacing
-    leading = bachelor-leading
-  } else {
-    spacing = master-spacing
-    leading = master-leading
+  if spacing == auto and leading == auto {
+    if doctype == "bachelor" {
+      spacing = bachelor-spacing
+      leading = bachelor-leading
+    } else {
+      spacing = master-spacing
+      leading = master-leading
+    }
+  } else if spacing == auto {
+    if doctype == "bachelor" {
+      spacing = bachelor-spacing
+    } else {
+      spacing = master-spacing
+    }
+  } else if leading == auto {
+    if doctype == "bachelor" {
+      leading = bachelor-leading
+    } else {
+      leading = master-leading
+    }
   }
   set par(first-line-indent: first-line-indent)
   set par(spacing: spacing, leading: leading, justify: justify)
@@ -154,12 +165,10 @@
   // 3.4 设置 equation 的编号和假段落首行缩进
   show math.equation.where(block: true): show-equation
   // 3.5 表格表头置顶 + 不用冒号用空格分割 + 样式
-  let caption-size = {
-    if doctype == "bachelor" {
-      bachelor-caption-size
-    } else {
-      master-caption-size
-    }
+  let caption-size = if doctype == "bachelor" {
+    bachelor-caption-size
+  } else {
+    master-caption-size
   }
   show figure.where(kind: table): set figure.caption(position: top)
   set figure.caption(separator: separator)
@@ -181,18 +190,8 @@
   set heading(numbering: numbering)
   // 4.2 设置字体字号
   if doctype == "bachelor" {
-    heading-above = (
-      0.5em,
-      0.5em,
-      0.5em,
-      0.5em,
-    )
-    heading-below = (
-      0.5em,
-      0.5em,
-      0.5em,
-      0.5em,
-    )
+    heading-above = (0.5em, 0.5em, 0.5em, 0.5em)
+    heading-below = (0.5em, 0.5em, 0.5em, 0.5em)
   } else {
     heading-above = (24pt, 24pt, 12pt, 12pt)
     heading-below = (18pt, 6pt, 6pt, 6pt)
@@ -230,7 +229,7 @@
   set heading()
 
   // 5.  处理正文页眉
-  let header = context {
+  let master-header = context {
     set par(leading: 0pt, spacing: 0pt)
     align(center, emph(hydra(1, skip-starting: false)))
     v(3pt)
@@ -238,13 +237,21 @@
     v(3pt)
     line(length: 100%, stroke: 1pt)
   }
-  header = {
-    if doctype == "bachelor" {
-      ""
-    } else {
-      header
-    }
+
+  let bachelor-header = context {
+    ""
   }
+
+  let header = if header-render == auto or header-render == true {
+    if doctype == "bachelor" {
+      bachelor-header
+    } else {
+      master-header
+    }
+  } else {
+    ""
+  }
+
   set page(paper: "a4", numbering: "1", header: header)
 
   counter(page).update(1)

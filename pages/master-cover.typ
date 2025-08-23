@@ -1,6 +1,4 @@
-#import "../utils/datetime-display.typ": (
-  datetime-en-display, datetime-master-display,
-)
+#import "../utils/datetime-display.typ": datetime-en-display, datetime-master-display
 #import "../utils/justify-text.typ": justify-text
 #import "../utils/style.typ": 字体, 字号
 
@@ -72,8 +70,7 @@
     info.title + range(min-title-lines - info.title.len()).map(it => "　")
   )
   info.reviewer = (
-    info.reviewer
-      + range(min-reviewer-lines - info.reviewer.len()).map(it => "　")
+    info.reviewer + range(min-reviewer-lines - info.reviewer.len()).map(it => "　")
   )
   // 2.3 处理日期
   assert(
@@ -90,7 +87,7 @@
     info.bottom-date = datetime-display(info.bottom-date)
   }
   // 2.4 处理 degree
-  if info.degree == auto {
+  info.degree = if info.degree == auto {
     if doctype == "doctor" {
       info.degree = "工程博士"
     } else {

@@ -111,6 +111,6 @@ ps:你深的本科生和研究生论文在主体顺序上有所不同，故分�
 
 
 # 致谢
-感谢 [OrangeX4](https://github.com/OrangeX4) 制作的modern-nju-thesis模板，此模板可使用性很强。本readme文件参照了此模板的readme文件编写。
+感谢 [OrangeX4](https://github.com/OrangeX4) 制作的[modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis)模板，此模板可使用性很强。本readme文件参照了此模板的readme文件编写。感谢[tzhtaylor](https://github.com/tzhtaylor)的[modern-sjtu-thesis](https://github.com/tzhtaylor/modern-sjtu-thesis)模板，参考了页眉的实现与标题段前段后的实现。
 
 插播：感谢[NJU THESIS](https://github.com/nju-lug/NJUThesis)详实的文档，这是相比于其他latex模板的极大优势，NJU THESIS是一个优秀的latex模板，可以方便制作latex模板

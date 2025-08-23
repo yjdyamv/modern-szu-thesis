@@ -152,11 +152,9 @@
   if anonymous {
     v(52pt)
   } else {
-    // 封面图标
     v(6pt)
-    //image("../assets/vi/nju-emblem.svg", width: 2.38cm)
     v(22pt)
-    // 调整一下左边的间距
+    // 封面图标
     pad(image("../assets/vi/szu.svg", width: 200pt), left: 0.4cm)
     v(-5pt)
   }
@@ -179,18 +177,12 @@
     column-gutter: column-gutter,
     row-gutter: row-gutter,
     info-key("题目："), info-long-value("title", info.title.at(0), width: 112%),
-    info-long-value("title", info.title.at(1), colspan: 2, width: 105%),
-    info-key("姓名："),
-    info-long-value("author", info.author, width: 112%),
-    info-key("专业："),
-    info-long-value("major", info.major, width: 112%),
-    info-key("学院："),
-    info-long-value("department", info.department, width: 112%),
-    info-key("学号："),
-    info-long-value("student-id", info.student-id, width: 112%),
-    info-key("指导教师："),
-    info-long-value("supervisor", info.supervisor.at(0)),
-    info-key("职称："),
+    info-long-value("title", info.title.at(1), colspan: 2, width: 105%), info-key("姓名："),
+    info-long-value("author", info.author, width: 112%), info-key("专业："),
+    info-long-value("major", info.major, width: 112%), info-key("学院："),
+    info-long-value("department", info.department, width: 112%), info-key("学号："),
+    info-long-value("student-id", info.student-id, width: 112%), info-key("指导教师："),
+    info-long-value("supervisor", info.supervisor.at(0)), info-key("职称："),
     info-long-value("supervisor", info.supervisor.at(1), width: 110%),
     // ..(if info.supervisor-ii != () {(
     //   info-key("第二导师"),
