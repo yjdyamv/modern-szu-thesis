@@ -20,19 +20,19 @@
     it.location().page() == loc.page()
   ))
   if prev-headings.len() == 0 and cur-headings.len() == 0 {
-    return none
+    none
   } else {
     if prev {
       if prev-headings.len() != 0 {
-        return prev-headings.last()
+        prev-headings.last()
       } else {
-        return cur-headings.first()
+        cur-headings.first()
       }
     } else {
       if cur-headings.len() != 0 {
-        return cur-headings.first()
+        cur-headings.first()
       } else {
-        return prev-headings.last()
+        prev-headings.last()
       }
     }
   }
@@ -45,8 +45,8 @@
     it.location().page() == here().page()
   ))
   if cur-headings.len() != 0 {
-    return cur-headings.first()
+    cur-headings.first()
   } else {
-    return none
+    none
   }
 }
