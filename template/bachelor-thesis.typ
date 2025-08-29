@@ -64,7 +64,6 @@
 // 声明页
 #decl-page()
 
-
 // 前言
 #show: preface
 // 目录
@@ -76,8 +75,6 @@
 )[
   中文摘要
 ]
-
-
 
 // 插图目录
 // #list-of-figures()

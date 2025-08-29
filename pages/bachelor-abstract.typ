@@ -58,7 +58,7 @@
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
     #align(center)[
-      #set text(size: 字号.小二, weight: "bold")
+      #set text(size: 字号.小二, font: 字体.黑体)
 
       #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）中文摘要]]
     ]

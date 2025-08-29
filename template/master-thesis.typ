@@ -74,8 +74,6 @@
 // 声明页
 #decl-page()
 
-
-
 // 前言
 #show: preface
 
