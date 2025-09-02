@@ -47,19 +47,17 @@
   }
 
   // 4.  正式渲染
-  pagebreak(weak: true, to: if twoside { "odd" })
-
   [
+    #pagebreak(weak: true, to: if twoside { "odd" })
     #set text(font: fonts.楷体, size: 字号.小四)
     #set par(leading: leading, spacing: spacing, justify: true)
-
+    #show heading: it => {}
 
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
     #align(center)[
       #set text(size: 字号.小二, font: 字体.黑体)
-
       #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）中文摘要]]
     ]
 
