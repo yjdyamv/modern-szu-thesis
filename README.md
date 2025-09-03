@@ -3,17 +3,19 @@
 深圳大学毕业论文（设计）的 Typst 模板，能够简洁、快速、持续生成 PDF 格式的毕业论文，这是基于[modern-nju-thesis](https://typst.app/universe/package/modern-nju-thesis)的深大学位论文模板。
 
 **此模板非官方模板，有不被接受的可能性**
-**本模板发版晚于开发主线**
 
-# 优势
+**本模板发版晚于主线，建议使用主线以得到最新的模板**
+
+## 优势
 可以通过OrangeX4的[知乎文章](https://zhuanlan.zhihu.com/p/669097092)来进一步了解typst的优势
+
 typst
 - 编译快
 - 制作模板能力强
 - 现代的编程语言
 - 有强大的控制力，也有标记模式
 
-# 劣势
+## 劣势
 typst
 - 新兴排版语言，积累较少
 - 不够稳定，还处于发展状态
@@ -86,6 +88,7 @@ typst
 - master-thesis.typ文件是研究生模板(通过选择doctype是master还是doctor,来选择硕士和博士模板)
 - ref.bib文件是参考文献放置处
 - images里有示例图片
+
 ps:你深的本科生和研究生论文在主体顺序上有所不同，故分成两个文件。
 
 # 目前 Typst 有哪些第三方包和模板？
