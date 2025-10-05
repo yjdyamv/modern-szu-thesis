@@ -2,9 +2,10 @@
 
 深圳大学毕业论文（设计）的 Typst 模板，能够简洁、快速、持续生成 PDF 格式的毕业论文，这是基于[modern-nju-thesis](https://typst.app/universe/package/modern-nju-thesis)的深大学位论文模板。
 
-**此模板非官方模板，有不被接受的可能性**
-
-**本模板发版晚于主线，建议使用主线以得到最新的模板**
+> [!WARNING]
+> **此模板非官方模板，有不被接受的可能性**
+> 
+> **本模板发版晚于主线，建议使用主线以得到最新的模板**
 
 ## 优势
 可以通过OrangeX4的[知乎文章](https://zhuanlan.zhihu.com/p/669097092)来进一步了解typst的优势
@@ -42,7 +43,13 @@
 
 ![](imgs/gallery.png)
 ![](imgs/vsc-template.png)
-(这就好了？不错，你甚至不需要下载typst)
+
+> [!TIP]
+> 不过还是建议使用仓库主线
+> ```
+> git clone https://github.com/yjdyamv/modern-szu-thesis.git
+> ```
+> ![](imgs/vsc-git-template.png)
 
 # 计划路线图
 
@@ -83,6 +90,7 @@
   - 本科生
     - 图表使用`1`格式
     - 数学公式使用`（1-1）`格式
+
 # 模板文件说明
 
 - bachelor-thesis.typ文件是本科生模板
