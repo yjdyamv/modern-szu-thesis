@@ -18,7 +18,7 @@
   pagebreak()
   set text(font: 字体.宋体, size: 字号.小四)
   let header = ""
-  if doctype == "master" or doctype == "doctor" {
+  if doctype == "bachelor" {} else if doctype == "master" or doctype == "doctor" {
     header = context {
       set par(leading: 0pt, spacing: 0pt)
       align(center, emph(title))
@@ -27,19 +27,20 @@
       v(3pt)
       line(length: 100%, stroke: 1pt)
     }
-  } else { }
+  } else {
+    panic("This doctype has not yet been supported.")
+  }
 
   set page(paper: "a4", numbering: "1", header: header)
-  if doctype == "master" or doctype == "doctor" {
+  if doctype == "bachelor" {} else if doctype == "master" or doctype == "doctor" {
     numbering = "I"
+  } else {
+    panic("This doctype has not yet been supported.")
   }
   set page(numbering: numbering)
   //linebreak()
   v(title-above-space)
-  align(center)[#text(
-      font: 字体.黑体,
-      heading(level: 1, numbering: none, outlined: outlined, title),
-    ),
+  align(center)[#text(font: 字体.黑体, heading(level: 1, numbering: none, outlined: outlined, title)),
   ]
   v(title-down-space)
 
@@ -48,11 +49,7 @@
     row-gutter: row-gutter,
     ..args,
     // 解析 terms 内部结构以渲染到表格里
-    ..body
-      .children
-      .filter(it => it.func() == terms.item)
-      .map(it => (it.term, it.description))
-      .flatten()
+    ..body.children.filter(it => it.func() == terms.item).map(it => (it.term, it.description)).flatten()
   ))))
 
   // 手动分页

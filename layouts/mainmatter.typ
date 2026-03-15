@@ -63,8 +63,10 @@
   text-args = if text-args == auto {
     if doctype == "bachelor" {
       (font: 字体.宋体, size: 字号.五号)
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       (font: 字体.宋体, size: 字号.小四)
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   } else {
     text-args
@@ -73,8 +75,10 @@
   heading-font = if heading-font == auto {
     if doctype == "bachelor" {
       (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体)
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       (字体.黑体, 字体.黑体, 字体.宋体, 字体.宋体)
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   } else {
     heading-font
@@ -82,8 +86,10 @@
   heading-size = if heading-size == auto {
     if doctype == "bachelor" {
       (字号.三号, 字号.小三, 字号.四号, 字号.小四)
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       (字号.三号, 字号.小三, 字号.四号, 字号.小四)
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   } else {
     heading-size
@@ -100,16 +106,22 @@
       // 本科论文
       if majortype == "art" {
         bachelor-art-numbering
-      } else {
+      } else if majortype == "sci" {
         bachelor-sci-numbering
+      } else {
+        panic("This majortype has not yet been supported.")
       }
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       // 硕士/博士论文
       if majortype == "art" {
         master-art-numbering
-      } else {
+      } else if majortype == "sci" {
         master-sci-numbering
+      } else {
+        panic("This majortype has not yet been supported.")
       }
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   } else {
     numbering
@@ -126,21 +138,27 @@
     if doctype == "bachelor" {
       spacing = bachelor-spacing
       leading = bachelor-leading
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       spacing = master-spacing
       leading = master-leading
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   } else if spacing == auto {
     if doctype == "bachelor" {
       spacing = bachelor-spacing
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       spacing = master-spacing
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   } else if leading == auto {
     if doctype == "bachelor" {
       leading = bachelor-leading
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       leading = master-leading
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   }
   set par(first-line-indent: first-line-indent)
@@ -150,15 +168,19 @@
   // 3.2 脚注样式
   let footnote-size = if doctype == "bachelor" {
     bachelor-footnote-size
-  } else {
+  } else if doctype == "master" or doctype == "doctor" {
     master-footnote-size
+  } else {
+    panic("This doctype has not yet been supported.")
   }
   show footnote.entry: set text(font: fonts.宋体, size: footnote-size)
   // 3.3 设置 figure 的编号
   let show-figure = if doctype == "bachelor" {
     i-figured.show-figure.with(level: 0, numbering: "1")
-  } else {
+  } else if doctype == "master" or doctype == "doctor" {
     i-figured.show-figure.with(numbering: "1-1")
+  } else {
+    panic("This doctype has not yet been supported.")
   }
   show heading: i-figured.reset-counters
   show figure: show-figure
@@ -167,8 +189,10 @@
   // 3.5 表格表头置顶 + 不用冒号用空格分割 + 样式
   let caption-size = if doctype == "bachelor" {
     bachelor-caption-size
-  } else {
+  } else if doctype == "master" or doctype == "doctor" {
     master-caption-size
+  } else {
+    panic("This doctype has not yet been supported.")
   }
   show figure.where(kind: table): set figure.caption(position: top)
   set figure.caption(separator: separator)
@@ -192,9 +216,11 @@
   if doctype == "bachelor" {
     heading-above = (0.5em, 0.5em, 0.5em, 0.5em)
     heading-below = (0.5em, 0.5em, 0.5em, 0.5em)
-  } else {
+  } else if doctype == "master" or doctype == "doctor" {
     heading-above = (24pt, 24pt, 12pt, 12pt)
     heading-below = (18pt, 6pt, 6pt, 6pt)
+  } else {
+    panic("This doctype has not yet been supported.")
   }
   show heading: it => {
     set text(
@@ -245,8 +271,10 @@
   let header = if header-render == auto or header-render == true {
     if doctype == "bachelor" {
       bachelor-header
-    } else {
+    } else if doctype == "master" or doctype == "doctor" {
       master-header
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   } else {
     ""

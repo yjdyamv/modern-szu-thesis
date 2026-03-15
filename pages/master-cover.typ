@@ -90,8 +90,10 @@
   info.degree = if info.degree == auto {
     if doctype == "doctor" {
       info.degree = "工程博士"
-    } else {
+    } else if doctype == "master" {
       info.degree = "工程硕士"
+    } else {
+      panic("This doctype has not yet been supported.")
     }
   }
 
@@ -216,7 +218,9 @@
     font: fonts.黑体,
     spacing: 200%,
     weight: "bold",
-    if doctype == "doctor" { "博士学位论文" } else { "硕士学位论文" },
+    if doctype == "doctor" { "博士学位论文" } else if doctype == "master" { "硕士学位论文" } else {
+      panic("This doctype has not yet been supported.")
+    },
   )
 
   // if anonymous {
@@ -243,16 +247,18 @@
     info-key("学位申请人学号"),
     info-value("student-id", info.student-id),
     ..(
-      if degree == "professional" {
+      if degree == "academic" {
+        (
+          info-key("专业名称"),
+          info-value("major", info.major),
+        )
+      } else if degree == "professional" {
         (
           info-key("专业（领域）名称"),
           info-value("major", info.major),
         )
       } else {
-        (
-          info-key("专业名称"),
-          info-value("major", info.major),
-        )
+        panic("This degree type has not yet been supported.")
       }
     ),
     info-key("专业门类"),

@@ -131,7 +131,15 @@
     },
     // 封面页，通过 type 分发到不同函数
     cover: (..args) => {
-      if doctype == "master" or doctype == "doctor" {
+      if doctype == "bachelor" {
+        bachelor-cover(
+          anonymous: anonymous,
+          twoside: twoside,
+          ..args,
+          fonts: fonts + args.named().at("fonts", default: (:)),
+          info: info + args.named().at("info", default: (:)),
+        )
+      } else if doctype == "master" or doctype == "doctor" {
         master-cover(
           doctype: doctype,
           degree: degree,
@@ -142,30 +150,13 @@
           fonts: fonts + args.named().at("fonts", default: (:)),
           info: info + args.named().at("info", default: (:)),
         )
-      } else if doctype == "postdoc" {
-        panic("postdoc has not yet been implemented.")
       } else {
-        bachelor-cover(
-          anonymous: anonymous,
-          twoside: twoside,
-          ..args,
-          fonts: fonts + args.named().at("fonts", default: (:)),
-          info: info + args.named().at("info", default: (:)),
-        )
+        panic("This doctype has not yet been supported.")
       }
     },
     // 声明页，通过 type 分发到不同函数
     decl-page: (..args) => {
-      if doctype == "master" or doctype == "doctor" {
-        master-decl-page(
-          anonymous: anonymous,
-          twoside: twoside,
-          ..args,
-          fonts: fonts + args.named().at("fonts", default: (:)),
-        )
-      } else if doctype == "postdoc" {
-        panic("postdoc has not yet been implemented.")
-      } else {
+      if doctype == "bachelor" {
         bachelor-decl-page(
           anonymous: anonymous,
           twoside: twoside,
@@ -173,11 +164,28 @@
           fonts: fonts + args.named().at("fonts", default: (:)),
           info: info + args.named().at("info", default: (:)),
         )
+      } else if doctype == "master" or doctype == "doctor" {
+        master-decl-page(
+          anonymous: anonymous,
+          twoside: twoside,
+          ..args,
+          fonts: fonts + args.named().at("fonts", default: (:)),
+        )
+      } else {
+        panic("This doctype has not yet been supported.")
       }
     },
     // 中文摘要页，通过 type 分发到不同函数
     abstract: (..args) => {
-      if doctype == "master" or doctype == "doctor" {
+      if doctype == "bachelor" {
+        bachelor-abstract(
+          anonymous: anonymous,
+          twoside: twoside,
+          ..args,
+          fonts: fonts + args.named().at("fonts", default: (:)),
+          info: info + args.named().at("info", default: (:)),
+        )
+      } else if doctype == "master" or doctype == "doctor" {
         master-abstract(
           doctype: doctype,
           degree: degree,
@@ -187,21 +195,21 @@
           fonts: fonts + args.named().at("fonts", default: (:)),
           info: info + args.named().at("info", default: (:)),
         )
-      } else if doctype == "postdoc" {
-        panic("postdoc has not yet been implemented.")
       } else {
-        bachelor-abstract(
+        panic("This doctype has not yet been supported.")
+      }
+    },
+    // 英文摘要页，通过 type 分发到不同函数
+    abstract-en: (..args) => {
+      if doctype == "bachelor" {
+        bachelor-abstract-en(
           anonymous: anonymous,
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
           info: info + args.named().at("info", default: (:)),
         )
-      }
-    },
-    // 英文摘要页，通过 type 分发到不同函数
-    abstract-en: (..args) => {
-      if doctype == "master" or doctype == "doctor" {
+      } else if doctype == "master" or doctype == "doctor" {
         master-abstract-en(
           doctype: doctype,
           degree: degree,
@@ -211,16 +219,8 @@
           fonts: fonts + args.named().at("fonts", default: (:)),
           info: info + args.named().at("info", default: (:)),
         )
-      } else if doctype == "postdoc" {
-        panic("postdoc has not yet been implemented.")
       } else {
-        bachelor-abstract-en(
-          anonymous: anonymous,
-          twoside: twoside,
-          ..args,
-          fonts: fonts + args.named().at("fonts", default: (:)),
-          info: info + args.named().at("info", default: (:)),
-        )
+        panic("This doctype has not yet been supported.")
       }
     },
     // 目录页
@@ -231,12 +231,14 @@
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
         )
-      } else {
+      } else if doctype == "master" or doctype == "doctor" {
         master-outline-page(
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
         )
+      } else {
+        panic("This doctype has not yet been supported.")
       }
     },
     // 插图目录页
@@ -267,12 +269,14 @@
           doctype: "bachelor",
           ..args,
         )
-      } else {
+      } else if doctype == "master" or doctype == "doctor" {
         bilingual-bibliography(
           bibliography: bibliography,
           doctype: "master",
           ..args,
         )
+      } else {
+        panic("This doctype has not yet been supported.")
       }
     },
     // 致谢页

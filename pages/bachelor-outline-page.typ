@@ -37,8 +37,10 @@
   }
   if doctype == "bachelor" {
     title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
-  } else {
+  } else if doctype == "master" or doctype == "doctor" {
     title-text-args = (font: fonts.黑体, size: 字号.三号, weight: "bold")
+  } else {
+    panic("This doctype has not yet been supported.")
   }
   // 引用页数的字体，这里用于显示 Times New Roman
   if (reference-font == auto) {
@@ -69,9 +71,7 @@
   // 目录样式
 
   // 目录缩进
-  set outline(indent: level => indent
-    .slice(0, calc.min(level + 1, indent.len()))
-    .sum())
+  set outline(indent: level => indent.slice(0, calc.min(level + 1, indent.len())).sum())
 
   // 目录字体字号
   show outline.entry: entry => block(

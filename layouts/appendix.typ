@@ -19,6 +19,10 @@
 ) = {
   if majortype == "art" {
     numbering = appendix-art-numbering
+  } else if majortype == "sci" {
+    numbering = appendix-sci-numbering
+  } else {
+    panic("This majortype has not yet been supported.")
   }
 
   set heading(numbering: numbering)
@@ -31,9 +35,11 @@
   if doctype == "bachelor" {
     spacing = bachelor-spacing
     leading = bachelor-leading
-  } else {
+  } else if doctype == "master" or doctype == "doctor" {
     spacing = master-spacing
     leading = master-leading
+  } else {
+    panic("This doctype has not yet been supported.")
   }
   set par(spacing: spacing, leading: leading, first-line-indent: (
     amount: 2em,
