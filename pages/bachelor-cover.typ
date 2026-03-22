@@ -177,7 +177,7 @@
     column-gutter: column-gutter,
     row-gutter: row-gutter,
     info-key("题目："), info-long-value("title", info.title.at(0), width: 112%),
-    info-long-value("title", info.title.at(1), colspan: 2, width: 105%), info-key("姓名："),
+    [] /*占位*/, info-long-value("title", info.title.at(1), colspan: 1, width: 112%), info-key("姓名："),
     info-long-value("author", info.author, width: 112%), info-key("专业："),
     info-long-value("major", info.major, width: 112%), info-key("学院："),
     info-long-value("department", info.department, width: 112%), info-key("学号："),
