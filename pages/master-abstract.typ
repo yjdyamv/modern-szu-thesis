@@ -38,7 +38,7 @@
   fonts = 字体 + fonts
   info = (
     (
-      title: ("基于 Typst 的", "南京大学学位论文"),
+      title: ("基于 Typst 的", "深圳大学学位论文"),
       author: "张三",
       grade: "20XX",
       department: "某学院",

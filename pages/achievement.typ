@@ -45,7 +45,7 @@
   set text(size: 字号.五号)
   if doctype == "master" {
     heading(level: 1)[攻读硕士学位期间的科研成果]
-  } else if doctype == "master" or doctype == "doctor" {
+  } else if doctype == "doctor" {
     heading(level: 1)[攻读博士学位期间的科研成果]
   } else {
     panic("This doctype has not yet been supported.")

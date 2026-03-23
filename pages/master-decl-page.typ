@@ -1,6 +1,6 @@
 #import "../utils/style.typ": 字体, 字号
 
-// 本科生声明页
+// 研究生声明页
 #let master-decl-page(
   anonymous: false,
   twoside: false,
