@@ -207,7 +207,8 @@
     // info-long-value("submit-date", info.submit-date),
   ))
 
-  v(6cm)
+  // 将提交时间至于页底
+  v(1fr)
   set text(size: 16pt)
   info.submit-date
 }
