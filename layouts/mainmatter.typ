@@ -257,7 +257,7 @@
   // 5.  处理正文页眉
   let master-header = context {
     set par(leading: 0pt, spacing: 0pt)
-    align(center, emph(hydra(1, skip-starting: false)))
+    align(center, emph(hydra(1, use-last: true)))
     v(3pt)
     line(length: 100%, stroke: 2pt)
     v(3pt)
