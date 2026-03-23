@@ -13,7 +13,7 @@
   fonts: (:),
   info: (:),
   // 其他参数
-  stoke-width: 1pt,
+  stroke-width: 1pt,
   min-title-lines: 2,
   min-reviewer-lines: 5,
   info-inset: (x: 0pt, bottom: 0.5pt),
@@ -122,7 +122,7 @@
     rect(
       width: 100%,
       inset: info-inset,
-      stroke: if no-stroke { none } else { (bottom: stoke-width + black) },
+      stroke: if no-stroke { none } else { (bottom: stroke-width + black) },
       text(
         font: if is-meta { fonts.黑体 } else { fonts.宋体 },
         size: if is-meta { 字号.五号 } else { 字号.三号 },
@@ -150,7 +150,7 @@
     rect(
       width: 100%,
       inset: info-inset,
-      stroke: if no-stroke { none } else { (bottom: stoke-width + black) },
+      stroke: if no-stroke { none } else { (bottom: stroke-width + black) },
       text(
         font: 字体.黑体,
         size: size,

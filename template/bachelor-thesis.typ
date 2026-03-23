@@ -28,7 +28,7 @@
   // anonymous: true,  // 盲审模式
   // majortype: "sci", //"sci" | "art", 学科类别，默认为理工，可选为社科
   twoside: false, // 双面模式，会加入空白页，便于打印
-  // 你会发现 Typst 有许多警告，这是因为 modern-nju-thesis 加入了很多不必要的 fallback 字体
+  // 你会发现 Typst 有许多警告，这是因为 modern-szu-thesis 加入了很多不必要的 fallback 字体
   // 你可以自定义字体消除警告，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: (name: "Times New Roman", covers: "latin-in-cjk"), "FZKai-Z03S")),
   info: (
