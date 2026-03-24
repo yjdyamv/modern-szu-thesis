@@ -18,7 +18,9 @@
   pagebreak()
   set text(font: 字体.宋体, size: 字号.小四)
   let header = ""
-  if doctype == "bachelor" {} else if doctype == "master" or doctype == "doctor" {
+  if doctype == "bachelor" {
+    header = ""
+  } else if doctype == "master" or doctype == "doctor" {
     header = context {
       set par(leading: 0pt, spacing: 0pt)
       align(center, emph(title))
@@ -31,13 +33,14 @@
     panic("This doctype has not yet been supported.")
   }
 
-  set page(paper: "a4", numbering: "1", header: header)
-  if doctype == "bachelor" {} else if doctype == "master" or doctype == "doctor" {
+  if doctype == "bachelor" {
+    numbering = "1"
+  } else if doctype == "master" or doctype == "doctor" {
     numbering = "I"
   } else {
     panic("This doctype has not yet been supported.")
   }
-  set page(numbering: numbering)
+  set page(paper: "a4", numbering: "1", header: header)
   //linebreak()
   v(title-above-space)
   align(center)[#text(font: 字体.黑体, heading(level: 1, numbering: none, outlined: outlined, title)),
