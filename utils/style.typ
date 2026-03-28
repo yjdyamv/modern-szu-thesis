@@ -23,10 +23,10 @@
   // 这一行分别是「新罗马体（有衬线英文字体）」、「思源宋体（简体）」、「思源宋体」、「宋体（Windows）」、「宋体（MacOS）」
   宋体: (
     (name: "Times New Roman", covers: "latin-in-cjk"),
+    "SimSun",
     "Source Han Serif SC",
     "Source Han Serif",
     "Noto Serif CJK SC",
-    "SimSun",
     "Songti SC",
     "STSongti",
   ),
