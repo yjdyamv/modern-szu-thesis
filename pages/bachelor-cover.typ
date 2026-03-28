@@ -209,7 +209,7 @@
 
   // 将提交时间至于页底
   v(1fr)
-  set text(size: 16pt)
+  set text(size: 16pt, font: 字体.宋体, top-edge: "ascender", bottom-edge: "descender")
   info.submit-date
 }
 

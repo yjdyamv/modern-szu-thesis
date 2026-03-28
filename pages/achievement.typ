@@ -22,7 +22,7 @@
   let bibitem(body) = figure(kind: "bibitem", supplement: none, body)
   show figure.where(kind: "bibitem"): it => {
     set align(left)
-    set text(size: 字号.五号)
+    set text(size: 字号.五号, top-edge: "ascender", bottom-edge: "descender")
     box(width: 2em, it.counter.display("[1]"))
     it.body
   }
@@ -38,8 +38,8 @@
     size: 字号.小四,
     font: 字体.黑体,
     weight: "bold",
-    top-edge: 0.7em,
-    bottom-edge: -0.3em,
+    top-edge: "ascender",
+    bottom-edge: "descender",
   )
   show figure: set par(spacing: 1em, leading: 1em)
   set text(size: 字号.五号)

@@ -62,9 +62,9 @@
   fonts = 字体 + fonts
   text-args = if text-args == auto {
     if doctype == "bachelor" {
-      (font: 字体.宋体, size: 字号.五号)
+      bachelor-text-set
     } else if doctype == "master" or doctype == "doctor" {
-      (font: 字体.宋体, size: 字号.小四)
+      master-text-set
     } else {
       panic("This doctype has not yet been supported.")
     }

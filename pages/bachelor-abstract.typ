@@ -49,7 +49,7 @@
   // 4.  正式渲染
   [
     #pagebreak(weak: true, to: if twoside { "odd" })
-    #set text(font: fonts.楷体, size: 字号.小四)
+    #set text(..bachelor-text-set)
     #set par(leading: leading, spacing: spacing, justify: true)
     #show heading: it => {}
 

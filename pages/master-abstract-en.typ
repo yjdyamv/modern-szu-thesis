@@ -4,6 +4,7 @@
 #import "../utils/custom-tablex.typ": colspanx, gridx
 #import "../utils/invisible-heading.typ": invisible-heading
 #import "../utils/text-config.typ": *
+#import "../utils/text-config.typ": *
 
 // 研究生英文摘要页
 #let master-abstract-en(
@@ -109,7 +110,7 @@
 
     //#v(-5pt)
 
-    #set text(font: fonts.宋体, size: 字号.小四)
+    #set text(..master-text-set)
     #set par(leading: leading, spacing: spacing, justify: true)
     #show par: set block(spacing: spacing)
     #v(title-down-space)

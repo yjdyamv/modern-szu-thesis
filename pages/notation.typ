@@ -1,4 +1,5 @@
 #import "../utils/style.typ": *
+#import "../utils/text-config.typ": *
 #import "@preview/hydra:0.6.2": hydra
 
 #let notation(
@@ -9,14 +10,16 @@
   title-down-space: 0pt,
   outlined: true,
   numbering: "1",
-  width: 350pt,
+  width: 400pt,
   columns: (60pt, 1fr),
   row-gutter: 16pt,
   ..args,
   body,
 ) = {
   pagebreak()
-  set text(font: 字体.宋体, size: 字号.小四)
+  set text(..if doctype == "bachelor" { bachelor-text-set } else if doctype == "master" or doctype == "doctor" {
+    master-text-set
+  })
   let header = ""
   if doctype == "bachelor" {
     header = ""
@@ -40,7 +43,7 @@
   } else {
     panic("This doctype has not yet been supported.")
   }
-  set page(paper: "a4", numbering: "1", header: header)
+  set page(paper: "a4", numbering: numbering, header: header)
   //linebreak()
   v(title-above-space)
   align(center)[#text(font: 字体.黑体, heading(level: 1, numbering: none, outlined: outlined, title)),

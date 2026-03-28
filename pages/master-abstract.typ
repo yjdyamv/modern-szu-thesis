@@ -95,7 +95,7 @@
       v(3pt)
       line(length: 100%)
     })
-    #set text(font: fonts.宋体, size: 字号.小四)
+    #set text(..master-text-set)
     #set par(leading: leading, justify: true)
 
     // 标记一个不可见的标题用于目录生成

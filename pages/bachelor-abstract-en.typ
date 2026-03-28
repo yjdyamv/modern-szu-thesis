@@ -50,7 +50,7 @@
   [
     #pagebreak(weak: true, to: if twoside { "odd" })
 
-    #set text(font: fonts.楷体, size: 字号.小四)
+    #set text(..bachelor-text-set)
     #set par(
       leading: leading,
       spacing: spacing,
@@ -58,7 +58,7 @@
       first-line-indent: 0em,
     )
     #show heading: it => {}
-    
+
     // 标记一个不可见的标题用于目录生成
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
