@@ -167,15 +167,12 @@
   show: show-cn-fakebold
   pagebreak()
   if doctype == "bachelor" {
-    [#heading(
-      level: 1,
-      outlined: true,
-      text(font: 字体.楷体, size: 字号.五号, weight: "bold")[参考文献#h(1fr)], // 用h(1fr)将标题至于左，达到alig(left)的效果
-      numbering: none,
-    )]
     set par(first-line-indent: 0pt)
     set par(spacing: bachelor-spacing, leading: bachelor-leading)
     set text(lang: "zh", font: 字体.楷体, size: 字号.小五)
+    heading(level: 1, outlined: true, numbering: none, none)
+    v(-(1em + bachelor-leading + bachelor-spacing)) // 精确调整让“标题”与隐藏的标题重合
+    text(font: 字体.楷体, size: 字号.五号, weight: "bold", "参考文献")
     bibliography(title: none, full: full, style: style)
   } else if doctype == "master" or doctype == "doctor" {
     show heading.where(level: 1): set block(above: 24pt, below: 18pt)

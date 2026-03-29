@@ -82,14 +82,14 @@
 // 表格目录
 // #list-of-tables()
 
-// 正文
-#show: mainmatter
-
-//符号表（可选）
+// 符号表（可选）
 // #notation[
 //   / DFT: 密度泛函理论 (Density functional theory)
 //   / DMRG: 密度矩阵重正化群密度矩阵重正化群密度矩阵重正化群 (Density-Matrix Reformation-Group)
 // ]
+
+// 正文
+#show: mainmatter
 
 = 导　论
 
@@ -208,7 +208,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 // 中英双语参考文献
 // 默认使用 gb-7714-2015-numeric 样式
-#bilingual-bibliography(full: true)
+#bilingual-bibliography(full: true) <refs>
 
 // 致谢
 #acknowledgement[

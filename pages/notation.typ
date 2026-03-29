@@ -39,7 +39,7 @@
   }
 
   if doctype == "bachelor" {
-    numbering = "1"
+    numbering = "I"
   } else if doctype == "master" or doctype == "doctor" {
     numbering = "I"
   } else {
