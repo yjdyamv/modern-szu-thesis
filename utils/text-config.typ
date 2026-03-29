@@ -1,15 +1,18 @@
 #import "style.typ": *
 // magic number
 
+// 正文行距、段距
 #let bachelor-spacing = 1em
 #let bachelor-leading = 0.5em
 
 #let master-spacing = 23pt - 1em
 #let master-leading = 23pt - 1em
 
+// 正文字体字号
 #let bachelor-text-set = (font: 字体.宋体, size: 字号.五号, top-edge: "ascender", bottom-edge: "descender")
 #let master-text-set = (font: 字体.宋体, size: 字号.小四, top-edge: "ascender", bottom-edge: "descender")
 
+// 标题行距、段距
 #let bachelor-heading-above = (0.5em, 0.5em, 0.5em, 0.5em)
 #let bachelor-heading-below = (0.5em, 0.5em, 0.5em, 0.5em)
 
