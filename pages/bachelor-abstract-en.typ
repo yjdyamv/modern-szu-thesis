@@ -48,6 +48,7 @@
 
   // 4.  正式渲染
   [
+    #show: show-cn-fakebold
     #pagebreak(weak: true, to: if twoside { "odd" })
 
     #set text(..bachelor-text-set)
@@ -63,26 +64,26 @@
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
     #align(center)[
-      #set text(size: 字号.小二, font: 字体.黑体)
-      #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）英文摘要]]
+      #set text(size: 字号.小二, font: 字体.黑体, weight: "bold")
+      #double-underline[深圳大学本科生毕业论文（设计、作品）英文摘要]
     ]
 
-    #fakebold[Thesis:] #info-value("title-en", (("",) + info.title-en).sum())
+    #strong[Thesis:] #info-value("title-en", (("",) + info.title-en).sum())
 
-    #fakebold[Department:] #info-value("department-en", info.department-en)
+    #strong[Department:] #info-value("department-en", info.department-en)
 
-    #fakebold[Specialisation:] #info-value("major-en", info.major-en)
+    #strong[Specialisation:] #info-value("major-en", info.major-en)
 
-    #fakebold[Undergraduate:] #info-value("author-en", info.author-en)
+    #strong[Undergraduate:] #info-value("author-en", info.author-en)
 
-    #fakebold[Mentor:] #info-value("supervisor-en", info.supervisor-en) #(
+    #strong[Mentor:] #info-value("supervisor-en", info.supervisor-en) #(
       if info.supervisor-ii-en != "" [#h(1em) #info-value(
           "supervisor-ii-en",
           info.supervisor-ii-en,
         )]
     )
 
-    #fakebold[【Abstract】:]
+    #strong[【Abstract】:]
 
     #[
       #set par(first-line-indent: (amount: 2em, all: true))
@@ -93,7 +94,7 @@
 
     #v(1em)
 
-    #fakebold[【Keywords】:]
+    #strong[【Keywords】:]
     #text(size: 字号.五号, (("",) + keywords.intersperse("; ")).sum())
   ]
 }

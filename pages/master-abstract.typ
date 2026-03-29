@@ -127,7 +127,7 @@
       #body
     ]
     #linebreak()
-    #text(font: 字体.黑体, weight: "bold")[*关键词*：]
+    #text(font: 字体.黑体)[*关键词*：]
     #(("",) + keywords.intersperse("；")).sum()
   ]
 }

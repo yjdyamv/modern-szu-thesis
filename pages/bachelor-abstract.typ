@@ -48,6 +48,7 @@
 
   // 4.  正式渲染
   [
+    #show: show-cn-fakebold
     #pagebreak(weak: true, to: if twoside { "odd" })
     #set text(..bachelor-text-set)
     #set par(leading: leading, spacing: spacing, justify: true)
@@ -61,15 +62,15 @@
       #double-underline[#fakebold[深圳大学本科生毕业论文（设计、作品）中文摘要]]
     ]
 
-    #fakebold[题目：]#info-value("title", (("",) + info.title).sum())
+    #strong[题目：]#info-value("title", (("",) + info.title).sum())
 
-    #fakebold[院系：]#info-value("department", info.department)
+    #strong[院系：]#info-value("department", info.department)
 
-    #fakebold[专业：]#info-value("major", info.major)
+    #strong[专业：]#info-value("major", info.major)
 
-    #fakebold[本科生姓名：]#info-value("author", info.author)
+    #strong[本科生姓名：]#info-value("author", info.author)
 
-    #fakebold[指导教师（姓名、职称）：]#info-value(
+    #strong[指导教师（姓名、职称）：]#info-value(
       "supervisor",
       info.supervisor.at(0) + info.supervisor.at(1),
     ) #(
@@ -79,7 +80,7 @@
         )]
     )
 
-    #fakebold[【摘要：】]
+    #strong[【摘要：】]
 
     #[
       #set par(first-line-indent: (amount: 2em, all: true))
@@ -89,7 +90,7 @@
 
     #v(1em)
 
-    #fakebold[【关键词：】]
+    #strong[【关键词：】]
     #text(size: 字号.五号, (("",) + keywords.intersperse("；")).sum())
   ]
 }

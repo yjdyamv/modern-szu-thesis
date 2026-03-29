@@ -9,16 +9,15 @@
   outlined: true,
   body,
 ) = {
+  show: show-cn-fakebold
   if (not anonymous) {
     pagebreak(weak: true, to: if twoside { "odd" })
-    [
-      #fakebold(heading(
-        level: 1,
-        numbering: none,
-        outlined: outlined,
-        title,
-      )) <no-auto-pagebreak>
-      #text()[#body]
-    ]
+    heading(
+      level: 1,
+      numbering: none,
+      outlined: outlined,
+      title,
+    )
+    text()[#body]
   }
 }

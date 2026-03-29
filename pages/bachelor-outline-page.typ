@@ -22,22 +22,32 @@
   size: (字号.小四, 字号.小四, 字号.小四),
   weight: ("bold", "regular", "regular"),
   // 垂直间距
-  above: (1em, 1em, 1em),
-  below: (1em, 1em, 1em),
-  indent: (0pt, 18pt, 28pt),
+  bachelor-above: (1em, 1em, 1em),
+  bachelor-below: (1em, 1em, 1em),
+  master-above: (20pt - 1em, 20pt - 1em, 20pt - 1em),
+  master-below: (20pt - 1em, 20pt - 1em, 20pt - 1em),
+  indent: (0pt, 1em, 1em),
   // 全都显示点号
   fill: (repeat([.], gap: 0.15em),),
   gap: .3em,
   ..args,
 ) = {
+  import "../utils/custom-cuti.typ": *
+  show: show-cn-fakebold // 使用伪粗体显示中文，解决部分字体没有粗体的问题
   // 1.  默认参数
   fonts = 字体 + fonts
+  let above = bachelor-above
+  let below = bachelor-below
   if (title-text-args == auto) {
     title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
   }
   if doctype == "bachelor" {
     title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
+    below = bachelor-below
+    above = bachelor-above
   } else if doctype == "master" or doctype == "doctor" {
+    below = master-below
+    above = master-above
     title-text-args = (font: fonts.黑体, size: 字号.三号, weight: "bold")
   } else {
     panic("This doctype has not yet been supported.")
@@ -55,7 +65,13 @@
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 默认显示的字体
-  set text(font: reference-font, size: reference-size, weight: "regular")
+  set text(
+    font: reference-font,
+    size: reference-size,
+    weight: "regular",
+    top-edge: "ascender",
+    bottom-edge: "descender",
+  )
 
   v(title-above-space)
 

@@ -1,4 +1,5 @@
 #import "../utils/style.typ": *
+#import "../utils/custom-cuti.typ": *
 #import "../utils/text-config.typ": *
 #import "@preview/hydra:0.6.2": hydra
 
@@ -17,6 +18,7 @@
   body,
 ) = {
   pagebreak()
+  show: show-cn-fakebold
   set text(..if doctype == "bachelor" { bachelor-text-set } else if doctype == "master" or doctype == "doctor" {
     master-text-set
   })
@@ -46,7 +48,7 @@
   set page(paper: "a4", numbering: numbering, header: header)
   //linebreak()
   v(title-above-space)
-  align(center)[#text(font: 字体.黑体, heading(level: 1, numbering: none, outlined: outlined, title)),
+  align(center)[#text(font: 字体.黑体, weight: "bold", heading(level: 1, numbering: none, outlined: outlined, title)),
   ]
   v(title-down-space)
 

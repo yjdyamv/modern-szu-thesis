@@ -133,7 +133,7 @@
 
   // 3.  设置基本样式
   // 3.1 文本和段落样式
-  show: show-fakebold
+  show: show-cn-fakebold
   if spacing == auto and leading == auto {
     if doctype == "bachelor" {
       spacing = bachelor-spacing
