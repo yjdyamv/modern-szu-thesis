@@ -1,3 +1,4 @@
+#import "/utils/custom-cuti.typ": *
 #import "../utils/datetime-display.typ": datetime-en-display, datetime-master-display
 #import "../utils/justify-text.typ": justify-text
 #import "../utils/style.typ": 字体, 字号
@@ -188,6 +189,7 @@
 
 
   // 4.  正式渲染
+  show: show-cn-fakebold
   pagebreak(weak: true, to: if twoside { "odd" })
 
   box(width: auto, inset: meta-block-inset, grid(

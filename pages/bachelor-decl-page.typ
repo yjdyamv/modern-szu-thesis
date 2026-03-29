@@ -1,3 +1,4 @@
+#import "/utils/custom-cuti.typ": *
 #import "../utils/style.typ": 字体, 字号
 
 // 本科生声明页
@@ -29,6 +30,7 @@
 
 
   // 3.  正式渲染
+  show: show-cn-fakebold
   pagebreak(weak: true, to: if twoside { "odd" })
 
   //v(6pt)
