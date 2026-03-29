@@ -164,13 +164,16 @@
   }
 
   // 渲染内容
+  show: show-cn-fakebold
   pagebreak()
   if doctype == "bachelor" {
-    hide(heading(level: 1, outlined: true, "参考文献", numbering: none))
-    v(-3em)
-    //创造一标题，并将其隐藏起来，但由于hide是占据空间的，为了和插入标题前一致，我只好将其上移3em。有点生草。
+    [#heading(
+      level: 1,
+      outlined: true,
+      text(font: 字体.楷体, size: 字号.五号, weight: "bold")[参考文献#h(1fr)], // 用h(1fr)将标题至于左，达到alig(left)的效果
+      numbering: none,
+    )]
     set par(first-line-indent: 0pt)
-    fakebold(font: 字体.楷体, size: 字号.五号)[参考文献]
     set par(spacing: bachelor-spacing, leading: bachelor-leading)
     set text(lang: "zh", font: 字体.楷体, size: 字号.小五)
     bibliography(title: none, full: full, style: style)
