@@ -214,11 +214,11 @@
   set heading(numbering: numbering)
   // 4.2 设置字体字号
   if doctype == "bachelor" {
-    heading-above = (0.5em, 0.5em, 0.5em, 0.5em)
-    heading-below = (0.5em, 0.5em, 0.5em, 0.5em)
+    heading-above = bachelor-heading-above
+    heading-below = bachelor-heading-below
   } else if doctype == "master" or doctype == "doctor" {
-    heading-above = (24pt, 24pt, 12pt, 12pt)
-    heading-below = (18pt, 6pt, 6pt, 6pt)
+    heading-above = master-heading-above
+    heading-below = master-heading-below
   } else {
     panic("This doctype has not yet been supported.")
   }

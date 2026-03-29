@@ -4,7 +4,6 @@
 #import "../utils/custom-tablex.typ": colspanx, gridx
 #import "../utils/invisible-heading.typ": invisible-heading
 #import "../utils/text-config.typ": *
-#import "../utils/text-config.typ": *
 
 // 研究生英文摘要页
 #let master-abstract-en(
@@ -19,8 +18,8 @@
   keywords: (),
   outline-title: "ABSTRACT",
   outlined: true,
-  title-above-space: 字号.三号,
-  title-down-space: 字号.小四,
+  title-above-space: master-heading-above.at(0),
+  title-down-space: master-heading-below.at(0),
   abstract-title-weight: "regular",
   stroke-width: 0.5pt,
   info-value-align: center,

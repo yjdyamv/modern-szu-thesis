@@ -7,8 +7,8 @@
   twoside: false,
   doctype: "bachelor",
   title: "符号和缩略语说明",
-  title-above-space: 字号.三号,
-  title-down-space: 0pt,
+  title-above-space: bachelor-heading-above.at(0),
+  title-down-space: bachelor-heading-below.at(0),
   outlined: true,
   numbering: "1",
   width: 400pt,
@@ -47,6 +47,16 @@
   }
   set page(paper: "a4", numbering: numbering, header: header)
   //linebreak()
+  if doctype == "bachelor" {
+    title-above-space = bachelor-heading-above.at(0)
+    title-down-space = bachelor-heading-below.at(0)
+  } else if doctype == "master" or doctype == "doctor" {
+    title-above-space = master-heading-above.at(0)
+    title-down-space = master-heading-below.at(0)
+  } else {
+    panic("This doctype has not yet been supported.")
+  }
+
   v(title-above-space)
   align(center)[#text(font: 字体.黑体, weight: "bold", heading(level: 1, numbering: none, outlined: outlined, title)),
   ]
