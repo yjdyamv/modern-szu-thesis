@@ -176,9 +176,9 @@
     bibliography(title: none, full: full, style: style)
   } else if doctype == "master" or doctype == "doctor" {
     show heading.where(level: 1): set block(above: master-heading-above.at(0), below: master-heading-below.at(0))
-    heading(level: 1, outlined: true, "参　考　文　献", numbering: none)
+    heading(level: 1, outlined: true, "参 考 文 献", numbering: none)
     set par(first-line-indent: 0pt)
-    set par(spacing: master-spacing / 2, leading: master-leading / 2)
+    set par(spacing: 0.25em, leading: 0.25em)
     set text(lang: "zh", font: 字体.宋体, size: 字号.五号)
     bibliography(title: none, full: full, style: style)
   } else {
