@@ -1,6 +1,6 @@
 #import "../utils/style.typ": 字体, 字号
 #import "../utils/text-config.typ": *
-#import "/utils/custom-cuti.typ": *
+#import "../utils/custom-cuti.typ": *
 
 // 研究生声明页
 #let master-decl-page(

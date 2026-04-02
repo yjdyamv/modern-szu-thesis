@@ -1,4 +1,4 @@
-#import "/utils/custom-cuti.typ": *
+#import "../utils/custom-cuti.typ": *
 #import "../utils/datetime-display.typ": datetime-en-display, datetime-master-display
 #import "../utils/justify-text.typ": justify-text
 #import "../utils/style.typ": 字体, 字号

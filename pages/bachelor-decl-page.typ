@@ -1,4 +1,4 @@
-#import "/utils/custom-cuti.typ": *
+#import "../utils/custom-cuti.typ": *
 #import "../utils/style.typ": 字体, 字号
 
 // 本科生声明页
