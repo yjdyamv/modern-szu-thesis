@@ -175,7 +175,7 @@
     text(font: 字体.楷体, size: 字号.五号, weight: "bold", "参考文献")
     bibliography(title: none, full: full, style: style)
   } else if doctype == "master" or doctype == "doctor" {
-    show heading.where(level: 1): set block(above: 24pt, below: 18pt)
+    show heading.where(level: 1): set block(above: master-heading-above.at(0), below: master-heading-below.at(0))
     heading(level: 1, outlined: true, "参　考　文　献", numbering: none)
     set par(first-line-indent: 0pt)
     set par(spacing: master-spacing / 2, leading: master-leading / 2)

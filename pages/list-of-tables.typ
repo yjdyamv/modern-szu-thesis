@@ -1,6 +1,7 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/invisible-heading.typ": invisible-heading
 #import "../utils/style.typ": 字体, 字号
+#import "../utils/custom-cuti.typ": *
 
 // 表格目录生成
 #let list-of-tables(
@@ -27,7 +28,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   if (title-text-args == auto) {
-    title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
+    title-text-args = (font: fonts.黑体, size: 字号.三号, weight: "bold")
   }
   // 字体与字号
   if (font == auto) {
@@ -35,6 +36,7 @@
   }
 
   // 2.  正式渲染
+  show: show-cn-fakebold
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 默认显示的字体
