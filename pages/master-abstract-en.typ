@@ -46,41 +46,7 @@
       + info
   )
 
-  // 2.  对参数进行处理
-  // 2.1 如果是字符串，则使用换行符将标题分隔为列表
-  if type(info.title-en) == str {
-    info.title-en = info.title-en.split("\n")
-  }
-
-  // 3.  内置辅助函数
-  let info-key(body) = {
-    rect(inset: info-inset, stroke: none, text(
-      font: fonts.楷体,
-      size: 字号.四号,
-      body,
-    ))
-  }
-
-  let info-value(key, body) = {
-    set align(info-value-align)
-    rect(
-      width: 100%,
-      inset: info-inset,
-      stroke: (bottom: stroke-width + black),
-      text(
-        font: fonts.楷体,
-        size: 字号.四号,
-        bottom-edge: "descender",
-        if anonymous and (key in anonymous-info-keys) {
-          "█████"
-        } else {
-          body
-        },
-      ),
-    )
-  }
-
-  // 4.  正式渲染
+  // 2.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
 
   [
