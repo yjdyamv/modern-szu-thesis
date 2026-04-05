@@ -1,5 +1,5 @@
 #import "../utils/style.typ": *
-#import "@preview/cuti:0.4.0": *
+#import "../utils/custom-cuti.typ": *
 
 #show: show-cn-fakebold
 
