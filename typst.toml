@@ -9,7 +9,6 @@ keywords = ["Shenzhen University", "thesis"]
 categories = ["thesis"]
 exclude = ["imgs"]
 repository = "https://github.com/yjdyamv/modern-szu-thesis"
-compiler = "0.13.0"
 
 [template]
 path = "template"

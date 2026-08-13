@@ -8,7 +8,6 @@
   // documentclass 传入的参数
   doctype: "master",
   degree: "academic",
-  nl-cover: false,
   anonymous: false,
   twoside: false,
   fonts: (:),
@@ -101,9 +100,9 @@
   // 3.  内置辅助函数
   let info-key(body, info-inset: info-inset, is-meta: false) = {
     set text(
-      font: if is-meta { fonts.宋体 } else { fonts.宋体 },
+      font: fonts.宋体,
       size: if is-meta { 字号.小四 } else { 字号.三号 },
-      weight: if is-meta { "regular" } else { "regular" },
+      weight: "regular",
     )
     rect(width: 100%, inset: info-inset, stroke: none, justify-text(
       with-tail: false,
@@ -266,7 +265,7 @@
     info-key("专业门类"),
     info-value("field", info.major-categories),
     info-key("学院（部、研究院）"),
-    info-value("depatment", info.department),
+    info-value("department", info.department),
     info-key("导师姓名"),
     info-value("supervisor", info.supervisor.intersperse(" ").sum()),
   ))

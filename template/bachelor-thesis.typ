@@ -1,6 +1,6 @@
 #import "../lib.typ": documentclass, indent
 // 此模板仅用于本科生毕业论文。由于研究生与本科生论文主体顺序不一致，故分成两个文件。你可以删除另一个用于研究生论文的文件
-// 你首先应该安装 https://github.com/yjdyamv/modern-szu-thesis/fonts 里的所有字体，
+// 你首先应该安装仓库 fonts 目录（https://github.com/yjdyamv/modern-szu-thesis/tree/main/fonts）里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传fonts/FangZheng里的字体，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
 #let (
@@ -116,7 +116,7 @@
 
 == 图表
 
-引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:nju-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
+引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:szu-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
 #align(center, (
   stack(dir: ltr)[
@@ -150,12 +150,12 @@
 #figure(
   image("images/szu-logo-black.svg", width: 20%),
   caption: [图片测试],
-) <nju-logo>
+) <szu-logo>
 
 #figure(
   image("images/szu-logo-black.svg", width: 20%),
   caption: [图片测试],
-) <nju-logo1>
+) <szu-logo1>
 
 == 数学公式
 
@@ -212,7 +212,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 // 致谢
 #acknowledgement[
-  感谢 NJU-LUG，感谢 NJUThesis LaTeX 模板。
+  感谢深圳大学，感谢所有给予我帮助的老师和同学。
 ]
 
 // 手动分页

@@ -1,4 +1,3 @@
-#import "@preview/hydra:0.6.2": hydra
 // 前言，重置页面计数器
 #let preface(
   // documentclass 传入的参数

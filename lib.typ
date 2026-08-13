@@ -42,7 +42,6 @@
   doctype: "bachelor", // "bachelor" | "master" | "doctor" | "postdoc"，文档类型，默认为本科生 bachelor
   degree: "academic", // "academic" | "professional"，学位类型，默认为学术型 academic
   majortype: "sci", //"sci" | "art", 学科类别，默认为理工，可选为社科
-  nl-cover: false, // TODO: 是否使用国家图书馆封面，默认关闭
   twoside: false, // 双面模式，会加入空白页，便于打印
   anonymous: false, // 盲审模式
   bibliography: none, // 原来的参考文献函数
@@ -93,7 +92,6 @@
     // 将传入参数再导出
     doctype: doctype,
     degree: degree,
-    nl-cover: nl-cover,
     twoside: twoside,
     anonymous: anonymous,
     fonts: fonts,
@@ -143,7 +141,6 @@
         master-cover(
           doctype: doctype,
           degree: degree,
-          nl-cover: nl-cover,
           anonymous: anonymous,
           twoside: twoside,
           ..args,

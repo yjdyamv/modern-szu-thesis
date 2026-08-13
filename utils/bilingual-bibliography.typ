@@ -170,8 +170,15 @@
     set par(first-line-indent: 0pt)
     set par(spacing: bachelor-spacing, leading: bachelor-leading)
     set text(lang: "zh", font: 字体.楷体, size: 字号.小五)
-    hide(heading(level: 1, outlined: true, numbering: none, "参考文献"))
-    v(-(3em + bachelor-leading + bachelor-spacing)) // 精确调整让“标题”与隐藏的标题重合
+    // 测量隐藏标题的占位高度并精确回退，保证目录中可见且不占版面空间
+    let hidden = hide([
+      #heading(level: 1, outlined: true, numbering: none, "参考文献") <no-auto-pagebreak>
+    ])
+    context {
+      let h = measure(hidden).height
+      hidden
+      v(-(h + bachelor-spacing))
+    }
     text(font: 字体.楷体, size: 字号.五号, weight: "bold", "参考文献")
     bibliography(title: none, full: full, style: style)
   } else if doctype == "master" or doctype == "doctor" {

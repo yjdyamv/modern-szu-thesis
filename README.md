@@ -102,26 +102,9 @@
 
 ps:你深的本科生和研究生论文在主体顺序上有所不同，故分成两个文件。
 
-## 目前 Typst 有哪些第三方包和模板？
+## 第三方包与模板
 
-可以查看 [Typst Universe](https://typst.app/universe)。
-
-我个人推荐的包：
-
-- 基础绘图：[cetz](https://typst.app/universe/package/cetz)
-- 绘制带有节点和箭头的图表，如流程图等：[fletcher](https://typst.app/universe/package/fletcher)
-- 定理环境：[theorion](https://typst.app/universe/package/theorion)
-- 伪代码：[lovelace](https://typst.app/universe/package/lovelace)
-- 带行号的代码显示包：[zebraw](https://typst.app/universe/package/zebraw)
-- 简洁的 Numbering 包：[numbly](https://typst.app/universe/package/numbly)
-- 幻灯片和演示文档：[touying](https://typst.app/universe/package/touying)
-- 相对定位布局包：[pinit](https://typst.app/universe/package/pinit)
-- 数学单位包：[unify](https://typst.app/universe/package/unify)
-- 数字格式化包：[zero](https://typst.app/universe/package/zero)
-- 写 LaTeX 数学公式：[mitex](https://typst.app/universe/package/mitex)
-- 写原生 Markdown：[cmarker](https://typst.app/universe/package/cmarker)
-- 写 Markdown-like checklist：[cheq](https://typst.app/universe/package/cheq)
-- 写 Markdown-like 表格：[tablem](https://typst.app/universe/package/tablem)
+本模板依赖 [i-figured](https://typst.app/universe/package/i-figured)、[hydra](https://typst.app/universe/package/hydra)、[numbly](https://typst.app/universe/package/numbly)、[cuti](https://typst.app/universe/package/cuti)、[tablex](https://typst.app/universe/package/tablex)、[pinit](https://typst.app/universe/package/pinit) 等包，使用时会自动下载。更多第三方包和模板可以查看 [Typst Universe](https://typst.app/universe)。
 
 ## 致谢
 

@@ -205,8 +205,7 @@
   // 3.6 优化列表显示
   //     术语列表 terms 不应该缩进
   show terms: set par(first-line-indent: 0pt)
-  //3.7 有序列表样式
-  import "@preview/numbly:0.1.0": numbly
+  // 3.7 有序列表样式
   set enum(full: true, numbering: numbly("{1:1.}", "{2:(1)}", "{3:①}"))
 
   // 4.  处理标题

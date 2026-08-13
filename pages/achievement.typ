@@ -66,9 +66,6 @@
     for paper in papers {
       bibitem(paper)
     }
-  } else {
-    // list[学术论文]
-    // "无"
   }
 
   if monographs.len() != 0 and monographs.at(0) != "" {
@@ -76,9 +73,6 @@
     for monograph in monographs {
       bibitem(monograph)
     }
-  } else {
-    // list[专著/译注]
-    // "无"
   }
 
   if patents.len() != 0 and patents.at(0) != "" {
@@ -86,9 +80,6 @@
     for patent in patents {
       bibitem(patent)
     }
-  } else {
-    // list[专利]
-    // "无"
   }
 
 
@@ -97,9 +88,6 @@
     for research-report in research-reports {
       bibitem(research-report)
     }
-  } else {
-    // list[研究报告]
-    // "无"
   }
 
   if other-achievements.len() != 0 and other-achievements.at(0) != "" {
@@ -107,9 +95,6 @@
     for other-achievement in other-achievements {
       bibitem(other-achievement)
     }
-  } else {
-    // list[其他研究成果]
-    // "无"
   }
 
   pagebreak(weak: true, to: if twoside {

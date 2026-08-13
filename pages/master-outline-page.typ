@@ -1,4 +1,3 @@
-#import "../utils/style.typ": *
 #import "bachelor-outline-page.typ": bachelor-outline-page
 #import "../utils/style.typ": *
 
