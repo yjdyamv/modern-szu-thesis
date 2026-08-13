@@ -29,7 +29,6 @@
     info.title = info.title.split("\n")
   }
 
-
   // 3.  正式渲染
   show: show-cn-fakebold
   pagebreak(weak: true, to: if twoside { "odd" })
@@ -56,7 +55,6 @@
   ))
   //v(3cm)
 
-
   block[
     #set text(..master-text-set)
     #set par(
@@ -75,7 +73,12 @@
     columns: (2em, 4cm, 1fr),
     [],
     align(left)[
-      #set text(font: fonts.宋体, size: 字号.小四, top-edge: "ascender", bottom-edge: "descender")
+      #set text(
+        font: fonts.宋体,
+        size: 字号.小四,
+        top-edge: "ascender",
+        bottom-edge: "descender",
+      )
 
       论文作者签名:
     ],

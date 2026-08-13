@@ -1,5 +1,7 @@
 #import "@preview/i-figured:0.2.4"
-#import "../utils/custom-numbering.typ": appendix-art-numbering, appendix-sci-numbering
+#import "../utils/custom-numbering.typ": (
+  appendix-art-numbering, appendix-sci-numbering,
+)
 #import "../utils/text-config.typ": *
 
 // 后记，重置 heading 计数器

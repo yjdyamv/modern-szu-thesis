@@ -87,7 +87,9 @@
   // 目录样式
 
   // 目录缩进
-  set outline(indent: level => indent.slice(0, calc.min(level + 1, indent.len())).sum())
+  set outline(indent: level => indent
+    .slice(0, calc.min(level + 1, indent.len()))
+    .sum())
 
   // 目录字体字号
   show outline.entry: entry => block(

@@ -15,7 +15,9 @@
 ) = {
   pagebreak()
   show: show-cn-fakebold
-  set text(..if doctype == "bachelor" { bachelor-text-set } else if doctype == "master" or doctype == "doctor" {
+  set text(..if doctype == "bachelor" { bachelor-text-set } else if doctype
+    == "master"
+    or doctype == "doctor" {
     master-text-set
   })
   let (title-above-space, title-down-space) = if doctype == "bachelor" {
@@ -41,7 +43,9 @@
   }
   set page(paper: "a4", numbering: "I", header: header)
   v(title-above-space)
-  align(center)[#text(font: 字体.黑体, weight: "bold", heading(level: 1, numbering: none, outlined: outlined, title)),
+  align(
+    center,
+  )[#text(font: 字体.黑体, weight: "bold", heading(level: 1, numbering: none, outlined: outlined, title)),
   ]
   v(title-down-space)
 
@@ -50,7 +54,11 @@
     row-gutter: row-gutter,
     ..args,
     // 解析 terms 内部结构以渲染到表格里
-    ..body.children.filter(it => it.func() == terms.item).map(it => (it.term, it.description)).flatten()
+    ..body
+      .children
+      .filter(it => it.func() == terms.item)
+      .map(it => (it.term, it.description))
+      .flatten()
   ))))
 
   // 手动分页

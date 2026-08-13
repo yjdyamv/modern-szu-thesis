@@ -9,8 +9,18 @@
 #let master-leading = 23pt - 1em
 
 // 正文字体字号
-#let bachelor-text-set = (font: 字体.宋体, size: 字号.五号, top-edge: "ascender", bottom-edge: "descender")
-#let master-text-set = (font: 字体.宋体, size: 字号.小四, top-edge: "ascender", bottom-edge: "descender")
+#let bachelor-text-set = (
+  font: 字体.宋体,
+  size: 字号.五号,
+  top-edge: "ascender",
+  bottom-edge: "descender",
+)
+#let master-text-set = (
+  font: 字体.宋体,
+  size: 字号.小四,
+  top-edge: "ascender",
+  bottom-edge: "descender",
+)
 
 // 标题行距、段距
 #let bachelor-heading-above = (0.5em, 0.5em, 0.5em, 0.5em)

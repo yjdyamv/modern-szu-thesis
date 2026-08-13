@@ -153,7 +153,6 @@
     }
   }
 
-
   // 4.  正式渲染
 
   pagebreak(weak: true, to: if twoside { "odd" })
@@ -193,8 +192,10 @@
     info-key("姓名："),
     info-long-value("author", info.author, width: 112%), info-key("专业："),
     info-long-value("major", info.major, width: 112%), info-key("学院："),
-    info-long-value("department", info.department, width: 112%), info-key("学号："),
-    info-long-value("student-id", info.student-id, width: 112%), info-key("指导教师："),
+    info-long-value("department", info.department, width: 112%),
+    info-key("学号："),
+    info-long-value("student-id", info.student-id, width: 112%),
+    info-key("指导教师："),
     info-long-value("supervisor", info.supervisor.at(0)), info-key("职称："),
     info-long-value("supervisor", info.supervisor.at(1), width: 110%),
     // ..(if info.supervisor-ii != () {(
@@ -209,7 +210,12 @@
 
   // 将提交时间至于页底
   v(1fr)
-  set text(size: 16pt, font: 字体.宋体, top-edge: "ascender", bottom-edge: "descender")
+  set text(
+    size: 16pt,
+    font: 字体.宋体,
+    top-edge: "ascender",
+    bottom-edge: "descender",
+  )
   info.submit-date
 }
 

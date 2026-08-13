@@ -172,7 +172,12 @@
     set text(lang: "zh", font: 字体.楷体, size: 字号.小五)
     // 测量隐藏标题的占位高度并精确回退，保证目录中可见且不占版面空间
     let hidden = hide([
-      #heading(level: 1, outlined: true, numbering: none, "参考文献") <no-auto-pagebreak>
+      #heading(
+        level: 1,
+        outlined: true,
+        numbering: none,
+        "参考文献",
+      ) <no-auto-pagebreak>
     ])
     context {
       let h = measure(hidden).height
@@ -182,7 +187,10 @@
     text(font: 字体.楷体, size: 字号.五号, weight: "bold", "参考文献")
     bibliography(title: none, full: full, style: style)
   } else if doctype == "master" or doctype == "doctor" {
-    show heading.where(level: 1): set block(above: master-heading-above.at(0), below: master-heading-below.at(0))
+    show heading.where(level: 1): set block(
+      above: master-heading-above.at(0),
+      below: master-heading-below.at(0),
+    )
     heading(level: 1, outlined: true, "参 考 文 献", numbering: none)
     set par(first-line-indent: 0pt)
     set par(spacing: 0.25em, leading: 0.25em)

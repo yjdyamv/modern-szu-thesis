@@ -1,21 +1,18 @@
-#import "../utils/custom-cuti.typ": *
-#import "../utils/style.typ": *
+#import "form-style.typ": form-heading
+#import "../utils/style.typ": 字号
 
 #set text(
   font: ("SimSun", "Noto Serif CJK SC", "Source Han Serif SC"),
   size: 字号.四号,
 )
-
 #set par(
   first-line-indent: (amount: 2em, all: true),
   justify: true,
   leading: 2em,
 )
-#show heading.where(level: 1): it => {
-  align(center, text(size: 字号.一号)[#fakebold(it)])
-}
+#show heading.where(level: 1): form-heading(字号.一号)
 
-// 画下划线，长度为n个空格
+// 画下划线，长度为 n 个全角空格
 #let uline(n) = underline(n * "\u{3000}" + sym.zws, stroke: 1pt + black)
 
 #v(字号.四号 * 4)

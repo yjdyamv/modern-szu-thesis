@@ -2,7 +2,8 @@
 #import "../utils/style.typ": 字体, 字号
 #import "../utils/custom-cuti.typ": *
 #import "../utils/custom-numbering.typ": (
-  bachelor-art-numbering, bachelor-sci-numbering, custom-numbering, master-art-numbering, master-sci-numbering,
+  bachelor-art-numbering, bachelor-sci-numbering, custom-numbering,
+  master-art-numbering, master-sci-numbering,
 )
 #import "../utils/text-config.typ": *
 #import "../utils/unpairs.typ": unpairs

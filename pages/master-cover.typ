@@ -1,5 +1,7 @@
 #import "../utils/custom-cuti.typ": *
-#import "../utils/datetime-display.typ": datetime-en-display, datetime-master-display
+#import "../utils/datetime-display.typ": (
+  datetime-en-display, datetime-master-display,
+)
 #import "../utils/justify-text.typ": justify-text
 #import "../utils/style.typ": 字体, 字号
 
@@ -70,7 +72,8 @@
     info.title + range(min-title-lines - info.title.len()).map(it => "　")
   )
   info.reviewer = (
-    info.reviewer + range(min-reviewer-lines - info.reviewer.len()).map(it => "　")
+    info.reviewer
+      + range(min-reviewer-lines - info.reviewer.len()).map(it => "　")
   )
   // 2.3 处理日期
   assert(
@@ -186,7 +189,6 @@
     no-stroke: true,
   )
 
-
   // 4.  正式渲染
   show: show-cn-fakebold
   pagebreak(weak: true, to: if twoside { "odd" })
@@ -219,7 +221,9 @@
     font: fonts.黑体,
     spacing: 200%,
     weight: "bold",
-    if doctype == "doctor" { "博士学位论文" } else if doctype == "master" { "硕士学位论文" } else {
+    if doctype == "doctor" { "博士学位论文" } else if doctype == "master" {
+      "硕士学位论文"
+    } else {
       panic("This doctype has not yet been supported.")
     },
   )

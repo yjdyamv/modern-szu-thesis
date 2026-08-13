@@ -82,7 +82,6 @@
     }
   }
 
-
   if research-reports.len() != 0 and research-reports.at(0) != "" {
     list[研究报告]
     for research-report in research-reports {
