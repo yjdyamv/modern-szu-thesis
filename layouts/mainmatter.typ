@@ -41,7 +41,7 @@
   stroke-width: 0.5pt,
   reset-footnote: true,
   // caption 的 separator
-  separator: "  ",
+  separator: "　",
   //footnote 样式
   bachelor-footnote-size: 字号.小五,
   master-footnote-size: 字号.五号,
@@ -187,6 +187,7 @@
   show figure: show-figure
   // 3.4 设置 equation 的编号和假段落首行缩进
   show math.equation.where(block: true): show-equation
+  show math.equation.where(block: true): set block(above: 6pt, below: 6pt)
   // 3.5 表格表头置顶 + 不用冒号用空格分割 + 样式
   let caption-size = if doctype == "bachelor" {
     bachelor-caption-size
@@ -203,6 +204,13 @@
     size: caption-size,
     weight: "bold",
   )
+  // 图题：段前 6 磅段后 12 磅；表题：段前 12 磅段后 6 磅
+  // 图题/表题间距：图与图题、表题与表之间 6 磅（gap）；
+  // 表题段前 12 磅（上方），图题段后 12 磅（下方）
+  show figure.where(kind: table): set figure(gap: 6pt)
+  show figure.where(kind: table): set block(above: 12pt)
+  show figure.where(kind: image): set figure(gap: 6pt)
+  show figure.where(kind: image): set block(below: 12pt)
   // 3.6 优化列表显示
   //     术语列表 terms 不应该缩进
   show terms: set par(first-line-indent: 0pt)
@@ -257,6 +265,7 @@
   // 5.  处理正文页眉
   let master-header = context {
     set par(leading: 0pt, spacing: 0pt)
+    set text(font: fonts.宋体, size: 字号.五号)
     align(center, emph(hydra(1, use-last: true)))
     v(3pt)
     line(length: 100%, stroke: 2pt)
@@ -280,7 +289,12 @@
     ""
   }
 
-  set page(paper: "a4", numbering: "1", header: header)
+  set page(
+    paper: "a4",
+    numbering: "1",
+    header: header,
+    footer: page-footer,
+  )
 
   counter(page).update(1)
 

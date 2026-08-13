@@ -8,6 +8,17 @@
 #let master-spacing = 23pt - 1em
 #let master-leading = 23pt - 1em
 
+// 页码：置于页脚居中，Times New Roman 五号，无修饰线
+#let page-footer = context {
+  set text(
+    font: (name: "Times New Roman", covers: "latin-in-cjk"),
+    size: 字号.五号,
+    top-edge: "ascender",
+    bottom-edge: "descender",
+  )
+  align(center, counter(page).display())
+}
+
 // 正文字体字号
 #let bachelor-text-set = (
   font: 字体.宋体,

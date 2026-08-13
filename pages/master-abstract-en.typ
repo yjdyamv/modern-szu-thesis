@@ -58,6 +58,10 @@
   [
     #set page(header: context {
       set par(leading: 0pt, spacing: 0pt)
+      set text(
+        font: (name: "Times New Roman", covers: "latin-in-cjk"),
+        size: 字号.五号,
+      )
       align(center, info.title-en.sum())
       v(4pt)
       line(length: 100%, stroke: 2pt)
@@ -95,7 +99,7 @@
 
     #linebreak()
 
-    #text(font: 字体.楷体)[*Key words*：]
-    #(("",) + keywords.intersperse("；")).sum()
+    #text(font: 字体.楷体)[*Key words*:]
+    #(("",) + keywords.intersperse(", ")).sum()
   ]
 }

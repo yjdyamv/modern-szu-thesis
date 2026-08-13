@@ -5,7 +5,7 @@
   anonymous: false,
   twoside: false,
   // 其他参数
-  title: "致谢",
+  title: "致　谢",
   outlined: true,
   body,
 ) = {

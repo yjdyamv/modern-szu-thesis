@@ -32,6 +32,7 @@
   } else if doctype == "master" or doctype == "doctor" {
     context {
       set par(leading: 0pt, spacing: 0pt)
+      set text(font: 字体.宋体, size: 字号.五号)
       align(center, emph(title))
       v(3pt)
       line(length: 100%, stroke: 2pt)

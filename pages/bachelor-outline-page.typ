@@ -9,7 +9,7 @@
   doctype: "bachelor",
   // 其他参数
   depth: 4,
-  title: "目　　录",
+  title: "目　录",
   outlined: false,
   title-above-space: 0pt,
   title-down-space: 16pt,

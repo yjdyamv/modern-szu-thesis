@@ -55,6 +55,7 @@
   [
     #set page(header: context {
       set par(leading: 0pt, spacing: 0pt)
+      set text(font: fonts.宋体, size: 字号.五号)
       align(center, info.title.sum())
       v(4pt)
       line(length: 100%, stroke: 2pt)
@@ -74,7 +75,7 @@
       font: fonts.黑体,
       size: 字号.三号,
       weight: "bold",
-      "摘　　要",
+      "摘　要",
     ))
 
     //#v(-5pt)
@@ -94,6 +95,6 @@
     ]
     #linebreak()
     #text(font: 字体.黑体)[*关键词*：]
-    #(("",) + keywords.intersperse("；")).sum()
+    #(("",) + keywords.intersperse("，")).sum()
   ]
 }

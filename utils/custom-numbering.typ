@@ -9,14 +9,14 @@
 //附录标题numbering
 
 #let appendix-art-numbering = numbly(
-  "{1:附录A }",
+  "{1:附录 A }",
   "{2:第一节 }",
   "{3:一、}",
   "{4:（一） }",
 )
 
 #let appendix-sci-numbering = numbly(
-  "{1:附录A }",
+  "{1:附录 A }",
   "{1:A}.{2:1}",
   "{1:A}.{2:1}.{3:1}",
   "{1:A}.{2:1}.{3:1}.{4:1}",
