@@ -1,3 +1,5 @@
+
+
 # 深圳大学学位论文 modern-szu-thesis
 
 深圳大学毕业论文（设计）的 Typst 模板，能够简洁、快速、持续生成 PDF 格式的毕业论文，这是基于[modern-nju-thesis](https://typst.app/universe/package/modern-nju-thesis)的深大学位论文模板。
@@ -100,7 +102,7 @@
 - `ref.bib`文件是参考文献放置处
 - `images`里有示例图片
 
-ps:你深的本科生和研究生论文在主体顺序上有所不同，故分成两个文件。
+ps:深大的本科生和研究生论文在主体顺序上有所不同，故分成两个文件。
 
 ## 第三方包与模板
 
